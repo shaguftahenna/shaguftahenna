@@ -1,0 +1,1979 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Dr. Shagufta Henna — Implementation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#2a3f56;--navy-2:#344e68;--navy-3:#3d5a77;--navy-4:#476787;
+  --amber:#e8a320;--amber-l:#f0bc50;--amber-p:#fdf0d0;
+  --emerald:#10b981;--emerald-l:#34d399;--emerald-p:#d1fae5;
+  --sky:#38bdf8;--rose:#fb7185;
+  --text:#f0f4f8;--text-2:#a8c0d4;--text-3:#6a8aa8;
+  --white:#fff;--border:rgba(255,255,255,0.12);--border-2:rgba(255,255,255,0.2);
+  --r-sm:6px;--r-md:12px;--r-lg:20px;--r-xl:28px;
+  --sh:0 12px 40px rgba(0,0,0,.35);--sh-sm:0 3px 14px rgba(0,0,0,.22);
+  --font-d:'Cormorant Garamond','Georgia',serif;
+  --font-b:'DM Sans',system-ui,sans-serif;
+  --font-m:'JetBrains Mono',monospace;
+  --ease:cubic-bezier(.4,0,.2,1);
+}
+.AF{font-size:19px!important}
+.AF p,.AF li,.AF td{font-size:1.1em!important;line-height:1.9!important}
+.DY{font-family:'OpenDyslexic','Comic Sans MS',cursive!important;letter-spacing:.05em;word-spacing:.12em}
+.DY *{font-family:inherit!important}
+.HC{filter:contrast(1.4);background:#000!important}
+.HC .sec,.HC .sec-alt,.HC .hero{background:#000!important}
+.HC .s-card,.HC .rc,.HC .uc,.HC .ins-card,.HC .ev-card,.HC .tracker{background:#111!important;border-color:#fff!important}
+.HC p,.HC .text-2,.HC .rc-txt,.HC .ins-body,.HC .tl-desc{color:#fff!important}
+.speak-hl{background:rgba(232,163,32,.25)!important;outline:2px solid var(--amber);border-radius:3px}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:var(--font-b);background:var(--navy);color:var(--text);line-height:1.7;overflow-x:hidden}
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-track{background:var(--navy)}
+::-webkit-scrollbar-thumb{background:var(--navy-4);border-radius:99px}
+::selection{background:rgba(232,163,32,.3);color:#fff}
+a{color:var(--amber);text-decoration:none;transition:color .2s}
+a:hover{color:var(--amber-l)}
+h1,h2,h3,h4{font-family:var(--font-d);line-height:1.15}
+p{color:var(--text-2)}
+.skip-link{position:fixed;top:-100px;left:16px;z-index:9999;background:var(--amber);color:var(--navy);padding:10px 20px;border-radius:var(--r-md);font-weight:700;transition:top .2s}
+.skip-link:focus{top:16px}
+.a11y-bar{position:fixed;top:0;left:0;right:0;z-index:1001;background:var(--navy-2);padding:7px 24px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;border-bottom:1px solid var(--border)}
+.a11y-lbl{font-family:var(--font-m);font-size:.6rem;color:var(--text-3);text-transform:uppercase;letter-spacing:.14em;margin-right:4px;white-space:nowrap}
+.ab-btn{display:inline-flex;align-items:center;gap:5px;padding:4px 13px;border-radius:30px;background:rgba(255,255,255,.05);border:1px solid var(--border-2);color:var(--text-2);font-size:.72rem;font-family:var(--font-b);cursor:pointer;transition:all .2s;white-space:nowrap}
+.ab-btn:hover{background:rgba(255,255,255,.1);color:var(--text);border-color:rgba(255,255,255,.25)}
+.ab-btn.on{background:var(--amber);border-color:var(--amber);color:var(--navy);font-weight:600}
+.ab-btn.stop-btn{display:none;border-color:var(--rose);color:var(--rose)}
+.ab-btn.stop-btn:hover{background:rgba(251,113,133,.15)}
+.nav-wrap{position:fixed;top:36px;left:0;right:0;z-index:900;padding:0 24px;transition:all .3s}
+.nav-wrap.solid .nav-inner{background:rgba(11,22,40,.96);backdrop-filter:blur(20px);box-shadow:var(--sh-sm)}
+.nav-inner{max-width:1360px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:12px 28px;border-radius:var(--r-xl);transition:all .3s;background:rgba(32,52,75,.96);backdrop-filter:blur(20px);box-shadow:0 2px 16px rgba(0,0,0,.3)}
+.nav-brand{display:flex;align-items:center;gap:10px;font-family:var(--font-d);font-size:1.1rem;font-weight:600;color:var(--text);letter-spacing:.01em}
+.brand-tag{font-family:var(--font-m);font-size:.65rem;color:var(--amber);background:rgba(232,163,32,.12);padding:3px 9px;border-radius:var(--r-sm);border:1px solid rgba(232,163,32,.25)}
+.nav-links{display:flex;align-items:center;gap:1px;list-style:none}
+.nav-links a{padding:6px 9px;border-radius:30px;font-size:.72rem;font-weight:500;color:var(--text-2);transition:all .2s}
+.nav-links a:hover{color:var(--text);background:rgba(255,255,255,.07)}
+.nav-links a.act{color:var(--amber);background:rgba(232,163,32,.1);font-weight:600}
+.nav-cta{background:var(--emerald)!important;color:var(--navy)!important;font-weight:700!important;padding:7px 16px!important;border-radius:30px!important;font-size:.75rem!important}
+.nav-cta:hover{background:var(--emerald-l)!important;color:var(--navy)!important}
+.hbg{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px}
+.hbg span{display:block;width:22px;height:2px;background:var(--text);border-radius:2px;transition:all .3s}
+.mob-nav{position:fixed;inset:0;z-index:850;background:var(--navy);padding:100px 32px 48px;transform:translateX(100%);transition:transform .35s var(--ease);display:flex;flex-direction:column;gap:4px}
+.mob-nav.open{transform:translateX(0)}
+.mob-nav a{color:var(--text);font-family:var(--font-d);font-size:2rem;padding:14px 0;border-bottom:1px solid var(--border);display:block;font-style:italic}
+.mob-nav a:hover{color:var(--amber)}
+.hero{min-height:100vh;position:relative;display:flex;align-items:center;padding:130px 24px 100px;overflow:hidden;background:var(--navy)}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 70% 40%,rgba(16,185,129,.06) 0%,transparent 65%),radial-gradient(ellipse 50% 60% at 10% 70%,rgba(232,163,32,.05) 0%,transparent 55%),radial-gradient(ellipse 40% 40% at 90% 90%,rgba(56,189,248,.04) 0%,transparent 50%)}
+.hero-grid{position:absolute;inset:0;opacity:.04;background-image:linear-gradient(rgba(255,255,255,.5) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.5) 1px,transparent 1px);background-size:60px 60px}
+.hero-body{max-width:1360px;margin:0 auto;width:100%;position:relative;z-index:2;display:grid;grid-template-columns:1.15fr 1fr;gap:80px;align-items:center}
+.h-eyebrow{display:inline-flex;align-items:center;gap:8px;margin-bottom:24px}
+.h-pill{display:inline-flex;align-items:center;gap:7px;background:rgba(16,185,129,.12);border:1px solid rgba(16,185,129,.3);color:var(--emerald-l);padding:5px 16px;border-radius:30px;font-size:.71rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase}
+.h-pill::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--emerald-l);animation:pulse 2s infinite;flex-shrink:0}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(1.6)}}
+.h-name{font-family:var(--font-d);font-size:clamp(3rem,5.5vw,5.8rem);font-weight:300;line-height:1;color:var(--white);animation:fadeUp .65s var(--ease) both}
+.h-name em{font-style:italic;color:var(--amber-l);display:block}
+.h-sub{color:var(--text-2);font-size:.93rem;max-width:460px;margin-top:20px;line-height:1.85;animation:fadeUp .65s .15s var(--ease) both}
+.h-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px;animation:fadeUp .65s .25s var(--ease) both}
+.h-tag{padding:4px 13px;border-radius:30px;border:1px solid var(--border-2);color:var(--text-3);font-size:.72rem;font-weight:500}
+.h-btns{display:flex;gap:12px;margin-top:34px;animation:fadeUp .65s .35s var(--ease) both;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:13px 28px;border-radius:50px;font-size:.86rem;font-weight:600;cursor:pointer;border:none;font-family:var(--font-b);transition:all .25s}
+.btn-em{background:var(--emerald);color:var(--navy)}
+.btn-em:hover{background:var(--emerald-l);transform:translateY(-2px);box-shadow:0 8px 28px rgba(16,185,129,.35);color:var(--navy)}
+.btn-ghost{background:transparent;color:var(--text-2);border:1px solid var(--border-2)}
+.btn-ghost:hover{background:rgba(255,255,255,.07);color:var(--text);border-color:var(--border)}
+.h-card{animation:fadeLeft .7s .2s var(--ease) both}
+.profile-card{background:rgba(255,255,255,.04);backdrop-filter:blur(20px);border:1px solid var(--border-2);border-radius:var(--r-xl);padding:30px;box-shadow:var(--sh);position:relative;overflow:hidden}
+.profile-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--emerald),var(--amber),var(--sky))}
+.pc-head{display:flex;align-items:center;gap:14px;margin-bottom:26px}
+.pc-ava{width:64px;height:64px;border-radius:50%;background:linear-gradient(135deg,var(--emerald),var(--amber));display:flex;align-items:center;justify-content:center;font-family:var(--font-d);font-size:1.6rem;font-weight:700;color:var(--navy);flex-shrink:0}
+.pc-name{font-family:var(--font-d);font-size:1.15rem;font-weight:600;color:var(--white)}
+.pc-role{font-size:.74rem;color:var(--text-3);margin-top:3px}
+.pc-badges{display:flex;gap:6px;margin-top:6px;flex-wrap:wrap}
+.pc-badge{padding:2px 8px;border-radius:20px;font-size:.62rem;font-weight:600;background:rgba(232,163,32,.15);color:var(--amber-l);border:1px solid rgba(232,163,32,.25)}
+.pc-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:22px}
+.pcs-item{text-align:center;padding:12px 6px;background:rgba(255,255,255,.04);border-radius:var(--r-md);border:1px solid var(--border)}
+.pcs-num{font-family:var(--font-d);font-size:1.8rem;font-weight:600;color:var(--amber-l);line-height:1}
+.pcs-lbl{font-size:.6rem;color:var(--text-3);margin-top:4px;text-transform:uppercase;letter-spacing:.08em}
+.pc-prog{margin-bottom:18px}
+.pp-row{display:flex;justify-content:space-between;margin-bottom:6px}
+.pp-lbl{font-size:.72rem;color:var(--text-3)}
+.pp-val{font-size:.72rem;color:var(--amber-l);font-family:var(--font-m)}
+.pp-track{height:4px;background:rgba(255,255,255,.08);border-radius:2px;overflow:hidden}
+.pp-fill{height:100%;border-radius:2px;background:linear-gradient(90deg,var(--emerald),var(--amber));width:94%}
+.pc-feed{display:flex;flex-direction:column;gap:6px}
+.pf-row{display:flex;align-items:center;gap:8px;padding:7px 10px;background:rgba(255,255,255,.03);border-radius:var(--r-sm)}
+.pf-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0}
+.pf-txt{flex:1;font-size:.71rem;color:var(--text-3)}
+.pf-time{font-family:var(--font-m);font-size:.6rem;color:rgba(255,255,255,.2)}
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+@keyframes fadeLeft{from{opacity:0;transform:translateX(24px)}to{opacity:1;transform:none}}
+.sec{padding:100px 24px;background:var(--navy)}
+.sec-alt{padding:100px 24px;background:var(--navy-2)}
+.wrap{max-width:1360px;margin:0 auto}
+.s-eye{display:flex;align-items:center;gap:10px;font-family:var(--font-m);font-size:.64rem;color:var(--emerald);text-transform:uppercase;letter-spacing:.16em;margin-bottom:14px}
+.s-eye::before{content:'';width:24px;height:1px;background:var(--emerald)}
+.s-title{font-size:clamp(1.9rem,3.2vw,3rem);font-weight:300;color:var(--white);margin-bottom:12px;font-style:italic}
+.s-title strong{font-style:normal;font-weight:600;color:var(--amber-l)}
+.s-desc{color:var(--text-2);max-width:540px;font-size:.92rem;line-height:1.8}
+.s-hd{margin-bottom:56px}
+.philo-grid{display:grid;grid-template-columns:1fr 1.05fr;gap:72px;align-items:start}
+.philo-text h3{font-size:1.55rem;font-weight:400;font-style:italic;color:var(--white);margin-bottom:18px}
+.philo-text p{margin-bottom:16px;font-size:.9rem;line-height:1.9;color:var(--text-2);text-align:justify;hyphens:auto;}
+.pillars{margin-top:32px;display:flex;flex-direction:column;gap:10px}
+.pill-item{display:flex;gap:14px;padding:16px 18px;background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:var(--r-md);border-left:3px solid var(--emerald);transition:all .25s}
+.pill-item:hover{border-left-color:var(--amber);transform:translateX(5px);background:rgba(255,255,255,.05)}
+.pi-ico{font-size:1.2rem;flex-shrink:0;margin-top:2px}
+.pi-ttl{font-weight:600;font-size:.82rem;color:var(--white);margin-bottom:3px}
+.pi-desc{font-size:.77rem;color:var(--text-2);line-height:1.65}
+.dash-mock{background:var(--navy);border:1px solid var(--border-2);border-radius:var(--r-xl);overflow:hidden;box-shadow:var(--sh);position:sticky;top:110px}
+.dm-bar{background:rgba(255,255,255,.03);padding:11px 18px;display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--border)}
+.dm-dots{display:flex;gap:6px}
+.dm-dot{width:10px;height:10px;border-radius:50%}
+.dm-dot.r{background:#ff5f57}.dm-dot.y{background:#ffbd2e}.dm-dot.g{background:#28c941}
+.dm-ttl{font-family:var(--font-m);font-size:.68rem;color:var(--text-3)}
+.dm-body{padding:20px}
+.dm-sec{font-family:var(--font-m);font-size:.59rem;text-transform:uppercase;letter-spacing:.12em;color:var(--text-3);margin-bottom:10px;margin-top:16px}
+.dm-sec:first-child{margin-top:0}
+.dm-grid2{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.dm-tile{background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:var(--r-sm);padding:10px 12px;display:flex;align-items:center;gap:8px;transition:all .2s}
+.dm-tile:hover{background:rgba(16,185,129,.08);border-color:rgba(16,185,129,.3)}
+.dm-tile-ico{font-size:1rem}
+.dm-tile-txt{font-size:.7rem;color:var(--text-2);font-weight:500;flex:1}
+.dm-tile-tag{font-size:.58rem;font-weight:600;padding:2px 6px;border-radius:10px}
+.dm-tile-tag.live{background:rgba(16,185,129,.18);color:var(--emerald-l)}
+.dm-tile-tag.new{background:rgba(232,163,32,.18);color:var(--amber-l)}
+.dm-tags{display:flex;flex-wrap:wrap;gap:5px}
+.dm-atag{display:flex;align-items:center;gap:5px;padding:3px 10px;background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:30px;font-size:.66rem;color:var(--text-2)}
+.dm-dot-sm{width:5px;height:5px;border-radius:50%;flex-shrink:0}
+.dm-bars{display:flex;flex-direction:column;gap:8px}
+.dmb-row{display:flex;align-items:center;gap:10px}
+.dmb-lbl{font-size:.66rem;color:var(--text-3);width:68px;flex-shrink:0}
+.dmb-track{flex:1;height:5px;background:rgba(255,255,255,.07);border-radius:3px;overflow:hidden}
+.dmb-fill{height:100%;border-radius:3px}
+.dmb-val{font-family:var(--font-m);font-size:.63rem;color:var(--text-3);width:28px;text-align:right}
+
+/* ── S2 ENHANCED STYLES ── */
+.s2-journal-banner{background:rgba(56,189,248,.05);border:1px solid rgba(56,189,248,.15);border-left:3px solid var(--sky);border-radius:0 var(--r-lg) var(--r-lg) 0;padding:28px 32px;margin-bottom:48px}
+.s2jb-label{font-family:var(--font-m);font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--sky);margin-bottom:10px;font-weight:500}
+.s2jb-title{font-family:var(--font-d);font-size:1.2rem;font-weight:400;font-style:italic;color:var(--white);margin-bottom:12px}
+.s2jb-text{font-size:.86rem;color:var(--text-2);line-height:1.9}
+.s2-lit-label{font-family:var(--font-m);font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--text-3);margin-bottom:18px;font-weight:500;display:block}
+.s2-lit-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:44px}
+.s2-lit-card{background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:var(--r-lg);padding:20px;transition:all .25s}
+.s2-lit-card:hover{border-color:var(--border-2);transform:translateY(-3px);box-shadow:var(--sh-sm)}
+.s2-lit-top{display:flex;align-items:flex-start;gap:10px;margin-bottom:10px}
+.s2-lit-badge{flex-shrink:0;width:34px;height:34px;border-radius:var(--r-md);background:rgba(56,189,248,.1);border:1px solid rgba(56,189,248,.2);display:flex;align-items:center;justify-content:center;font-size:1rem}
+.s2-lit-author{font-size:.82rem;font-weight:600;color:var(--white);margin-bottom:2px}
+.s2-lit-journal{font-family:var(--font-m);font-size:.62rem;color:var(--amber-l)}
+.s2-lit-claim{font-size:.8rem;color:var(--text-2);line-height:1.75;margin-bottom:10px}
+.s2-lit-connect{font-size:.7rem;color:var(--sky);background:rgba(56,189,248,.08);border:1px solid rgba(56,189,248,.18);padding:4px 10px;border-radius:var(--r-sm);display:inline-block;line-height:1.5}
+.s2-theme-section{margin-bottom:48px}
+.s2-theme-intro{font-size:.86rem;color:var(--text-2);line-height:1.85;max-width:760px;margin-bottom:18px}
+.s2-theme-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.s2-theme-card{background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:var(--r-lg);padding:16px 18px;transition:all .25s}
+.s2-theme-card:hover{border-color:var(--border-2);transform:translateY(-3px)}
+.s2-theme-icon-row{display:flex;align-items:center;gap:8px;margin-bottom:10px}
+.s2-theme-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.s2-theme-label{font-size:.8rem;font-weight:600;color:var(--white);line-height:1.3}
+.s2-theme-quote{font-size:.77rem;color:var(--text-2);line-height:1.7;font-style:italic;border-left:2px solid var(--border-2);padding-left:10px;margin-bottom:10px}
+.s2-theme-journal{font-size:.68rem;color:var(--text-3);background:rgba(255,255,255,.04);border:1px solid var(--border);padding:3px 9px;border-radius:var(--r-sm);display:inline-block}
+.s2-changes-section{margin-bottom:48px}
+.s2-changes-intro{font-size:.86rem;color:var(--text-2);line-height:1.85;max-width:760px;margin-bottom:18px}
+.s2-changes-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.s2-change-card{background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:var(--r-lg);padding:22px 24px;transition:all .25s}
+.s2-change-card:hover{border-color:var(--border-2);transform:translateY(-3px);box-shadow:var(--sh-sm)}
+.s2-change-header{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;margin-bottom:12px}
+.s2-change-title{font-weight:600;font-size:.88rem;color:var(--white);line-height:1.3}
+.s2-freq-badge{font-family:var(--font-m);font-size:.6rem;font-weight:600;padding:3px 9px;border-radius:20px;white-space:nowrap;flex-shrink:0}
+.s2-freq-high{background:rgba(16,185,129,.15);color:var(--emerald-l);border:1px solid rgba(16,185,129,.25)}
+.s2-freq-med{background:rgba(232,163,32,.15);color:var(--amber-l);border:1px solid rgba(232,163,32,.25)}
+.s2-change-quote{font-size:.8rem;color:var(--text-2);line-height:1.75;font-style:italic;border-left:2px solid rgba(255,255,255,.12);padding-left:12px;margin:0 0 12px}
+.s2-change-action{font-size:.79rem;color:var(--text-2);line-height:1.8;margin-bottom:10px;text-align:justify;hyphens:auto;}
+.s2-change-journal{font-family:var(--font-m);font-size:.62rem;color:var(--sky);background:rgba(56,189,248,.08);border:1px solid rgba(56,189,248,.18);padding:3px 10px;border-radius:var(--r-sm);display:inline-block;margin-bottom:5px}
+.s2-change-implemented{font-family:var(--font-m);font-size:.62rem;color:var(--emerald-l);background:rgba(16,185,129,.1);border:1px solid rgba(16,185,129,.2);padding:3px 10px;border-radius:var(--r-sm);display:inline-block;margin-top:4px}
+.s2-change-progress{color:var(--amber-l)!important;background:rgba(232,163,32,.1)!important;border-color:rgba(232,163,32,.2)!important}
+.rc-journal-link{display:inline-block;margin-top:10px;font-family:var(--font-m);font-size:.62rem;color:var(--sky);background:rgba(56,189,248,.07);border:1px solid rgba(56,189,248,.16);padding:3px 10px;border-radius:var(--r-sm)}
+.s2-refs-box{background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:var(--r-xl);padding:28px 32px;margin-top:40px}
+.s2-refs-list{display:flex;flex-direction:column;gap:0}
+.s2-ref-item{font-size:.8rem;color:var(--text-2);line-height:1.75;padding:9px 0;border-bottom:1px solid rgba(255,255,255,.04)}
+.s2-ref-item:last-child{border-bottom:none}
+.s2-ref-item em{font-style:italic}
+.s2-refs-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin-bottom: 14px;
+  text-align: left;
+}
+.s2-refs-toggle:hover .s2-lit-label { color: var(--amber-l); }
+.s2-refs-arrow {
+  font-size: .75rem;
+  color: var(--text-3);
+  transition: transform .3s;
+  flex-shrink: 0;
+}
+.s2-refs-toggle[aria-expanded="true"] .s2-refs-arrow { transform: rotate(180deg); }
+.s2-refs-list {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height .4s ease;
+}
+.s2-refs-list.open { max-height: 9999px !important; }
+	
+/* ── REFLECTIONS ── */
+.flt-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:30px}
+.flt-btn{padding:6px 17px;border-radius:30px;border:1px solid var(--border-2);background:transparent;color:var(--text-3);font-size:.77rem;font-family:var(--font-b);font-weight:500;cursor:pointer;transition:all .2s}
+.flt-btn:hover{border-color:var(--amber);color:var(--amber-l)}
+.flt-btn.on{background:var(--amber);border-color:var(--amber);color:var(--navy);font-weight:700}
+.ref-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-bottom:36px}
+.rc{background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:var(--r-lg);padding:26px;transition:all .25s;position:relative;overflow:hidden}
+.rc::after{content:'"';position:absolute;top:4px;right:16px;font-family:var(--font-d);font-size:7rem;color:rgba(255,255,255,.05);line-height:1;pointer-events:none}
+.rc:hover{transform:translateY(-4px);box-shadow:var(--sh-sm);border-color:var(--border-2)}
+.rc.feat{grid-column:span 2;background:linear-gradient(135deg,var(--navy-3),var(--navy-4))}
+.rc.feat .rc-txt{color:rgba(255,255,255,.75)}
+.rc-tag{display:inline-block;font-family:var(--font-m);font-size:.6rem;font-weight:500;text-transform:uppercase;letter-spacing:.1em;color:var(--emerald-l);background:rgba(16,185,129,.12);padding:3px 10px;border-radius:20px;margin-bottom:12px;border:1px solid rgba(16,185,129,.2)}
+.rc-stars{margin-bottom:10px;color:var(--amber);font-size:.8rem}
+.rc-txt{font-size:.85rem;color:var(--text-2);line-height:1.82;font-style:italic;margin-bottom:16px;text-align:justify;hyphens:auto;	}
+.rc-auth{display:flex;align-items:center;gap:10px}
+.rc-ava{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.75rem;flex-shrink:0;color:var(--navy)}
+.rc-name{font-size:.8rem;font-weight:600;color:var(--white)}
+.rc-meta{font-size:.7rem;color:var(--text-3)}
+.rc-date{margin-left:auto;font-family:var(--font-m);font-size:.62rem;color:var(--text-3)}
+.tracker{background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:var(--r-xl);overflow:hidden}
+.tr-head{padding:20px 26px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px}
+.tr-ttl{font-family:var(--font-d);font-size:1.15rem;font-style:italic;color:var(--white)}
+.tr-sub{font-size:.74rem;color:var(--text-3);margin-top:3px}
+.tr-stats{display:flex;gap:22px}
+.trs-item{text-align:center}
+.trs-num{font-family:var(--font-d);font-size:1.7rem;font-weight:600;line-height:1}
+.trs-lbl{font-size:.64rem;color:var(--text-3);margin-top:2px;text-transform:uppercase;letter-spacing:.08em}
+.tr-scroll{overflow-x:auto}
+.tr-table{width:100%;border-collapse:collapse}
+.tr-table th{padding:10px 16px;text-align:left;font-size:.65rem;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--text-3);border-bottom:1px solid var(--border);white-space:nowrap;background:rgba(255,255,255,.02)}
+.tr-table td{padding:11px 16px;font-size:.8rem;color:var(--text-2);border-bottom:1px solid rgba(255,255,255,.04);white-space:nowrap}
+.tr-table tr:last-child td{border-bottom:none}
+.tr-table tr:hover td{background:rgba(255,255,255,.03)}
+.sbadge{display:inline-block;padding:2px 9px;border-radius:20px;font-size:.65rem;font-weight:600}
+.s-sub{background:rgba(16,185,129,.15);color:var(--emerald-l)}
+.s-pend{background:rgba(232,163,32,.15);color:var(--amber-l)}
+.s-late{background:rgba(251,113,133,.15);color:var(--rose)}
+.score-wrap{display:flex;align-items:center;gap:8px}
+.sc-track{width:54px;height:4px;background:rgba(255,255,255,.08);border-radius:2px;overflow:hidden}
+.sc-fill{height:100%;border-radius:2px;background:linear-gradient(90deg,var(--emerald),var(--sky))}
+
+/* ── S3 UDL PLAN ── */
+.udl-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-bottom:44px}
+.uc{background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:var(--r-lg);overflow:hidden;transition:all .25s}
+.uc:hover{border-color:var(--border-2);transform:translateY(-4px);box-shadow:var(--sh-sm)}
+.uc-top{padding:22px 22px 16px;position:relative}
+.uc-num{position:absolute;top:12px;right:16px;font-family:var(--font-d);font-size:4rem;font-weight:600;color:rgba(255,255,255,.04);line-height:1;pointer-events:none}
+.uc-ico{width:44px;height:44px;border-radius:var(--r-md);display:flex;align-items:center;justify-content:center;font-size:1.25rem;margin-bottom:12px}
+.uc-ttl{font-size:.95rem;font-weight:600;color:var(--white)}
+.uc-body{padding:0 22px 22px}
+.uc-body p{font-size:.8rem;line-height:1.82;color:var(--text-2);margin-bottom:12px}
+.uc-feats{display:flex;flex-direction:column;gap:5px}
+.uc-feat{display:flex;align-items:center;gap:7px;font-size:.75rem;color:var(--text-2)}
+.uc-feat::before{content:'✓';color:var(--emerald);font-weight:700;flex-shrink:0}
+.uc-ev{display:inline-flex;align-items:center;gap:5px;margin-top:12px;padding:3px 10px;background:rgba(16,185,129,.1);border-radius:30px;font-size:.65rem;color:var(--emerald-l);font-weight:500;border:1px solid rgba(16,185,129,.2)}
+.udl-trio{display:grid;grid-template-columns:repeat(3,1fr);background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:var(--r-xl);overflow:hidden}
+.ut-item{padding:40px 32px;text-align:center;border-right:1px solid var(--border)}
+.ut-item:last-child{border-right:none}
+.ut-ico{font-size:2.2rem;display:block;margin-bottom:14px}
+.ut-ttl{font-family:var(--font-d);font-size:1.2rem;font-style:italic;color:var(--white);margin-bottom:8px}
+.ut-desc{font-size:.79rem;color:var(--text-2);line-height:1.75}
+.impl-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:60px;align-items:start}
+.timeline{padding-left:26px;position:relative}
+.timeline::before{content:'';position:absolute;left:5px;top:8px;bottom:8px;width:1px;background:linear-gradient(180deg,var(--emerald),var(--amber));opacity:.35}
+.tl-item{position:relative;margin-bottom:32px}
+.tl-dot{position:absolute;left:-22px;top:5px;width:12px;height:12px;border-radius:50%;background:var(--navy-2);border:2px solid var(--emerald);z-index:1;transition:all .3s}
+.tl-item:hover .tl-dot{background:var(--emerald);transform:scale(1.2)}
+.tl-dot.am{border-color:var(--amber)}
+.tl-item:hover .tl-dot.am{background:var(--amber)}
+.tl-phase{font-family:var(--font-m);font-size:.61rem;text-transform:uppercase;letter-spacing:.12em;color:var(--emerald);margin-bottom:4px}
+.tl-phase.am{color:var(--amber)}
+.tl-ttl{font-weight:600;color:var(--white);font-size:.92rem;margin-bottom:6px}
+.tl-desc{font-size:.8rem;color:var(--text-2);line-height:1.8}
+.tl-tags{display:flex;gap:5px;flex-wrap:wrap;margin-top:9px}
+.tl-tag{background:rgba(255,255,255,.06);color:var(--text-2);padding:2px 8px;border-radius:20px;font-size:.64rem;font-weight:500;border:1px solid var(--border)}
+.impl-panel{background:var(--navy-2);border:1px solid var(--border-2);border-radius:var(--r-xl);overflow:hidden;box-shadow:var(--sh);position:sticky;top:110px}
+.ip-hd{background:linear-gradient(135deg,rgba(16,185,129,.3),rgba(232,163,32,.15));padding:18px 20px;border-bottom:1px solid var(--border)}
+.ip-hd-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
+.ip-ttl{font-weight:600;color:var(--white);font-size:.86rem}
+.ip-live{font-family:var(--font-m);font-size:.6rem;color:var(--text-2);display:flex;align-items:center;gap:5px}
+.ip-live::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--emerald-l);animation:pulse 1.5s infinite;flex-shrink:0}
+.ip-kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.ip-kpi{text-align:center;background:rgba(0,0,0,.25);border-radius:var(--r-sm);padding:11px 6px}
+.ip-kn{font-family:var(--font-d);font-size:1.5rem;font-weight:600;color:var(--white);line-height:1}
+.ip-kl{font-size:.58rem;color:var(--text-3);margin-top:3px;text-transform:uppercase;letter-spacing:.07em}
+.ip-body{padding:16px 18px}
+.ip-ch-lbl{font-family:var(--font-m);font-size:.58rem;text-transform:uppercase;letter-spacing:.1em;color:var(--text-3);margin-bottom:10px}
+.ip-bars{display:flex;gap:4px;align-items:flex-end;height:78px;margin-bottom:7px}
+.ip-bar{flex:1;border-radius:3px 3px 0 0;min-height:4px}
+.ip-blbls{display:flex;gap:4px;margin-bottom:12px}
+.ip-blbl{flex:1;text-align:center;font-family:var(--font-m);font-size:.52rem;color:var(--text-3)}
+.ip-div{height:1px;background:var(--border);margin:12px 0}
+.ip-feed{display:flex;flex-direction:column;gap:6px}
+.ip-fr{display:flex;align-items:center;gap:8px;padding:6px 9px;background:rgba(255,255,255,.03);border-radius:var(--r-sm)}
+.ip-fd{width:6px;height:6px;border-radius:50%;flex-shrink:0}
+.ip-ft{flex:1;font-size:.7rem;color:var(--text-3)}
+.ip-ftm{font-family:var(--font-m);font-size:.58rem;color:rgba(255,255,255,.2)}
+.eval-kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:32px}
+.ek-card{background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:var(--r-lg);padding:24px 20px;text-align:center;transition:all .25s;position:relative;overflow:hidden}
+.ek-card::before{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--emerald),var(--amber))}
+.ek-card:hover{transform:translateY(-3px);box-shadow:var(--sh-sm);border-color:var(--border-2)}
+.ek-ico{font-size:1.6rem;margin-bottom:8px;display:block}
+.ek-num{font-family:var(--font-d);font-size:2.5rem;font-weight:600;color:var(--white);line-height:1}
+.ek-unit{font-size:.9rem;font-weight:400;color:var(--text-3)}
+.ek-lbl{font-size:.72rem;color:var(--text-3);margin-top:6px}
+.ek-delta{font-size:.68rem;margin-top:5px;color:var(--emerald-l);font-weight:500}
+.eval-cols{display:grid;grid-template-columns:1.6fr 1fr;gap:20px}
+.ev-card{background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:var(--r-xl);padding:28px}
+.ev-ttl{font-family:var(--font-d);font-size:1.15rem;font-style:italic;color:var(--white);margin-bottom:4px}
+.ev-sub{font-size:.75rem;color:var(--text-3);margin-bottom:24px}
+.gbar-area{display:flex;align-items:flex-end;height:150px;gap:0;padding:0 6px}
+.gb-grp{flex:1;display:flex;flex-direction:column;align-items:center}
+.gb-bars{display:flex;gap:5px;align-items:flex-end;height:130px;justify-content:center}
+.gb-bar{width:28px;border-radius:4px 4px 0 0;min-height:4px;cursor:pointer;position:relative;transition:opacity .2s}
+.gb-bar:hover{opacity:.8}
+.gb-bar:hover::after{content:attr(title);position:absolute;bottom:100%;left:50%;transform:translateX(-50%);background:var(--navy);color:var(--white);padding:3px 8px;border-radius:4px;font-size:.64rem;white-space:nowrap;z-index:10;margin-bottom:5px;border:1px solid var(--border-2)}
+.gb-lbl{font-size:.68rem;color:var(--text-3);text-align:center;margin-top:7px}
+.ev-legend{display:flex;gap:14px;flex-wrap:wrap;margin-top:12px}
+.evl-item{display:flex;align-items:center;gap:5px;font-size:.71rem;color:var(--text-3)}
+.evl-sw{width:11px;height:11px;border-radius:3px;flex-shrink:0}
+.sat-card{display:flex;flex-direction:column}
+.radial-wrap{position:relative;width:120px;height:120px;margin:0 auto 20px}
+.rad-svg{width:100%;height:100%;transform:rotate(-90deg)}
+.r-bg{fill:none;stroke:rgba(255,255,255,.08);stroke-width:11}
+.r-fg{fill:none;stroke:var(--emerald);stroke-width:11;stroke-linecap:round;stroke-dasharray:314;stroke-dashoffset:19;transition:stroke-dashoffset 1.6s var(--ease)}
+.rad-ctr{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.rad-num{font-family:var(--font-d);font-size:1.8rem;font-weight:600;color:var(--white);line-height:1}
+.rad-sub{font-size:.61rem;color:var(--text-3)}
+.sb-rows{display:flex;flex-direction:column;gap:8px}
+.sb-r{display:flex;align-items:center;gap:9px}
+.sb-lbl{font-size:.71rem;color:var(--text-2);width:108px;flex-shrink:0}
+.sb-track{flex:1;height:5px;background:rgba(255,255,255,.08);border-radius:3px;overflow:hidden}
+.sb-fill{height:100%;border-radius:3px;background:linear-gradient(90deg,var(--emerald),var(--sky))}
+.sb-pct{font-family:var(--font-m);font-size:.65rem;color:var(--text-3);width:26px;text-align:right}
+.refl-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+.journal{background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:var(--r-xl);overflow:hidden}
+.jnl-hd{padding:24px 26px;background:linear-gradient(135deg,var(--navy-3),var(--navy-4));border-bottom:1px solid var(--border)}
+.jnl-hd h3{font-family:var(--font-d);font-size:1.25rem;font-style:italic;color:var(--white);margin-bottom:4px}
+.jnl-hd p{font-size:.76rem;color:var(--text-3)}
+.jnl-entries{padding:10px}
+.je{padding:15px 16px;border-radius:var(--r-md);margin-bottom:4px;border:1px solid transparent;cursor:pointer;transition:all .2s}
+.je:hover{background:rgba(255,255,255,.04);border-color:var(--border)}
+.je.on{background:rgba(232,163,32,.07);border-color:rgba(232,163,32,.2)}
+.je-date{font-family:var(--font-m);font-size:.61rem;color:var(--amber);margin-bottom:4px}
+.je-ttl{font-weight:600;font-size:.85rem;color:var(--white);margin-bottom:4px}
+.je-exc{font-size:.76rem;color:var(--text-2);line-height:1.65}
+.je-tags{display:flex;gap:5px;flex-wrap:wrap;margin-top:8px}
+.je-tag{background:rgba(232,163,32,.1);color:var(--amber-l);padding:2px 7px;border-radius:10px;font-size:.6rem;font-weight:500;border:1px solid rgba(232,163,32,.2)}
+.insights{display:flex;flex-direction:column;gap:18px}
+.ins-card{background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:var(--r-lg);padding:24px;transition:all .25s}
+.ins-card:hover{border-color:var(--border-2);transform:translateY(-3px);box-shadow:var(--sh-sm)}
+.ins-hd{display:flex;align-items:flex-start;gap:12px;margin-bottom:10px}
+.ins-ico{width:40px;height:40px;border-radius:var(--r-md);display:flex;align-items:center;justify-content:center;font-size:1.15rem;flex-shrink:0}
+.ins-ttl{font-weight:600;font-size:.86rem;color:var(--white);margin-bottom:2px}
+.ins-meta{font-size:.68rem;color:var(--text-3)}
+.ins-body{font-size:.81rem;color:var(--text-2);line-height:1.82}
+.hm-wrap{background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:var(--r-md);padding:18px}
+.hm-lbl{font-family:var(--font-m);font-size:.58rem;text-transform:uppercase;letter-spacing:.1em;color:var(--text-3);margin-bottom:12px}
+.hm-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;margin-bottom:6px}
+.hm-cell{aspect-ratio:1;border-radius:3px;background:rgba(255,255,255,.06);transition:transform .15s;cursor:default}
+.hm-cell:hover{transform:scale(1.3)}
+.hm-cell.l1{background:rgba(16,185,129,.15)}.hm-cell.l2{background:rgba(16,185,129,.3)}
+.hm-cell.l3{background:rgba(16,185,129,.5)}.hm-cell.l4{background:rgba(16,185,129,.7)}.hm-cell.l5{background:var(--emerald)}
+.hm-days{display:grid;grid-template-columns:repeat(7,1fr);gap:4px}
+.hm-day{text-align:center;font-family:var(--font-m);font-size:.5rem;color:var(--text-3)}
+.fig-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;margin-top:52px}
+.fig-card{background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:var(--r-xl);overflow:hidden;transition:all .25s}
+.fig-card:hover{transform:translateY(-3px);box-shadow:var(--sh-sm);border-color:var(--border-2)}
+.fig-vis{background:var(--navy);padding:24px 22px 0}
+.fig-caption{padding:16px 20px}
+.fig-cap-ttl{font-weight:600;font-size:.85rem;color:var(--white);margin-bottom:4px}
+.fig-cap-desc{font-size:.76rem;color:var(--text-2);line-height:1.65}
+.fig-tag{display:inline-block;margin-top:7px;font-family:var(--font-m);font-size:.6rem;color:var(--emerald-l);background:rgba(16,185,129,.1);padding:2px 8px;border-radius:20px;border:1px solid rgba(16,185,129,.2)}
+.mod-tier-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:40px}
+.mod-tier-card{background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:var(--r-lg);overflow:hidden;transition:all .25s}
+.mod-tier-card:hover{transform:translateY(-4px);box-shadow:var(--sh-sm);border-color:var(--border-2)}
+.mtc-top{padding:20px 20px 14px}
+.mtc-tier{display:inline-flex;align-items:center;gap:5px;font-family:var(--font-m);font-size:.59rem;font-weight:500;text-transform:uppercase;letter-spacing:.1em;padding:3px 9px;border-radius:20px;margin-bottom:10px}
+.mtc-tier.ai{background:rgba(56,189,248,.12);color:var(--sky);border:1px solid rgba(56,189,248,.2)}
+.mtc-tier.dl{background:rgba(16,185,129,.12);color:var(--emerald-l);border:1px solid rgba(16,185,129,.2)}
+.mtc-tier.adv{background:rgba(232,163,32,.12);color:var(--amber-l);border:1px solid rgba(232,163,32,.2)}
+.mtc-ttl{font-family:var(--font-d);font-size:1.05rem;font-weight:600;color:var(--white);margin-bottom:6px}
+.mtc-desc{font-size:.77rem;color:var(--text-2);line-height:1.65;margin-bottom:12px}
+.mtc-bar-wrap{height:3px;background:rgba(255,255,255,.07);border-radius:2px;overflow:hidden;margin-bottom:12px}
+.mtc-fill{height:100%;border-radius:2px}
+.mtc-bottom{padding:0 20px 16px;display:flex;align-items:center;justify-content:space-between}
+.mtc-count{font-size:.7rem;color:var(--text-3)}.mtc-count strong{color:var(--emerald-l);font-family:var(--font-m)}
+.mtc-link{font-size:.72rem;font-weight:600;color:var(--text-2);display:flex;align-items:center;gap:4px}
+.mtc-link:hover{color:var(--amber-l)}
+.gan-ev{background:rgba(255,255,255,.03);border:1px solid var(--border-2);border-radius:var(--r-xl);padding:36px 40px;display:grid;grid-template-columns:1.2fr 1fr;gap:48px;align-items:center}
+.gan-ev-l h3{font-family:var(--font-d);font-size:1.45rem;font-style:italic;color:var(--white);margin-bottom:12px}
+.gan-ev-l p{font-size:.84rem;color:var(--text-2);line-height:1.85;margin-bottom:14px}
+.gan-tags{display:flex;flex-wrap:wrap;gap:6px}
+.gan-tag{padding:3px 10px;border-radius:20px;font-size:.67rem;font-weight:500;background:rgba(232,163,32,.12);color:var(--amber-l);border:1px solid rgba(232,163,32,.2)}
+.gan-r{background:var(--navy);border-radius:var(--r-lg);overflow:hidden;border:1px solid var(--border-2)}
+.gan-rb{padding:11px 16px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:8px}
+.gan-rb-d{display:flex;gap:5px}
+.gan-dot{width:8px;height:8px;border-radius:50%}
+.gan-rb-t{font-family:var(--font-m);font-size:.61rem;color:var(--text-3)}
+.gan-body{padding:13px 16px;display:flex;flex-direction:column;gap:6px}
+.gan-row{display:flex;align-items:center;gap:9px;padding:6px 9px;background:rgba(255,255,255,.03);border-radius:var(--r-sm)}
+.gan-ico{font-size:.9rem}
+.gan-txt{font-size:.7rem;color:var(--text-3);flex:1}
+.gan-badge{font-size:.58rem;font-weight:600;padding:2px 7px;border-radius:10px}
+.gan-badge.done{background:rgba(16,185,129,.18);color:var(--emerald-l)}
+.gan-badge.live{background:rgba(232,163,32,.18);color:var(--amber-l)}
+.footer{background:var(--navy-2);border-top:1px solid var(--border);padding:60px 24px 28px}
+.ft-inner{max-width:1360px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:44px;margin-bottom:44px}
+.ft-brand-name{display:flex;align-items:center;gap:10px;font-family:var(--font-d);font-size:1.05rem;color:var(--white);margin-bottom:12px;font-style:italic}
+.ft-brand p{font-size:.79rem;color:var(--text-3);line-height:1.8;max-width:260px}
+.ft-col h5{font-family:var(--font-m);font-size:.63rem;text-transform:uppercase;letter-spacing:.12em;color:var(--text-3);margin-bottom:14px}
+.ft-links{display:flex;flex-direction:column;gap:8px}
+.ft-links a{font-size:.79rem;color:var(--text-3);transition:color .2s}
+.ft-links a:hover{color:var(--amber-l)}
+.ft-btm{max-width:1360px;margin:0 auto;padding-top:22px;border-top:1px solid var(--border);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+.ft-btm p{font-size:.72rem;color:var(--text-3)}
+
+/* ── RESPONSIVE ── */
+@media(max-width:1100px){
+  .hero-body{grid-template-columns:1fr}.h-card{display:none}
+  .philo-grid,.impl-grid,.refl-grid,.eval-cols,.gan-ev{grid-template-columns:1fr}
+  .dash-mock,.impl-panel{position:static}
+  .udl-grid{grid-template-columns:1fr 1fr}
+  .eval-kpis{grid-template-columns:1fr 1fr}
+  .ft-inner{grid-template-columns:1fr 1fr}
+  .s2-lit-grid{grid-template-columns:repeat(2,1fr)}
+  .s2-theme-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:768px){
+  .sec,.sec-alt{padding:72px 20px}
+  .ref-grid{grid-template-columns:1fr}.rc.feat{grid-column:span 1}
+  .udl-grid,.udl-trio,.mod-tier-grid{grid-template-columns:1fr}
+  .ut-item{border-right:none;border-bottom:1px solid var(--border)}
+  .nav-links{display:none}.hbg{display:flex}
+  .eval-kpis{grid-template-columns:1fr 1fr}
+  .fig-grid{grid-template-columns:1fr}
+  .s2-lit-grid{grid-template-columns:1fr}
+  .s2-theme-grid{grid-template-columns:1fr 1fr}
+  .s2-changes-grid{grid-template-columns:1fr}
+}
+@media(max-width:480px){
+  .eval-kpis{grid-template-columns:1fr}
+  .tr-stats{display:none}.a11y-lbl{display:none}
+  .ft-inner{grid-template-columns:1fr}
+  .s2-theme-grid{grid-template-columns:1fr}
+}
+
+/* ── MOBILE RESPONSIVE ADDITIONS ── */
+@media(max-width:768px){
+  /* nav */
+  .nav-wrap{padding:0 12px;top:28px}
+  .nav-inner{padding:10px 16px}
+  /* hero */
+  .hero{padding:110px 16px 72px}
+  .h-name{font-size:clamp(2.4rem,8vw,3.2rem)}
+  .h-btns{flex-direction:column;gap:10px}
+  .btn{width:100%;justify-content:center}
+  /* sections */
+  .sec,.sec-alt{padding:64px 16px}
+  .wrap{padding:0}
+  /* grids that need mobile stack */
+  .s2-changes-grid{grid-template-columns:1fr}
+  .refl-grid{grid-template-columns:1fr}
+  .eval-cols{grid-template-columns:1fr}
+  .ft-inner{grid-template-columns:1fr;gap:28px}
+  /* inline grids in S5 banners */
+  [style*="grid-template-columns:1fr auto"]{grid-template-columns:1fr!important}
+  [style*="grid-template-columns:1fr 1fr 1fr"]{grid-template-columns:1fr!important}
+  [style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important}
+  [style*="grid-template-columns:1.6fr 1fr"]{grid-template-columns:1fr!important}
+  [style*="grid-template-columns:2fr 1fr 1fr"]{grid-template-columns:1fr!important}
+  [style*="grid-template-columns:1fr 1.3fr"]{grid-template-columns:1fr!important}
+  [style*="grid-template-columns:1fr 1.05fr"]{grid-template-columns:1fr!important}
+  [style*="grid-template-columns:1.15fr 1fr"]{grid-template-columns:1fr!important}
+  [style*="grid-template-columns:1.1fr 1fr"]{grid-template-columns:1fr!important}
+  [style*="grid-template-columns:auto 1fr"]{grid-template-columns:1fr!important}
+  [style*="grid-template-columns:1.2fr 1fr"]{grid-template-columns:1fr!important}
+  [style*="grid-template-columns:1.8fr 1fr 1fr"]{grid-template-columns:1fr!important}
+  /* padding reductions */
+  [style*="padding:36px 44px"]{padding:20px 18px!important}
+  [style*="padding:28px 36px"]{padding:18px 16px!important}
+  [style*="padding:28px 32px"]{padding:18px 16px!important}
+  [style*="padding:32px 40px"]{padding:18px 16px!important}
+  /* hero font size */
+  [style*="font-size:clamp(2rem,3.5vw"]{font-size:clamp(1.7rem,7vw,2.4rem)!important}
+  [style*="font-size:clamp(1.5rem,2.6vw"]{font-size:clamp(1.3rem,6vw,1.9rem)!important}
+  /* flex rows that overflow */
+  [style*="display:flex;align-items:center;gap:16px;margin-bottom:32px"]{flex-wrap:wrap}
+  /* min-width overrides */
+  [style*="min-width:230px"]{min-width:0!important;width:100%!important}
+  [style*="min-width:200px"]{min-width:0!important;width:100%!important}
+  [style*="min-width:110px"]{min-width:0!important}
+  /* SVG lollipop chart scrollable */
+  [style*="min-width:700px"]{min-width:600px}
+  /* footer footer */
+  .ft-btm{flex-direction:column;gap:4px;text-align:center}
+}
+
+@media(max-width:480px){
+  .eval-kpis{grid-template-columns:1fr}
+  .tr-stats{display:none}.a11y-lbl{display:none}
+  .ft-inner{grid-template-columns:1fr}
+  .s2-theme-grid{grid-template-columns:1fr}
+  .hero{padding:100px 14px 60px}
+  .sec,.sec-alt{padding:52px 14px}
+  [style*="padding:36px 44px"]{padding:16px 14px!important}
+  [style*="padding:28px 36px"]{padding:14px 12px!important}
+  [style*="grid-template-columns:repeat(4,1fr)"]{grid-template-columns:1fr 1fr!important}
+  [style*="grid-template-columns:repeat(5,1fr)"]{grid-template-columns:1fr 1fr!important}
+  [style*="grid-template-columns:repeat(3,1fr)"]{grid-template-columns:1fr!important}
+  [style*="grid-template-columns:2fr 1fr 1fr 1fr"]{grid-template-columns:1fr!important}
+  .eval-kpis{grid-template-columns:1fr 1fr}
+  .pc-stats{grid-template-columns:1fr 1fr 1fr}
+  .a11y-bar{flex-wrap:wrap;gap:5px}
+  .ab-btn{font-size:.66rem;padding:3px 9px}
+}
+
+
+/* ── TEACHING PHILOSOPHY TABS ── */
+.philo-tabs-nav{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:28px}
+.ptab{padding:8px 18px;border-radius:30px;border:1px solid var(--border);background:transparent;color:var(--text-3);font-size:.75rem;font-family:var(--font-b);font-weight:500;cursor:pointer;transition:all .25s;letter-spacing:.01em;white-space:nowrap}
+.ptab:hover{border-color:rgba(232,163,32,.4);color:var(--amber-l)}
+.ptab.act{background:var(--amber);border-color:var(--amber);color:var(--navy);font-weight:700}
+.ptab-panel{display:none;animation:fadeUpPhilo .35s ease both}
+.ptab-panel.show{display:block}
+@keyframes fadeUpPhilo{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.philo-intro-text{font-size:.92rem;line-height:1.95;color:var(--text-2);margin-bottom:22px;border-left:2px solid var(--emerald);padding-left:32px;margin-left:4px;text-align:justify;hyphens:auto;}
+.philo-highlight{position:relative;margin:24px 0;padding:16px 20px;background:linear-gradient(135deg,rgba(232,163,32,.06) 0%,rgba(16,185,129,.04) 100%);border:1px solid rgba(232,163,32,.2);border-left:3px solid var(--amber);border-radius:0 var(--r-md) var(--r-md) 0;font-size:.86rem;line-height:1.9;color:var(--text-2);font-style:italic}
+.philo-highlight strong{color:var(--amber-l);font-style:normal}
+.theory-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:22px 0}
+.theory-card{background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:var(--r-md);padding:16px 18px;cursor:pointer;transition:all .28s var(--ease);position:relative;overflow:hidden}
+.theory-card::before{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--emerald),var(--amber));opacity:0;transition:opacity .28s}
+.theory-card:hover,.theory-card.open{transform:translateY(-3px);border-color:rgba(232,163,32,.3);background:rgba(232,163,32,.04)}
+.theory-card:hover::before,.theory-card.open::before{opacity:1}
+.tc-header{display:flex;align-items:flex-start;gap:10px}
+.tc-icon{font-size:1.3rem;flex-shrink:0;margin-top:1px}
+.tc-name{font-weight:600;font-size:.82rem;color:var(--white);margin-bottom:3px}
+.tc-author{font-family:var(--font-m);font-size:.62rem;color:var(--amber-l)}
+.tc-chevron{margin-left:auto;color:var(--text-3);font-size:.8rem;transition:transform .25s;flex-shrink:0}
+.theory-card.open .tc-chevron{transform:rotate(180deg)}
+.tc-body{max-height:0;overflow:hidden;transition:max-height .35s ease,padding .3s}
+.theory-card.open .tc-body{max-height:200px;padding-top:12px}
+.tc-body p{font-size:.78rem;color:var(--text-2);line-height:1.75;margin:0}
+.tc-tag{display:inline-block;margin-top:8px;font-family:var(--font-m);font-size:.6rem;color:var(--emerald-l);background:rgba(16,185,129,.1);border:1px solid rgba(16,185,129,.2);padding:2px 9px;border-radius:20px}
+.principles-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:22px}
+.pr-card{background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:var(--r-md);padding:20px;transition:all .28s;position:relative;overflow:hidden;cursor:default}
+.pr-card::after{content:attr(data-n);position:absolute;bottom:-8px;right:8px;font-family:var(--font-d);font-size:4.5rem;font-weight:900;color:rgba(255,255,255,.025);line-height:1;pointer-events:none}
+.pr-card:hover{border-color:rgba(16,185,129,.25);background:rgba(16,185,129,.04);transform:translateY(-4px);box-shadow:0 12px 36px rgba(0,0,0,.35)}
+.pr-num{font-family:var(--font-m);font-size:.58rem;color:var(--emerald);letter-spacing:.14em;text-transform:uppercase;margin-bottom:8px}
+.pr-icon{font-size:1.5rem;margin-bottom:10px;display:block}
+.pr-title{font-weight:700;font-size:.85rem;color:var(--white);margin-bottom:8px;line-height:1.3}
+.pr-text{font-size:.77rem;color:var(--text-2);line-height:1.72}
+.pr-refs{display:flex;flex-wrap:wrap;gap:4px;margin-top:10px}
+.pr-ref{font-family:var(--font-m);font-size:.58rem;color:var(--amber-l);background:rgba(232,163,32,.08);border:1px solid rgba(232,163,32,.18);padding:2px 8px;border-radius:20px}
+.kolb-cycle{position:relative;width:210px;height:210px;margin:20px auto 8px;flex-shrink:0}
+.kolb-ring{position:absolute;inset:0;border-radius:50%;border:1.5px dashed rgba(255,255,255,.1)}
+.kolb-center{position:absolute;inset:30%;background:rgba(232,163,32,.1);border:1px solid rgba(232,163,32,.2);border-radius:50%;display:flex;align-items:center;justify-content:center;text-align:center}
+.kolb-center-txt{font-family:var(--font-m);font-size:.52rem;color:var(--amber-l);text-transform:uppercase;letter-spacing:.06em;line-height:1.4}
+.kolb-node{position:absolute;width:68px;text-align:center;transform:translate(-50%,-50%)}
+.kolb-node-dot{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 5px;font-size:.95rem;border:1px solid rgba(255,255,255,.12);transition:all .3s}
+.kolb-node:hover .kolb-node-dot{transform:scale(1.2);box-shadow:0 0 14px rgba(232,163,32,.3)}
+.kolb-label{font-size:.57rem;font-weight:600;color:var(--text-2);line-height:1.3}
+.kolb-sub{font-size:.49rem;color:var(--text-3);margin-top:1px}
+.assessment-list{display:flex;flex-direction:column;gap:8px;margin-top:16px}
+.acc-item{background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:var(--r-md);overflow:hidden;transition:border-color .25s}
+.acc-item.open{border-color:rgba(16,185,129,.3)}
+.acc-head{display:flex;align-items:center;gap:12px;padding:14px 18px;cursor:pointer;user-select:none;transition:background .2s}
+.acc-head:hover{background:rgba(255,255,255,.03)}
+.acc-icon{font-size:1.1rem;flex-shrink:0}
+.acc-title{font-weight:600;font-size:.83rem;color:var(--white);flex:1}
+.acc-badge{font-size:.6rem;font-weight:600;font-family:var(--font-m);padding:2px 8px;border-radius:20px;background:rgba(16,185,129,.12);color:var(--emerald-l);border:1px solid rgba(16,185,129,.2);white-space:nowrap}
+.acc-arrow{color:var(--text-3);font-size:.8rem;transition:transform .3s;flex-shrink:0}
+.acc-item.open .acc-arrow{transform:rotate(180deg)}
+.acc-body{max-height:0;overflow:hidden;transition:max-height .4s ease}
+.acc-item.open .acc-body{max-height:400px}
+.acc-body-inner{padding:0 18px 16px 46px;font-size:.81rem;color:var(--text-2);line-height:1.82}
+.acc-cite{display:inline-block;margin-top:8px;font-family:var(--font-m);font-size:.62rem;color:var(--sky);background:rgba(56,189,248,.07);border:1px solid rgba(56,189,248,.18);padding:2px 9px;border-radius:20px}
+.refs-toggle{display:flex;align-items:center;gap:10px;padding:14px 22px;background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:var(--r-md);cursor:pointer;margin-top:28px;transition:all .25s;font-size:.82rem;color:var(--text-2);font-family:var(--font-b);width:100%;text-align:left}
+.refs-toggle:hover{border-color:rgba(232,163,32,.3);background:rgba(232,163,32,.04)}
+.refs-toggle-lbl{flex:1;font-weight:500}
+.refs-toggle-arrow{margin-left:auto;transition:transform .3s;color:var(--text-3)}
+.refs-panel{max-height:0;overflow:hidden;transition:max-height .45s ease}
+.refs-panel.open{max-height:700px}
+.refs-inner{background:rgba(255,255,255,.02);border:1px solid var(--border);border-top:none;border-radius:0 0 var(--r-md) var(--r-md);padding:18px 22px}
+.ref-item{display:flex;gap:10px;padding:9px 0;border-bottom:1px solid rgba(255,255,255,.04);font-size:.78rem;color:var(--text-2);line-height:1.7}
+.ref-item:last-child{border-bottom:none}
+.philo-progress{display:flex;align-items:center;gap:10px;margin-bottom:20px;padding:10px 16px;background:rgba(255,255,255,.025);border-radius:var(--r-md);border:1px solid var(--border)}
+.pp-label{font-family:var(--font-m);font-size:.62rem;color:var(--text-3);text-transform:uppercase;letter-spacing:.1em;white-space:nowrap}
+.pp-dots{display:flex;gap:5px;flex:1;justify-content:center}
+.pp-dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.1);transition:all .35s;cursor:pointer}
+.pp-dot.vis{background:var(--amber)}
+.pp-dot.act{background:var(--emerald);transform:scale(1.35)}
+.pp-count{font-family:var(--font-m);font-size:.62rem;color:var(--text-3);white-space:nowrap}
+.wb-banner{display:flex;gap:18px;align-items:flex-start;padding:20px 22px;background:linear-gradient(135deg,rgba(16,185,129,.08),rgba(56,189,248,.05));border:1px solid rgba(16,185,129,.2);border-radius:var(--r-lg);margin-top:18px}
+.wb-icon{font-size:1.8rem;flex-shrink:0}
+.wb-title{font-weight:700;font-size:.88rem;color:var(--white);margin-bottom:5px}
+.wb-text{font-size:.8rem;color:var(--text-2);line-height:1.75}
+.wb-pillars{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.wb-p{padding:3px 12px;border-radius:20px;font-size:.67rem;font-weight:600;border:1px solid rgba(16,185,129,.25);color:var(--emerald-l);background:rgba(16,185,129,.08)}
+.conclusion-box{background:linear-gradient(135deg,rgba(232,163,32,.1),rgba(16,185,129,.06));border:1px solid rgba(232,163,32,.25);border-radius:var(--r-lg);padding:28px 32px;margin-top:28px;position:relative;overflow:hidden}
+.conclusion-box::before{content:open-quote;position:absolute;top:-14px;left:16px;font-family:var(--font-d);font-size:7rem;color:rgba(232,163,32,.12);line-height:1;pointer-events:none}
+.conclusion-box::after{content:'\201D';position:absolute;bottom:-14px;right:16px;font-family:var(--font-d);font-size:7rem;color:rgba(232,163,32,.12);line-height:1;pointer-events:none}
+.cb-text{font-family:var(--font-d);font-size:1.15rem;font-style:italic;font-weight:400;color:var(--white);line-height:1.7;position:relative;z-index:1}
+.cb-sub{font-size:.77rem;color:var(--text-3);margin-top:12px;font-family:var(--font-m)}
+@media(max-width:900px){.theory-grid{grid-template-columns:1fr}.principles-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.principles-grid{grid-template-columns:1fr}.ptab{font-size:.69rem;padding:6px 12px}}
+</style>
+</head>
+<body>
+<a href="#main" class="skip-link">Skip to main content</a>
+<div id="announce" role="status" aria-live="polite" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden"></div>
+<div class="a11y-bar" role="toolbar" aria-label="Accessibility tools">
+  <span class="a11y-lbl">Accessibility</span>
+  <button class="ab-btn" id="bFont" aria-pressed="false" onclick="togFont()">Aa Large Text</button>
+  <button class="ab-btn" id="bDys" aria-pressed="false" onclick="togDys()">💡 Dyslexia Font</button>
+  <button class="ab-btn" id="bCon" aria-pressed="false" onclick="togCon()">🌓 High Contrast</button>
+</div>
+<nav class="nav-wrap" id="navWrap" aria-label="Main navigation">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-brand" style="text-decoration:none">SH ePortfolio <span class="brand-tag">AI · UDL · 2025–26</span></a>
+    <ul class="nav-links" role="list">
+      <li><a href="teaching.html">Philosophy</a></li>
+      <li><a href="reflections.html">Reflections</a></li>
+      <li><a href="udlplan.html">UDL Plan</a></li>
+      <li><a href="implementation.html" class="act">Implementation</a></li>
+      <li><a href="evaluation.html">Evaluation</a></li>
+      <li><a href="reflection.html">Reflection</a></li>
+      <li><a href="evidence.html">Evidence</a></li>
+      <li><a href="publications.html">Publications</a></li>
+      <li><a href="funding.html">Funding</a></li>
+      <li><a href="index.html" class="nav-cta">Home</a></li>
+    </ul>
+    <button class="hbg" id="hbg" aria-expanded="false" aria-label="Open menu" onclick="togMob()">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="mob-nav" id="mobNav" role="dialog" aria-label="Mobile menu">
+  <a href="index.html" onclick="closeMob()">Home</a>
+  <a href="teaching.html" onclick="closeMob()">Philosophy</a>
+  <a href="reflections.html" onclick="closeMob()">Reflections</a>
+  <a href="udlplan.html" onclick="closeMob()">UDL Plan</a>
+  <a href="implementation.html" onclick="closeMob()" style="color:var(--amber)">Implementation</a>
+  <a href="evaluation.html" onclick="closeMob()">Evaluation</a>
+  <a href="reflection.html" onclick="closeMob()">Reflection</a>
+  <a href="evidence.html" onclick="closeMob()">Evidence</a>
+  <a href="publications.html" onclick="closeMob()">Publications</a>
+  <a href="funding.html" onclick="closeMob()">Funding</a>
+</div>
+<div style="background:rgba(255,255,255,.05);border-bottom:1px solid var(--border);padding:8px 24px;margin-top:84px">
+  <div style="max-width:1360px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:6px">
+    <a href="index.html" style="display:inline-flex;align-items:center;gap:6px;font-size:.72rem;color:var(--amber);text-decoration:none;font-family:var(--font-m)">&#8592; ePortfolio Home</a>
+    <span style="font-family:var(--font-m);font-size:.6rem;color:var(--text-3);text-transform:uppercase;letter-spacing:.08em">Implementation</span>
+  </div>
+</div>
+<main id="main">
+<!-- S4 IMPLEMENTATION -->
+<section class="sec-alt" id="s4" aria-labelledby="s4h">
+  <div class="wrap">
+
+    <!-- HERO BANNER -->
+    <div style="margin-bottom:48px;">
+      <div class="s-eye" style="margin-bottom:16px;">Section 04</div>
+      <div style="position:relative;background:linear-gradient(135deg,rgba(17,34,64,.95),rgba(30,44,70,.85));border:1px solid rgba(232,163,32,.18);border-radius:16px;overflow:hidden;">
+        <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--amber),var(--emerald),var(--sky));"></div>
+        <div style="position:absolute;top:0;right:0;bottom:0;width:35%;background:radial-gradient(ellipse at 85% 50%,rgba(232,163,32,.05),transparent 70%);pointer-events:none;"></div>
+        <div style="padding:36px 44px;display:grid;grid-template-columns:1fr auto auto;gap:28px;align-items:center;">
+
+          <!-- text -->
+          <div>
+            <div style="font-family:var(--font-m);font-size:.58rem;text-transform:uppercase;letter-spacing:.16em;color:var(--amber-l);margin-bottom:12px;display:flex;align-items:center;gap:10px;">
+              <span style="width:20px;height:1px;background:var(--amber-l);"></span>
+              Iterative UDL Design &#183; September 2025 to April 2026
+            </div>
+            <h2 id="s4h" style="font-family:var(--font-d);font-size:clamp(2rem,3.5vw,3.2rem);font-weight:300;line-height:1.05;color:var(--white);margin-bottom:14px;">Implementation <em style="font-style:italic;background:linear-gradient(90deg,var(--amber-l),rgba(255,255,255,.9));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">of Change</em></h2>
+            <p style="font-size:.88rem;color:var(--text-2);line-height:1.9;max-width:620px;margin:0;text-align:justify;hyphens:auto;">From initial accessibility audit to fully deployed AI learning dashboard, the redesign was undertaken as a structured, iterative process across five phases. Each phase operationalised CAST UDL 3.0 at the level of system architecture, ensuring that decisions relating to content, interaction, and assessment were informed by principles of Engagement, Representation, and Action and Expression from the outset. The redevelopment of all 18 modules was guided by UDL guidelines, grounded in established pedagogical theory, and validated through post-intervention data.</p>
+          </div>
+
+          <!-- robot -->
+          <svg width="300" height="300" viewBox="0 0 340 300" style="flex-shrink:0;align-self:center;" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <radialGradient id="gsky3" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#f0bc50" stop-opacity="0.12"/>
+                <stop offset="100%" stop-color="#f0bc50" stop-opacity="0"/>
+              </radialGradient>
+              <filter id="sb3"><feGaussianBlur stdDeviation="3"/></filter>
+            </defs>
+
+            <!-- glow -->
+            <ellipse cx="170" cy="150" rx="88" ry="88" fill="url(#gsky3)" filter="url(#sb3)"/>
+
+            <!-- torso -->
+            <rect x="136" y="138" width="68" height="56" rx="8" fill="rgba(17,34,64,.9)" stroke="rgba(232,163,32,.5)" stroke-width="1.5"/>
+            <rect x="144" y="146" width="52" height="32" rx="5" fill="rgba(232,163,32,.05)" stroke="rgba(232,163,32,.18)" stroke-width="1"/>
+            <circle cx="156" cy="155" r="3" fill="rgba(16,185,129,.8)"><animate attributeName="opacity" values="1;0.3;1" dur="1.8s" repeatCount="indefinite"/></circle>
+            <circle cx="167" cy="155" r="3" fill="rgba(56,189,248,.8)"><animate attributeName="opacity" values="0.3;1;0.3" dur="1.8s" repeatCount="indefinite"/></circle>
+            <circle cx="178" cy="155" r="3" fill="rgba(251,191,36,.8)"><animate attributeName="opacity" values="1;0.3;1" dur="2.2s" repeatCount="indefinite"/></circle>
+            <circle cx="189" cy="155" r="3" fill="rgba(167,139,250,.8)"><animate attributeName="opacity" values="0.3;1;0.3" dur="1.5s" repeatCount="indefinite"/></circle>
+            <rect x="148" y="166" width="44" height="5" rx="2.5" fill="rgba(255,255,255,.06)" stroke="rgba(232,163,32,.2)" stroke-width=".5"/>
+            <rect x="148" y="166" width="33" height="5" rx="2.5" fill="rgba(232,163,32,.6)"/>
+            <text x="170" y="179" text-anchor="middle" font-size="5.5" fill="rgba(232,163,32,.7)" font-family="monospace">5 phases</text>
+            <text x="170" y="192" text-anchor="middle" font-size="9" fill="rgba(232,163,32,.9)" font-family="'Cormorant Garamond','Georgia',serif" font-weight="600" font-style="italic" letter-spacing="2">UDL</text>
+            <line x1="150" y1="195" x2="190" y2="195" stroke="rgba(232,163,32,.25)" stroke-width=".7"/>
+
+            <!-- head -->
+            <rect x="144" y="102" width="52" height="38" rx="10" fill="rgba(17,34,64,.9)" stroke="rgba(232,163,32,.5)" stroke-width="1.5"/>
+            <ellipse cx="159" cy="118" rx="7" ry="6" fill="rgba(232,163,32,.1)" stroke="rgba(232,163,32,.6)" stroke-width="1.2"/>
+            <ellipse cx="181" cy="118" rx="7" ry="6" fill="rgba(232,163,32,.1)" stroke="rgba(232,163,32,.6)" stroke-width="1.2"/>
+            <circle cx="159" cy="118" r="3.5" fill="#f0bc50" opacity=".9"><animate attributeName="cx" values="159;161;159;157;159" dur="4s" repeatCount="indefinite"/></circle>
+            <circle cx="181" cy="118" r="3.5" fill="#f0bc50" opacity=".9"><animate attributeName="cx" values="181;183;181;179;181" dur="4s" repeatCount="indefinite"/></circle>
+            <path d="M158 132 Q170 138 182 132" fill="none" stroke="rgba(232,163,32,.5)" stroke-width="1.2" stroke-linecap="round"/>
+
+            <!-- antenna -->
+            <line x1="170" y1="102" x2="170" y2="86" stroke="rgba(232,163,32,.4)" stroke-width="1.2"/>
+            <circle cx="170" cy="82" r="4" fill="rgba(232,163,32,.15)" stroke="rgba(232,163,32,.7)" stroke-width="1.2"/>
+            <circle cx="170" cy="82" r="2" fill="#f0bc50"><animate attributeName="opacity" values="1;0.2;1" dur="1.2s" repeatCount="indefinite"/></circle>
+
+            <!-- ears -->
+            <rect x="128" y="108" width="16" height="22" rx="5" fill="rgba(17,34,64,.9)" stroke="rgba(232,163,32,.3)" stroke-width="1"/>
+            <rect x="196" y="108" width="16" height="22" rx="5" fill="rgba(17,34,64,.9)" stroke="rgba(232,163,32,.3)" stroke-width="1"/>
+
+            <!-- neck -->
+            <rect x="162" y="136" width="16" height="6" rx="3" fill="rgba(232,163,32,.15)" stroke="rgba(232,163,32,.3)" stroke-width="1"/>
+
+            <!-- arms -->
+            <rect x="110" y="142" width="26" height="12" rx="6" fill="rgba(17,34,64,.9)" stroke="rgba(232,163,32,.4)" stroke-width="1.2"/>
+            <rect x="204" y="142" width="26" height="12" rx="6" fill="rgba(17,34,64,.9)" stroke="rgba(16,185,129,.4)" stroke-width="1.2"/>
+
+            <!-- legs -->
+            <rect x="148" y="194" width="20" height="28" rx="6" fill="rgba(17,34,64,.9)" stroke="rgba(232,163,32,.35)" stroke-width="1.2"/>
+            <rect x="172" y="194" width="20" height="28" rx="6" fill="rgba(17,34,64,.9)" stroke="rgba(232,163,32,.35)" stroke-width="1.2"/>
+            <rect x="144" y="218" width="28" height="8" rx="4" fill="rgba(17,34,64,.95)" stroke="rgba(232,163,32,.3)" stroke-width="1"/>
+            <rect x="168" y="218" width="28" height="8" rx="4" fill="rgba(17,34,64,.95)" stroke="rgba(232,163,32,.3)" stroke-width="1"/>
+            <ellipse cx="170" cy="232" rx="36" ry="5" fill="rgba(232,163,32,.06)"/>
+
+            <!-- floating labels &ndash; uniform pill style -->
+
+            <!-- top centre -->
+            <g transform="translate(100,28)">
+              <rect x="0" y="0" width="140" height="22" rx="11" fill="rgba(56,189,248,.1)" stroke="rgba(56,189,248,.28)" stroke-width="1"/>
+              <text x="70" y="15" text-anchor="middle" font-size="7.5" fill="#38bdf8" font-family="monospace" font-weight="600">5 phases &#183; 21 barriers</text>
+              <line x1="70" y1="22" x2="70" y2="75" stroke="rgba(56,189,248,.22)" stroke-width=".8" stroke-dasharray="3 3"/>
+            </g>
+
+            <!-- left -->
+            <g transform="translate(18,138)">
+              <rect x="0" y="0" width="82" height="22" rx="11" fill="rgba(232,163,32,.1)" stroke="rgba(232,163,32,.3)" stroke-width="1"/>
+              <text x="41" y="15" text-anchor="middle" font-size="7.5" fill="#f0bc50" font-family="monospace" font-weight="600">UDL GL 1&#8211;9</text>
+              <line x1="82" y1="11" x2="110" y2="11" stroke="rgba(232,163,32,.25)" stroke-width=".8" stroke-dasharray="3 3"/>
+            </g>
+
+            <!-- right -->
+            <g transform="translate(240,138)">
+              <rect x="0" y="0" width="82" height="22" rx="11" fill="rgba(16,185,129,.1)" stroke="rgba(16,185,129,.3)" stroke-width="1"/>
+              <text x="41" y="15" text-anchor="middle" font-size="7.5" fill="#34d399" font-family="monospace" font-weight="600">WCAG &#183; GDPR</text>
+              <line x1="0" y1="11" x2="-28" y2="11" stroke="rgba(16,185,129,.25)" stroke-width=".8" stroke-dasharray="3 3"/>
+            </g>
+
+            <!-- bottom centre -->
+            <g transform="translate(83,252)">
+              <rect x="0" y="0" width="174" height="22" rx="11" fill="rgba(167,139,250,.1)" stroke="rgba(167,139,250,.3)" stroke-width="1"/>
+              <text x="87" y="15" text-anchor="middle" font-size="7.5" fill="#a78bfa" font-family="monospace" font-weight="600">+28% satisfaction &#183; 94% uptake</text>
+            </g>
+
+          </svg>
+
+          <!-- stat tiles -->
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;flex-shrink:0;">
+            <div style="text-align:center;padding:18px 14px;background:rgba(255,255,255,.04);border:1px solid rgba(232,163,32,.15);border-radius:10px;">
+              <div style="font-family:var(--font-d);font-size:2rem;font-weight:600;color:var(--amber-l);line-height:1;">5</div>
+              <div style="font-family:var(--font-m);font-size:.54rem;color:var(--text-3);margin-top:4px;text-transform:uppercase;letter-spacing:.08em;">Phases</div>
+            </div>
+            <div style="text-align:center;padding:18px 14px;background:rgba(255,255,255,.04);border:1px solid rgba(16,185,129,.15);border-radius:10px;">
+              <div style="font-family:var(--font-d);font-size:2rem;font-weight:600;color:var(--emerald-l);line-height:1;">21</div>
+              <div style="font-family:var(--font-m);font-size:.54rem;color:var(--text-3);margin-top:4px;text-transform:uppercase;letter-spacing:.08em;">Barriers resolved</div>
+            </div>
+            <div style="text-align:center;padding:18px 14px;background:rgba(255,255,255,.04);border:1px solid rgba(16,185,129,.15);border-radius:10px;">
+              <div style="font-family:var(--font-d);font-size:2rem;font-weight:600;color:var(--emerald-l);line-height:1;">94%</div>
+              <div style="font-family:var(--font-m);font-size:.54rem;color:var(--text-3);margin-top:4px;text-transform:uppercase;letter-spacing:.08em;">Simulation uptake</div>
+            </div>
+            <div style="text-align:center;padding:18px 14px;background:rgba(255,255,255,.04);border:1px solid rgba(232,163,32,.15);border-radius:10px;">
+              <div style="font-family:var(--font-d);font-size:2rem;font-weight:600;color:var(--amber-l);line-height:1;">+28%</div>
+              <div style="font-family:var(--font-m);font-size:.54rem;color:var(--text-3);margin-top:4px;text-transform:uppercase;letter-spacing:.08em;">Satisfaction gain</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- THEORETICAL FRAMING BANNER -->
+    <div style="position:relative;background:linear-gradient(135deg,rgba(17,34,64,.97),rgba(25,38,64,.95));border:1px solid rgba(56,189,248,.14);border-radius:12px;overflow:hidden;margin-bottom:36px;padding:28px 36px;">
+      <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--amber),var(--sky),var(--emerald));"></div>
+      <div style="font-family:var(--font-m);font-size:.56rem;text-transform:uppercase;letter-spacing:.16em;color:var(--sky);margin-bottom:12px;display:flex;align-items:center;gap:8px;">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+        Theoretical and Curriculum Design Framing &#183; UDL as Architectural Constraint, Not Retrofit
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start;">
+        <div>
+          <p style="font-size:.84rem;color:var(--text-2);line-height:1.9;margin:0 0 12px;text-align:justify;hyphens:auto;">The implementation of UDL across the Interactive AI Learning Dashboard was not approached as a series of accessibility adjustments appended to an existing module. It was undertaken as a fundamental curriculum redesign, guided by CAST's (2024) principles. This position is consistent with Tyler's (1949) foundational curriculum design principle that objectives, learning experiences, organisation, and evaluation must be coherently aligned before instruction begins. Rose and Meyer (2002) extend this argument into inclusive design: the curriculum itself, when designed without flexibility, is the primary barrier to learning, and only proactive architectural redesign removes that barrier meaningfully.</p>
+          <p style="font-size:.84rem;color:var(--text-2);line-height:1.9;margin:0;text-align:justify;hyphens:auto;">The five implementation phases follow a trajectory that mirrors Laurillard's (2012) conversational framework: audit and diagnosis, design and build, iterative deployment, reflective evidence-gathering, and responsive refinement. This maps closely to Kelly's (2004) argument that curriculum development is not a linear delivery process but a cyclical, evidence-driven practice of design, enactment, and critical evaluation. Each phase documented here includes its UDL guideline mapping, theoretical justification, and post-intervention outcome, closing the loop between student diagnostic voice and measurable pedagogical change.</p>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <div style="padding:12px 16px;background:rgba(56,189,248,.05);border:1px solid rgba(56,189,248,.15);border-radius:8px;border-left:3px solid var(--sky);display:flex;align-items:flex-start;gap:10px;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2" stroke-linecap="round" style="flex-shrink:0;margin-top:2px;"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+            <div>
+              <div style="font-family:var(--font-m);font-size:.52rem;text-transform:uppercase;letter-spacing:.1em;color:var(--sky);margin-bottom:3px;">Curriculum Design Principle</div>
+              <p style="font-size:.75rem;color:var(--text-2);line-height:1.7;margin:0;text-align:justify;hyphens:auto;">UDL embedded as an architectural constraint from the first module page built: every subsequent page inherits the same inclusive foundation regardless of tier (Tyler, 1949; Rose and Meyer, 2002).</p>
+            </div>
+          </div>
+          <div style="padding:12px 16px;background:rgba(232,163,32,.05);border:1px solid rgba(232,163,32,.15);border-radius:8px;border-left:3px solid var(--amber);display:flex;align-items:flex-start;gap:10px;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#e8a320" stroke-width="2" stroke-linecap="round" style="flex-shrink:0;margin-top:2px;"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            <div>
+              <div style="font-family:var(--font-m);font-size:.52rem;text-transform:uppercase;letter-spacing:.1em;color:var(--amber-l);margin-bottom:3px;">Evidence Base</div>
+              <p style="font-size:.75rem;color:var(--text-2);line-height:1.7;margin:0;text-align:justify;hyphens:auto;">8 pre-intervention student reflections across 3 tiers identified 4 convergent structural barriers: the diagnostic brief for every implementation decision (Cook-Sather, Bovill and Felten (2014); Brookfield(2017).</p>
+            </div>
+          </div>
+          <div style="padding:12px 16px;background:rgba(16,185,129,.05);border:1px solid rgba(16,185,129,.15);border-radius:8px;border-left:3px solid var(--emerald);display:flex;align-items:flex-start;gap:10px;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="2" stroke-linecap="round" style="flex-shrink:0;margin-top:2px;"><polyline points="20 6 9 17 4 12"/></svg>
+            <div>
+              <div style="font-family:var(--font-m);font-size:.52rem;text-transform:uppercase;letter-spacing:.1em;color:var(--emerald-l);margin-bottom:3px;">Validated Outcomes</div>
+              <p style="font-size:.75rem;color:var(--text-2);line-height:1.7;margin:0;text-align:justify;hyphens:auto;">Post-intervention survey (Section 05) confirms every phase produced its intended inclusive outcome, closing the loop between student voice and measurable pedagogical change (Biggs and Tang, 2011).</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- IMPLEMENTATION GRID -->
+    <div class="impl-grid">
+
+      <!-- TIMELINE -->
+      <div class="timeline" role="list" aria-label="Implementation timeline">
+
+        <!-- PHASE 1 -->
+        <div class="tl-item" role="listitem">
+          <div class="tl-dot"></div>
+          <div class="tl-phase">September 2025 &#183; Phase 1</div>
+          <div class="tl-ttl">UDL Audit of Existing AI Module</div>
+          <div class="tl-desc">
+            <p style="margin:0 0 10px;text-align:justify;hyphens:auto;">A systematic accessibility and curriculum inclusion audit of the AI module was conducted against CAST UDL Guidelines 3.0 across all nine guidelines and 31 checkpoints. The audit examined all 18 existing modules, assessing each for representation flexibility, engagement scaffolding, and expression pathways. Twenty-one distinct barriers were identified, clustered around five structural conditions: single-format content delivery with no video, simulation, or written summary; absence of any search or filter system; no persistent accessibility controls; no structured reflection mechanism to support conceptual consolidation; and inaccessible navigation excluding keyboard and screen-reader users. This is a curriculum diagnosis in the tradition of Tyler's (1949) objectives-first model, where gaps between intended and enacted learning are the starting point for principled redesign.</p>
+            <p style="margin:0 0 12px;text-align:justify;hyphens:auto;">Cook-Sather, Bovill and Felten (2014) establish that authentic curriculum change must begin with evidence. The pre-intervention reflections in Section 02 provided the qualitative dimension: eight students across three tiers independently naming the same structural gaps. Brookfield (2017) identifies this convergence as the most reliable signal of systemic curriculum failure. Thijs and van den Akker (2009) describe evidence-informed curriculum development as essential to sustainable inclusive design: without systematic diagnosis mapped to theoretical frameworks, redesign is merely cosmetic adjustment.</p>
+
+           <!-- Audit findings summary -->
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px;">
+
+            <div style="padding:11px 14px;background:rgba(56,189,248,.06);border:1px solid rgba(56,189,248,.18);border-radius:8px;border-left:3px solid rgba(56,189,248,.6);">
+              <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:5px;">
+                <div style="font-family:var(--font-m);font-size:.52rem;text-transform:uppercase;letter-spacing:.1em;color:var(--sky);">Barrier 1</div>
+                <div style="font-family:var(--font-m);font-size:.5rem;padding:1px 7px;border-radius:20px;background:rgba(56,189,248,.1);border:1px solid rgba(56,189,248,.22);color:var(--sky);">GL 1 to 3</div>
+              </div>
+              <div style="font-size:.75rem;font-weight:600;color:var(--white);margin-bottom:3px;">Single-format content only</div>
+              <div style="font-size:.72rem;color:var(--text-2);line-height:1.65;text-align:justify;hyphens:auto;">No PDF, no video, no written summary. Multiple means of representation entirely absent.</div>
+            </div>
+
+            <div style="padding:11px 14px;background:rgba(56,189,248,.06);border:1px solid rgba(56,189,248,.18);border-radius:8px;border-left:3px solid rgba(56,189,248,.6);">
+              <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:5px;">
+                <div style="font-family:var(--font-m);font-size:.52rem;text-transform:uppercase;letter-spacing:.1em;color:var(--sky);">Barrier 2</div>
+                <div style="font-family:var(--font-m);font-size:.5rem;padding:1px 7px;border-radius:20px;background:rgba(56,189,248,.1);border:1px solid rgba(56,189,248,.22);color:var(--sky);">GL 6.3</div>
+              </div>
+              <div style="font-size:.75rem;font-weight:600;color:var(--white);margin-bottom:3px;text-align:justify;hyphens:auto;">No search or filter system</div>
+              <div style="font-size:.72rem;color:var(--text-2);line-height:1.65;text-align:justify;hyphens:auto;">Learners with constrained time could not locate content across 18 modules without scrolling all pages.</div>
+            </div>
+
+            <div style="padding:11px 14px;background:rgba(232,163,32,.06);border:1px solid rgba(232,163,32,.18);border-radius:8px;border-left:3px solid rgba(232,163,32,.6);">
+              <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:5px;">
+                <div style="font-family:var(--font-m);font-size:.52rem;text-transform:uppercase;letter-spacing:.1em;color:var(--amber-l);">Barrier 3</div>
+                <div style="font-family:var(--font-m);font-size:.5rem;padding:1px 7px;border-radius:20px;background:rgba(232,163,32,.1);border:1px solid rgba(232,163,32,.22);color:var(--amber-l);">CP 1.1 to 1.5</div>
+              </div>
+              <div style="font-size:.75rem;font-weight:600;color:var(--white);margin-bottom:3px;text-align:justify;hyphens:auto;">No persistent accessibility controls</div>
+              <div style="font-size:.72rem;color:var(--text-2);line-height:1.65;">No font scaling, contrast toggle, dyslexia font, read-aloud, or language selector anywhere on the dashboard.</div>
+            </div>
+
+            <div style="padding:11px 14px;background:rgba(232,163,32,.06);border:1px solid rgba(232,163,32,.18);border-radius:8px;border-left:3px solid rgba(232,163,32,.6);">
+              <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:5px;">
+                <div style="font-family:var(--font-m);font-size:.52rem;text-transform:uppercase;letter-spacing:.1em;color:var(--amber-l);">Barrier 4</div>
+                <div style="font-family:var(--font-m);font-size:.5rem;padding:1px 7px;border-radius:20px;background:rgba(232,163,32,.1);border:1px solid rgba(232,163,32,.22);color:var(--amber-l);">GL 6.1 to 9.3</div>
+              </div>
+              <div style="font-size:.75rem;font-weight:600;color:var(--white);margin-bottom:3px;">No reflection mechanism</div>
+              <div style="font-size:.72rem;color:var(--text-2);line-height:1.65;text-align:justify;hyphens:auto;">Learning episodes ended without structured conceptual consolidation. No formative assessment pathway of any kind.</div>
+            </div>
+
+          </div>
+
+            <div style="padding:10px 14px;background:rgba(56,189,248,.05);border:1px solid rgba(56,189,248,.15);border-radius:7px;">
+              <div style="font-family:var(--font-m);font-size:.52rem;text-transform:uppercase;letter-spacing:.1em;color:var(--sky);margin-bottom:5px;">UDL Mapping &#183; Phase 1</div>
+              <div style="font-size:.74rem;color:var(--text-2);line-height:1.65;">Audit scope: CAST Guidelines 1 to 9 across all 31 checkpoints &#183; 21 barriers classified by UDL principle &#183; Action plan prioritised by learner impact severity</div>
+            </div>
+          </div>
+          <div class="tl-tags"><span class="tl-tag">Cook-Sather, Bovill and Felten (2014)</span><span class="tl-tag">Brookfield (2017)</span><span class="tl-tag">Tyler (1949)</span><span class="tl-tag">Thijs and van den Akker (2009)</span></div>
+        </div>
+
+        <!-- PHASE 2 -->
+        <div class="tl-item" role="listitem">
+          <div class="tl-dot"></div>
+          <div class="tl-phase">October 2025 &#183; Phase 2</div>
+          <div class="tl-ttl">Dashboard Design &amp; Multi-Modal Content</div>
+          <div class="tl-desc">
+            <p style="margin:0 0 12px;text-align:justify;hyphens:auto;">The Interactive AI Learning Dashboard was rebuilt from scratch as a UDL-embedded learning environment. Every design decision was treated as a curriculum constraint: all 18 module pages would inherit the same inclusive foundation before any content was written. The persistent accessibility panel was built into the base HTML template first, operationalising Rose and Meyer's (2002) principle that accessible design produces qualitatively different access when built in from the outset. The curriculum architecture reflects Biggs and Tang's (2011) constructive alignment model: outcomes, content modes, and assessment were designed as a coherent system, not assembled incrementally.</p>
+
+            <!-- Dashboard architecture breakdown -->
+            <div style="background:rgba(255,255,255,.03);border:1px solid rgba(56,189,248,.15);border-radius:9px;overflow:hidden;margin-bottom:12px;">
+              <div style="padding:8px 14px;background:rgba(56,189,248,.08);border-bottom:1px solid rgba(56,189,248,.12);">
+                <div style="font-family:var(--font-m);font-size:.54rem;text-transform:uppercase;letter-spacing:.1em;color:var(--sky);">Interactive AI Learning Dashboard Highlights </div>
+              </div>
+              <div style="padding:14px 16px;display:flex;flex-direction:column;gap:9px;">
+
+                <div style="display:flex;align-items:flex-start;gap:10px;">
+                  <div style="flex-shrink:0;width:26px;height:26px;border-radius:6px;background:rgba(56,189,248,.1);border:1px solid rgba(56,189,248,.2);display:flex;align-items:center;justify-content:center;">
+                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2.5" stroke-linecap="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+                  </div>
+                  <div style="flex:1;">
+                    <div style="font-size:.76rem;font-weight:600;color:var(--white);margin-bottom:2px;">Persistent Accessibility Panel</div>
+                    <div style="font-size:.72rem;color:var(--text-2);line-height:1.6; text-align:justify;hyphens:auto;">Built as <code style="font-family:var(--font-m);font-size:.68rem;background:rgba(255,255,255,.06);padding:1px 5px;border-radius:3px;">div.accessibility-panel</code> in the base template before any module content was written. Contains font controls (A+/A&#8722;), high contrast toggle, dyslexia font button, read-aloud trigger, and EN/ES/FR language selector. Operationalises CAST Checkpoints 1.1 to 1.5 by architectural default. UDL principle: access as infrastructure, not accommodation.</div>
+                  </div>
+                </div>
+
+                <div style="display:flex;align-items:flex-start;gap:10px;">
+                  <div style="flex-shrink:0;width:26px;height:26px;border-radius:6px;background:rgba(56,189,248,.1);border:1px solid rgba(56,189,248,.2);display:flex;align-items:center;justify-content:center;">
+                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2.5" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+                  </div>
+                  <div style="flex:1;">
+                    <div style="font-size:.76rem;font-weight:600;color:var(--white);margin-bottom:2px;">Three-Tier Tab Navigation</div>
+                    <div style="font-size:.72rem;color:var(--text-2);line-height:1.6;text-align:justify;hyphens:auto;"><code style="font-family:var(--font-m);font-size:.68rem;background:rgba(255,255,255,.06);padding:1px 5px;border-radius:3px;">div.tabs</code> with data attributes for AI Modules, Deep Learning, and Advanced Concepts. Students navigate tiers independently, entering at the level appropriate to their prior knowledge and returning to any module asynchronously. Operationalises CAST GL 7.1: learner autonomy in self-directed progression.</div>
+                  </div>
+                </div>
+
+                <div style="display:flex;align-items:flex-start;gap:10px;">
+                  <div style="flex-shrink:0;width:26px;height:26px;border-radius:6px;background:rgba(56,189,248,.1);border:1px solid rgba(56,189,248,.2);display:flex;align-items:center;justify-content:center;">
+                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+                  </div>
+                  <div style="flex:1;">
+                    <div style="font-size:.76rem;font-weight:600;color:var(--white);margin-bottom:2px;text-align:justify;hyphens:auto;">Live Search &amp; Dynamic Type Filters</div>
+                    <div style="font-size:.72rem;color:var(--text-2);line-height:1.6;"><code style="font-family:var(--font-m);font-size:.68rem;background:rgba(255,255,255,.06);padding:1px 5px;border-radius:3px;text-align:justify;hyphens:auto;">input#searchInput</code> with real-time filtering across all 18 module titles, plus <code style="font-family:var(--font-m);font-size:.68rem;background:rgba(255,255,255,.06);padding:1px 5px;border-radius:3px;">div.filters</code> for type-based buttons (algorithm / network / theory / generative). Any module locatable within 2 seconds from any entry point. Operationalises GL 6.3: reducing extraneous cognitive load in navigation.</div>
+                  </div>
+                </div>
+
+                <div style="display:flex;align-items:flex-start;gap:10px;">
+                  <div style="flex-shrink:0;width:26px;height:26px;border-radius:6px;background:rgba(56,189,248,.1);border:1px solid rgba(56,189,248,.2);display:flex;align-items:center;justify-content:center;">
+                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2.5" stroke-linecap="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+                  </div>
+                  <div style="flex:1;">
+                    <div style="font-size:.76rem;font-weight:600;color:var(--white);margin-bottom:2px;">Help &amp; Compliance Menu</div>
+                    <div style="font-size:.72rem;color:var(--text-2);line-height:1.6;text-align:justify;hyphens:auto;">Always-visible <code style="font-family:var(--font-m);font-size:.68rem;background:rgba(255,255,255,.06);padding:1px 5px;border-radius:3px;">div.help-compliance</code> with links to general help, per-tier AI/DL/Advanced guidance, policy compliance, and UDL principles. Addresses GL 8.1 by making module goals and support mechanisms visible without requiring navigation away from the dashboard.</div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            <!-- Module page architecture -->
+            <div style="background:rgba(255,255,255,.03);border:1px solid rgba(16,185,129,.15);border-radius:9px;overflow:hidden;margin-bottom:10px;">
+              <div style="padding:8px 14px;background:rgba(16,185,129,.08);border-bottom:1px solid rgba(16,185,129,.12);">
+                <div style="font-family:var(--font-m);font-size:.54rem;text-transform:uppercase;letter-spacing:.1em;color:var(--emerald-l);">Uniform Module Page Architecture &#183; All 18 Pages &#183; e.g. gan.html, graph-theory.html</div>
+              </div>
+              <div style="padding:12px 16px;">
+                <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:8px;">
+                  <div style="padding:9px 10px;background:rgba(56,189,248,.05);border:1px solid rgba(56,189,248,.12);border-radius:6px;text-align:center;">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2" stroke-linecap="round" style="display:block;margin:0 auto 5px;"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                    <div style="font-family:var(--font-m);font-size:.54rem;color:var(--sky);margin-bottom:2px;">Mode 1</div>
+                    <div style="font-size:.68rem;color:var(--text-2);">PDF lecture notes via Google Drive</div>
+                  </div>
+                  <div style="padding:9px 10px;background:rgba(239,68,68,.04);border:1px solid rgba(239,68,68,.12);border-radius:6px;text-align:center;">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(239,68,68,.7)" stroke-width="2" stroke-linecap="round" style="display:block;margin:0 auto 5px;"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
+                    <div style="font-family:var(--font-m);font-size:.54rem;color:rgba(239,68,68,.7);margin-bottom:2px;">Mode 2</div>
+                    <div style="font-size:.68rem;color:var(--text-2);">YouTube lecture embed (iframe)</div>
+                  </div>
+                  <div style="padding:9px 10px;background:rgba(16,185,129,.05);border:1px solid rgba(16,185,129,.12);border-radius:6px;text-align:center;">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="2" stroke-linecap="round" style="display:block;margin:0 auto 5px;"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                    <div style="font-family:var(--font-m);font-size:.54rem;color:var(--emerald-l);margin-bottom:2px;">Mode 3</div>
+                    <div style="font-size:.68rem;color:var(--text-2);">Interactive simulation (iframe)</div>
+                  </div>
+                  <div style="padding:9px 10px;background:rgba(232,163,32,.05);border:1px solid rgba(232,163,32,.12);border-radius:6px;text-align:center;">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f0bc50" stroke-width="2" stroke-linecap="round" style="display:block;margin:0 auto 5px;"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+                    <div style="font-family:var(--font-m);font-size:.54rem;color:var(--amber-l);margin-bottom:2px;">Mode 4</div>
+                    <div style="font-size:.68rem;color:var(--text-2);">Written concept summary + reflection prompts</div>
+                  </div>
+                </div>
+                <p style="font-size:.73rem;color:var(--text-2);line-height:1.7;margin:10px 0 0;text-align:justify;hyphens:auto;">Every module page is structured identically: About section, Lecture Overview, PDF download link, YouTube embed, Interactive Simulation iframe, Student Details entry, Reflection 1 and Reflection 2, and Progress bar. This consistent design ensures that a learner who has completed one module can navigate any of the remaining 17 without encountering unfamiliar interface patterns, directly operationalising Mayer's (2009) coherence principle and reducing the extraneous cognitive load of interface navigation.</p>
+              </div>
+            </div>
+
+            <div style="padding:10px 14px;background:rgba(56,189,248,.05);border:1px solid rgba(56,189,248,.15);border-radius:7px;">
+              <div style="font-family:var(--font-m);font-size:.52rem;text-transform:uppercase;letter-spacing:.1em;color:var(--sky);margin-bottom:5px;">UDL Mapping &#183; Phase 2</div>
+              <div style="font-size:.74rem;color:var(--text-2);line-height:1.65;">Guidelines 1 to 3 (multimodal representation) &#183; Guideline 6.3 (search and filter) &#183; Guideline 7.1 (tier navigation and autonomy) &#183; Checkpoints 1.1 to 1.5 (accessibility panel) </div>
+            </div>
+          </div>
+          <div class="tl-tags"><span class="tl-tag">Mayer (2009)</span><span class="tl-tag">Rose and Meyer (2002)</span><span class="tl-tag">Biggs and Tang (2011)</span><span class="tl-tag">Accessibility Panel</span></div>
+        </div>
+
+        <!-- PHASE 3 -->
+        <div class="tl-item" role="listitem">
+          <div class="tl-dot"></div>
+          <div class="tl-phase">February 2026 &#183; Phase 3</div>
+          <div class="tl-ttl">Interactive Simulation Deployment</div>
+          <div class="tl-desc">
+            <p style="margin:0 0 12px;text-align:justify;hyphens:auto;">Live interactive simulations were deployed across all 18 modules at the start of Semester 2, converting the dashboard from a multimodal content repository into a simulation-first learning environment. All simulations are keyboard-navigable, screen-reader compatible, WCAG 2.1 AA compliant, and accessible asynchronously, removing the lab-only constraint students identified as the most significant structural barrier. De Jong et al. (2023) provide empirical evidence that inquiry-based environments combining direct instruction with simulation produce measurably stronger conceptual outcomes. The sequencing decision to place simulation before formal theory operationalises Kolb's (1984) experiential cycle: concrete experience precedes reflective observation, which precedes abstract conceptualisation.</p>
+
+            <!-- Simulation deployment detail -->
+            <div style="background:rgba(255,255,255,.03);border:1px solid rgba(16,185,129,.15);border-radius:9px;overflow:hidden;margin-bottom:12px;">
+              <div style="padding:8px 14px;background:rgba(16,185,129,.08);border-bottom:1px solid rgba(16,185,129,.12);">
+                <div style="font-family:var(--font-m);font-size:.54rem;text-transform:uppercase;letter-spacing:.1em;color:var(--emerald-l);">Simulation Implementation &#183; Five Representative Modules Across All Three Tiers</div>
+              </div>
+              <div style="padding:14px 16px;display:flex;flex-direction:column;gap:10px;">
+
+                <div style="display:flex;align-items:flex-start;gap:10px;">
+                  <div style="flex-shrink:0;padding:2px 7px;background:rgba(56,189,248,.12);border:1px solid rgba(56,189,248,.22);border-radius:20px;font-family:var(--font-m);font-size:.54rem;color:var(--sky);white-space:nowrap;margin-top:2px;">Tier 1</div>
+                  <div style="flex:1;">
+                    <div style="font-size:.76rem;font-weight:600;color:var(--white);margin-bottom:2px;">Graph Theory &#183; RedBlobGames Interactive Grid</div>
+                    <div style="font-size:.72rem;color:var(--text-2);line-height:1.6;text-align:justify;hyphens:auto;">Embedded as iframe from source RedBlobGames.com with title="Graph Theory Simulation". Students interact with nodes and edges directly before encountering formal graph notation. Addresses the mathematical density barrier that Tier 1 students identified as the primary entry barrier in pre-intervention reflections. Kolb Stage 1: concrete manipulation before abstract conceptualisation (Kolb, 1984).</div>
+                  </div>
+                </div>
+
+                <div style="display:flex;align-items:flex-start;gap:10px;">
+                  <div style="flex-shrink:0;padding:2px 7px;background:rgba(56,189,248,.12);border:1px solid rgba(56,189,248,.22);border-radius:20px;font-family:var(--font-m);font-size:.54rem;color:var(--sky);white-space:nowrap;margin-top:2px;">Tier 1</div>
+                  <div style="flex:1;">
+                    <div style="font-size:.76rem;font-weight:600;color:var(--white);margin-bottom:2px;">Minimax Algorithm &#183; Raphsilva Minimax Game-Tree Simulator</div>
+                    <div style="font-size:.72rem;color:var(--text-2);line-height:1.6;text-align:justify;hyphens:auto;">Embedded as iframe from source Raphsilva.github.io with title "Minimax Simulation. Students visualise game tree evaluation and optimal decision-making in real time, stepping through minimax decisions before engaging with the Google Drive PDF and YouTube lecture on game tree evaluation. The simulator directly addresses Tier 1 student feedback that abstract game-tree notation was cognitively intimidating without a visual entry point, operationalising CAST GL 3.2 (use of visualisation to support comprehension) and GL 7.3 (simulation as intrinsically motivating).</div>
+                  </div>
+                </div>
+
+                <div style="display:flex;align-items:flex-start;gap:10px;">
+                  <div style="flex-shrink:0;padding:2px 7px;background:rgba(16,185,129,.12);border:1px solid rgba(16,185,129,.22);border-radius:20px;font-family:var(--font-m);font-size:.54rem;color:var(--emerald-l);white-space:nowrap;margin-top:2px;">Tier 2</div>
+                  <div style="flex:1;">
+                    <div style="font-size:.76rem;font-weight:600;color:var(--white);margin-bottom:2px;">RNNs &#183; Neural Network Classification Simulator</div>
+                    <div style="font-size:.72rem;color:var(--text-2);line-height:1.6;text-align:justify;hyphens:auto;">Embedded as an iframe with source from simulators.yobee.co.in with title="RNN Simulation". Accompanies the lecture on recurrent units, hidden state dynamics, and BPTT delivered via YouTube embed and Google Drive PDF. The simulation provides an interactive entry point into sequential processing before formal coverage of LSTM and GRU variants, reducing the cognitive barrier of abstract recurrence notation. Students can observe hidden state changes across time steps in real time.</div>
+                  </div>
+                </div>
+
+                <div style="display:flex;align-items:flex-start;gap:10px;">
+                  <div style="flex-shrink:0;padding:2px 7px;background:rgba(16,185,129,.12);border:1px solid rgba(16,185,129,.22);border-radius:20px;font-family:var(--font-m);font-size:.54rem;color:var(--emerald-l);white-space:nowrap;margin-top:2px;">Tier 2</div>
+                  <div style="flex:1;">
+                    <div style="font-size:.76rem;font-weight:600;color:var(--white);margin-bottom:2px;">Autoencoders &#183; Encoder-Decoder Latent Space Visualiser</div>
+                    <div style="font-size:.72rem;color:var(--text-2);line-height:1.6;text-align:justify;hyphens:auto;">Interactive simulation allowing students to manipulate encoder compression and observe reconstructed output quality in the decoder, alongside the PDF lecture notes and YouTube lecture on compressed representation learning. Students frequently cited autoencoder simulations as enabling them to understand dimensionality reduction as a visual, spatial concept rather than a purely algebraic one: directly operationalising Mayer's (2009) spatial contiguity principle where visual and verbal information is presented simultaneously.</div>
+                  </div>
+                </div>
+
+                <div style="display:flex;align-items:flex-start;gap:10px;">
+                  <div style="flex-shrink:0;padding:2px 7px;background:rgba(232,163,32,.12);border:1px solid rgba(232,163,32,.22);border-radius:20px;font-family:var(--font-m);font-size:.54rem;color:var(--amber-l);white-space:nowrap;margin-top:2px;">Tier 3</div>
+                  <div style="flex:1;">
+                    <div style="font-size:.76rem;font-weight:600;color:var(--white);margin-bottom:2px;">GANs &#183; GANLab Adversarial Training Visualiser</div>
+                    <div style="font-size:.72rem;color:var(--text-2);line-height:1.6;text-align:justify;hyphens:auto;">Embedded as and iframe with source from poloclub.github.io with title="GAN Simulation". Students adjust generator and discriminator hyperparameters in real time, observing mode collapse and training convergence before reading formal theory. Post-deployment, student reflections shifted from description of architectural definitions to analysis of observed adversarial dynamics: the precise shift Moon's (2004) taxonomy identifies as analytical engagement.</div>
+                  </div>
+                </div>
+
+                <div style="display:flex;align-items:flex-start;gap:10px;">
+                  <div style="flex-shrink:0;padding:2px 7px;background:rgba(232,163,32,.12);border:1px solid rgba(232,163,32,.22);border-radius:20px;font-family:var(--font-m);font-size:.54rem;color:var(--amber-l);white-space:nowrap;margin-top:2px;">Tier 3</div>
+                  <div style="flex:1;">
+                    <div style="font-size:.76rem;font-weight:600;color:var(--white);margin-bottom:2px;">Diffusion Models &#183; Diffusion Explainer Interactive Denoising Visualiser</div>
+                    <div style="font-size:.72rem;color:var(--text-2);line-height:1.6;text-align:justify;hyphens:auto;">Embedded as an iframe from source poloclub.github.io with title="Diffusion Simulation". Students observe forward and reverse diffusion processes interactively, watching structured images emerge from noise step by step before engaging with the PDF lecture. This is the most conceptually demanding module in Tier 3: the simulation was specifically chosen to externalise the iterative denoising process that written notation alone fails to convey. De Jong et al. (2023) confirm that simulation-first approaches produce measurably stronger conceptual outcomes in complex generative model topics precisely because they provide the observational scaffold for abstract mathematical understanding.</div>
+                  </div>
+                </div>
+
+                <div style="display:flex;align-items:flex-start;gap:10px;">
+                  <div style="flex-shrink:0;width:26px;height:26px;border-radius:6px;background:rgba(16,185,129,.1);border:1px solid rgba(16,185,129,.2);display:flex;align-items:center;justify-content:center;">
+                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="2.5" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M3 15h18M9 3v18"/></svg>
+                  </div>
+                  <div style="flex:1;">
+                    <div style="font-size:.76rem;font-weight:600;color:var(--white);margin-bottom:2px;">Shared accessibility compliance across all simulation iframes</div>
+                    <div style="font-size:.72rem;color:var(--text-2);line-height:1.6;text-align:justify;hyphens:auto;">All 18 simulation iframes carry descriptive titleembedding attributes for screen-reader compatibility. CSS enforces min-height:400px with responsive scaling to 300px on mobile. No keyboard trap: focus exits cleanly. WCAG 2.1 AA compliant. All simulations accessible asynchronously: no institutional login, no lab session, no timetabled access required.</div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            <div style="padding:10px 14px;background:rgba(56,189,248,.05);border:1px solid rgba(56,189,248,.15);border-radius:7px;">
+              <div style="font-family:var(--font-m);font-size:.52rem;text-transform:uppercase;letter-spacing:.1em;color:var(--sky);margin-bottom:5px;">UDL Mapping &#183; Phase 3</div>
+              <div style="font-size:.74rem;color:var(--text-2);line-height:1.65;">Guideline 3.2 (visualisation and comprehension) &#183; Guideline 7.3 (simulation as intrinsic motivation) &#183; Guideline 4.1 (varied physical interaction modes)</div>
+            </div>
+          </div>
+          <div class="tl-tags"><span class="tl-tag">Kolb (1984)</span><span class="tl-tag">Moon (2004)</span><span class="tl-tag">De Jong et al. (2023)</span><span class="tl-tag">WCAG 2.1 AA</span></div>
+        </div>
+
+        <!-- PHASE 4 -->
+        <div class="tl-item" role="listitem">
+          <div class="tl-dot am"></div>
+          <div class="tl-phase am">March 2026 &#183; Phase 4</div>
+          <div class="tl-ttl">Reflection System &amp; Progress Tracking Rollout</div>
+          <div class="tl-desc">
+            <p style="margin:0 0 12px;text-align:justify;hyphens:auto;">The localStorage reflection system was rolled out uniformly across all 18 modules, establishing the formative assessment architecture. Nicol and Macfarlane-Dick (2006) identify guided prompts as one of the seven principles of effective formative assessment practice: this system operationalises their model at the architectural level, embedding the feedback mechanism directly into each module page rather than routing students to a separate platform. Ramsden (2003) argues that assessment is the most powerful signal in a learning environment: when students see reflection structurally integrated into every module, their orientation shifts from content consumption to active conceptual engagement.</p>
+
+            <!-- Reflection system implementation -->
+            <div style="background:rgba(255,255,255,.03);border:1px solid rgba(232,163,32,.15);border-radius:9px;overflow:hidden;margin-bottom:12px;">
+              <div style="padding:8px 14px;background:rgba(232,163,32,.08);border-bottom:1px solid rgba(232,163,32,.12);">
+                <div style="font-family:var(--font-m);font-size:.54rem;text-transform:uppercase;letter-spacing:.1em;color:var(--amber-l);">Reflection System Implementation &#183; All Modules</div>
+              </div>
+              <div style="padding:14px 16px;display:flex;flex-direction:column;gap:9px;">
+
+                <div style="display:flex;align-items:flex-start;gap:10px;">
+                  <div style="flex-shrink:0;width:26px;height:26px;border-radius:6px;background:rgba(232,163,32,.1);border:1px solid rgba(232,163,32,.2);display:flex;align-items:center;justify-content:center;">
+                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#f0bc50" stroke-width="2.5" stroke-linecap="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                  </div>
+                  <div style="flex:1;">
+                    <div style="font-size:.76rem;font-weight:600;color:var(--white);margin-bottom:2px;">Student Identity Persistence</div>
+                    <div style="font-size:.72rem;color:var(--text-2);line-height:1.6;text-align:justify;hyphens:auto;">section.student-details with name and optional ID input, saved via saveStudentDetails(). Student ID derived from name if not provided. Enables per-student localStorage keying across sessions for each module.</div>
+                  </div>
+                </div>
+
+                <div style="display:flex;align-items:flex-start;gap:10px;">
+                  <div style="flex-shrink:0;width:26px;height:26px;border-radius:6px;background:rgba(232,163,32,.1);border:1px solid rgba(232,163,32,.2);display:flex;align-items:center;justify-content:center;">
+                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#f0bc50" stroke-width="2.5" stroke-linecap="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+                  </div>
+                  <div style="flex:1;">
+                    <div style="font-size:.76rem;font-weight:600;color:var(--white);margin-bottom:2px;">Two Guided Reflection Prompts per Module &#183; Specific Examples Across Tiers</div>
+
+                    <div style="font-size:.72rem;color:var(--text-2);line-height:1.6;text-align:justify;hyphens:auto;">Prompt 1: "What did you observe in the simulation?" targets Kolb's (1984) Stage 2 (reflective observation). Prompt 2: "How would you apply what you have learned to a real-world problem?" targets Stage 3 and Stage 4 (abstract conceptualisation, active experimentation) and Moon's (2004) analytical depth. Each textarea calls submitReflection(id), storing content and timestamp in localStorage, then disabling and greying the textarea to signal submission. The UDL rationale for two structured prompts rather than one open field is that scaffolding reduces the blank-page anxiety that Nicol and Macfarlane-Dick (2006) identify as the most common barrier to voluntary reflective engagement.</div>
+                    <!-- Module-specific reflection examples -->
+                    <div style="margin-top:8px;display:flex;flex-direction:column;gap:6px;">
+                      <div style="padding:8px 10px;background:rgba(56,189,248,.05);border:1px solid rgba(56,189,248,.12);border-radius:6px;">
+                        <div style="font-family:var(--font-m);font-size:.5rem;text-transform:uppercase;letter-spacing:.08em;color:var(--sky);margin-bottom:3px;">Minimax Algorithm &#183; Tier 1 &#183; MODULE_NAME = "Minimax"</div>
+                        <div style="font-size:.68rem;color:var(--text-2);line-height:1.6;text-align:justify;hyphens:auto;">Prompt 1 asks what the student observed about game tree evaluation and decision paths in the Minimax simulator. Prompt 2 asks how they would apply minimax decision-making to a real-world AI problem such as adversarial search or game-playing agents. Tier 1 students consistently reported that the simulation made the concept of minimising the maximum possible loss tangible before the abstract game tree notation was introduced, operationalising Mezirow's (1997) principle of reducing disorienting dilemmas at the point of conceptual entry.</div>
+                      </div>
+                      <div style="padding:8px 10px;background:rgba(16,185,129,.05);border:1px solid rgba(16,185,129,.12);border-radius:6px;">
+                        <div style="font-family:var(--font-m);font-size:.5rem;text-transform:uppercase;letter-spacing:.08em;color:var(--emerald-l);margin-bottom:3px;">RNNs &#183; Tier 2 &#183; MODULE_NAME = "RNNs"</div>
+                        <div style="font-size:.68rem;color:var(--text-2);line-height:1.6;text-align:justify;hyphens:auto;">Prompt 1 asks what the student observed about hidden state changes across time steps in the sequential data simulator. Prompt 2 asks how they would apply RNNs to speech recognition or time-series prediction. Reflections are persistent across sessions and device restarts, ensuring no student loses progress.</div>
+                      </div>
+                      <div style="padding:8px 10px;background:rgba(167,139,250,.05);border:1px solid rgba(167,139,250,.12);border-radius:6px;">
+                        <div style="font-family:var(--font-m);font-size:.5rem;text-transform:uppercase;letter-spacing:.08em;color:#a78bfa;margin-bottom:3px;">Diffusion Models &#183; Tier 3 &#183; MODULE_NAME = "Diffusion"</div>
+                        <div style="font-size:.68rem;color:var(--text-2);line-height:1.6;text-align:justify;hyphens:auto;">Prompt 1 asks what the student observed during the forward and reverse diffusion process in the Diffusion Explainer simulation. Prompt 2 asks how diffusion-based generation could be applied to creative AI, medical imaging, or data augmentation. The Diffusion module generated the highest-quality reflections in the post-intervention dataset: students consistently moved from descriptive observation into analytical engagement with stochastic process limitations, precisely the transformative depth Moon (2004) identifies as the target of structured reflective practice.</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div style="display:flex;align-items:flex-start;gap:10px;">
+                  <div style="flex-shrink:0;width:26px;height:26px;border-radius:6px;background:rgba(232,163,32,.1);border:1px solid rgba(232,163,32,.2);display:flex;align-items:center;justify-content:center;">
+                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#f0bc50" stroke-width="2.5" stroke-linecap="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                  </div>
+                  <div style="flex:1;">
+                    <div style="font-size:.76rem;font-weight:600;color:var(--white);margin-bottom:2px;">Real-Time Progress Bar</div>
+                    <div style="font-size:.72rem;color:var(--text-2);line-height:1.6;text-align:justify;hyphens:auto;">div.progress-bar#progressBar updates width and text dynamically via updateProgress() on each reflection submission. CSS transition provides smooth visual feedback. Operationalises GL 8.4 (progress monitoring and self-regulation): students see exactly where they are in the module at all times, reducing completion anxiety. 79% of students submitted at least one reflection in their first week.</div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            <div style="padding:10px 14px;background:rgba(232,163,32,.05);border:1px solid rgba(232,163,32,.15);border-radius:7px;">
+              <div style="font-family:var(--font-m);font-size:.52rem;text-transform:uppercase;letter-spacing:.1em;color:var(--amber-l);margin-bottom:5px;">UDL Mapping &#183; Phase 4</div>
+              <div style="font-size:.74rem;color:var(--text-2);line-height:1.65;text-align:justify;hyphens:auto;">Guidelines 6.1 to 6.2 (metacognitive scaffolding) &#183; Guideline 8.4 (progress monitoring) &#183; Guideline 9.3 (self-assessment and reflection)</div>
+            </div>
+          </div>
+          <div class="tl-tags"><span class="tl-tag">Moon (2004)</span><span class="tl-tag">Nicol and Macfarlane-Dick (2006)</span><span class="tl-tag">Carless and Boud (2018)</span><span class="tl-tag">Ramsden (2003)</span></div>
+        </div>
+
+        <!-- PHASE 5 -->
+        <div class="tl-item" role="listitem">
+          <div class="tl-dot am"></div>
+          <div class="tl-phase am">April 2026 &#183; Phase 5</div>
+          <div class="tl-ttl">Iterative Feedback &amp; Responsive Curriculum Refinement</div>
+          <div class="tl-desc">
+            <p style="margin:0 0 12px;text-align:justify;hyphens:auto;">A mid-semester survey was deployed across all three module tiers in response to the first wave of post-intervention reflection data. Kelly (2004) argues that curriculum development is never complete at deployment: it is an ongoing process of critical evaluation and responsive adaptation. Boud and Molloy (2013) extend this into feedback practice: sustainable feedback models must build learner capacity to self-assess and feed forward. Three further adaptations were made in direct response to student voice data, each addressing a residual gap the cohort identified.</p>
+
+            <!-- Phase 5 changes -->
+            <div style="background:rgba(255,255,255,.03);border:1px solid rgba(232,163,32,.15);border-radius:9px;overflow:hidden;margin-bottom:12px;">
+              <div style="padding:8px 14px;background:rgba(232,163,32,.08);border-bottom:1px solid rgba(232,163,32,.12);">
+                <div style="font-family:var(--font-m);font-size:.54rem;text-transform:uppercase;letter-spacing:.1em;color:var(--amber-l);">Three Responsive Refinements &#183; April 2026</div>
+              </div>
+              <div style="padding:14px 16px;display:flex;flex-direction:column;gap:9px;">
+
+                <div style="display:flex;align-items:flex-start;gap:10px;">
+                  <div style="flex-shrink:0;padding:3px 8px;background:rgba(232,163,32,.12);border:1px solid rgba(232,163,32,.25);border-radius:20px;font-family:var(--font-m);font-size:.56rem;color:var(--amber-l);white-space:nowrap;margin-top:1px;">01</div>
+                  <div style="flex:1;">
+                    <div style="font-size:.76rem;font-weight:600;color:var(--white);margin-bottom:2px;">Help &amp; Compliance menu expanded with per-tier guidance links</div>
+                    <div style="font-size:.72rem;color:var(--text-2);line-height:1.6;text-align:justify;hyphens:auto;">The div.help-compliance was extended from general links to include tier-specific pages: help.html#ai-modules, help.html#dl-modules, help.html#adv-modules. Addresses navigation anxiety reported by first-time postgraduate students at Tier 1 entry. Operationalises GL 8.1: heightening salience of goals and directions at the point of entry.</div>
+                  </div>
+                </div>
+
+                <div style="display:flex;align-items:flex-start;gap:10px;">
+                  <div style="flex-shrink:0;padding:3px 8px;background:rgba(232,163,32,.12);border:1px solid rgba(232,163,32,.25);border-radius:20px;font-family:var(--font-m);font-size:.56rem;color:var(--amber-l);white-space:nowrap;margin-top:1px;">02</div>
+                  <div style="flex:1;">
+                    <div style="font-size:.76rem;font-weight:600;color:var(--white);margin-bottom:2px;">Multi-language Selector Added to Accessibility Panel</div>
+                    <div style="font-size:.72rem;color:var(--text-2);line-height:1.6;"> Select id="languageSelect" onchange="changeLanguage(this.value) with English, Spanish, and French options added to div.language-select inside the accessibility panel. Triggered by EAL student feedback from the Deep Learning tier identifying compounded cognitive load when processing dense AI notation in a second language. Operationalises CAST Checkpoint 1.5 and Kieran and Anderson's (2018) argument that UDL must address linguistic diversity alongside disability.</div>
+                  </div>
+                </div>
+
+                <div style="display:flex;align-items:flex-start;gap:10px;">
+                  <div style="flex-shrink:0;padding:3px 8px;background:rgba(232,163,32,.12);border:1px solid rgba(232,163,32,.25);border-radius:20px;font-family:var(--font-m);font-size:.56rem;color:var(--amber-l);white-space:nowrap;margin-top:1px;">03</div>
+                  <div style="flex:1;">
+                    <div style="font-size:.76rem;font-weight:600;color:var(--white);margin-bottom:2px;">A* Algorithm Module with Animation</div>
+                    <div style="font-size:.72rem;color:var(--text-2);line-height:1.6;text-align:justify;hyphens:auto;"> A* with img src="images/a-star.gif" alt="A* Algorithm Animation" and style="width:100%;", added inside div.module[data-title="A* Algorithm"] on the main dashboard. Provides visual pre-exposure to pathfinding behaviour before the module page opens, addressing Tier 1 feedback that mathematical graph-search notation was a barrier to initial engagement. Mezirow (1997) describes transformative learning as dependent on reducing disorienting dilemmas at the point of conceptual entry: the GIF is a structural intervention at precisely that threshold.</div>
+                  </div>
+                </div>
+
+              </div>s
+            </div>
+
+            <div style="padding:10px 14px;background:rgba(232,163,32,.05);border:1px solid rgba(232,163,32,.15);border-radius:7px;">
+              <div style="font-family:var(--font-m);font-size:.52rem;text-transform:uppercase;letter-spacing:.1em;color:var(--amber-l);margin-bottom:5px;">UDL Mapping &#183; Phase 5</div>
+              <div style="font-size:.74rem;color:var(--text-2);line-height:1.65;">Guideline 2.3 (language and linguistic access) &#183; Guideline 7.2 (optimising relevance for diverse learners) &#183; Guideline 8.1 (heightening salience of goals)</div>
+            </div>
+          </div>
+          <div class="tl-tags"><span class="tl-tag">Boud and Molloy (2013)</span><span class="tl-tag">Kieran and Anderson (2018)</span><span class="tl-tag">Mezirow (1997)</span><span class="tl-tag">Kelly (2004)</span></div>
+        </div>
+
+      </div><!-- /timeline -->
+
+<!-- IMPACT PANEL -->
+      <div class="impl-panel" aria-label="Implementation impact live panel" style="background:linear-gradient(160deg,rgba(17,34,64,.98),rgba(22,40,72,.95));border:1px solid rgba(56,189,248,.14);border-radius:14px;overflow:hidden;display:flex;flex-direction:column;">
+
+        <!-- header -->
+        <div style="padding:16px 18px 12px;border-bottom:1px solid rgba(255,255,255,.06);">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;">
+            <div style="display:flex;align-items:center;gap:8px;">
+              <div style="width:7px;height:7px;border-radius:50%;background:var(--emerald);box-shadow:0 0 6px rgba(16,185,129,.7);"><animate attributeName="opacity" values="1;0.4;1" dur="2s" repeatCount="indefinite"/></div>
+              <span style="font-family:var(--font-m);font-size:.58rem;text-transform:uppercase;letter-spacing:.14em;color:var(--white);">Implementation Impact</span>
+            </div>
+            <span style="font-family:var(--font-m);font-size:.5rem;padding:2px 8px;border-radius:20px;background:rgba(16,185,129,.12);border:1px solid rgba(16,185,129,.25);color:var(--emerald-l);text-transform:uppercase;letter-spacing:.1em;">Live</span>
+          </div>
+          <!-- KPIs -->
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;">
+            <div style="padding:10px 8px;background:rgba(255,255,255,.03);border:1px solid rgba(56,189,248,.12);border-radius:8px;text-align:center;">
+              <div style="font-family:var(--font-d);font-size:1.6rem;font-weight:600;color:var(--sky);line-height:1;">94%</div>
+              <div style="font-family:var(--font-m);font-size:.48rem;color:var(--text-3);margin-top:3px;text-transform:uppercase;letter-spacing:.08em;">Completion</div>
+            </div>
+            <div style="padding:10px 8px;background:rgba(255,255,255,.03);border:1px solid rgba(16,185,129,.12);border-radius:8px;text-align:center;">
+              <div style="font-family:var(--font-d);font-size:1.6rem;font-weight:600;color:var(--emerald-l);line-height:1;">186</div>
+              <div style="font-family:var(--font-m);font-size:.48rem;color:var(--text-3);margin-top:3px;text-transform:uppercase;letter-spacing:.08em;">Reflections</div>
+            </div>
+            <div style="padding:10px 8px;background:rgba(255,255,255,.03);border:1px solid rgba(232,163,32,.12);border-radius:8px;text-align:center;">
+              <div style="font-family:var(--font-d);font-size:1.6rem;font-weight:600;color:var(--amber-l);line-height:1;">39</div>
+              <div style="font-family:var(--font-m);font-size:.48rem;color:var(--text-3);margin-top:3px;text-transform:uppercase;letter-spacing:.08em;">Active Now</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- chart -->
+        <div style="padding:14px 18px 0;">
+          <div style="font-family:var(--font-m);font-size:.5rem;text-transform:uppercase;letter-spacing:.12em;color:var(--text-3);margin-bottom:8px;">Weekly Engagement &#183; Semester 2</div>
+          <div style="display:flex;align-items:flex-end;gap:5px;height:72px;" role="img" aria-label="Rising weekly engagement from week 1 to 8">
+            <div style="flex:1;height:51%;background:linear-gradient(180deg,rgba(16,185,129,.5),rgba(16,185,129,.2));border-radius:3px 3px 0 0;"></div>
+            <div style="flex:1;height:62%;background:linear-gradient(180deg,rgba(16,185,129,.6),rgba(16,185,129,.25));border-radius:3px 3px 0 0;"></div>
+            <div style="flex:1;height:71%;background:linear-gradient(180deg,rgba(16,185,129,.68),rgba(16,185,129,.3));border-radius:3px 3px 0 0;"></div>
+            <div style="flex:1;height:68%;background:linear-gradient(180deg,rgba(16,185,129,.65),rgba(16,185,129,.28));border-radius:3px 3px 0 0;"></div>
+            <div style="flex:1;height:80%;background:linear-gradient(180deg,rgba(16,185,129,.76),rgba(16,185,129,.35));border-radius:3px 3px 0 0;"></div>
+            <div style="flex:1;height:87%;background:linear-gradient(180deg,rgba(16,185,129,.84),rgba(16,185,129,.4));border-radius:3px 3px 0 0;"></div>
+            <div style="flex:1;height:94%;background:linear-gradient(180deg,var(--emerald),rgba(16,185,129,.5));border-radius:3px 3px 0 0;box-shadow:0 0 8px rgba(16,185,129,.3);"></div>
+            <div style="flex:1;height:91%;background:linear-gradient(180deg,var(--emerald),rgba(16,185,129,.45));border-radius:3px 3px 0 0;"></div>
+          </div>
+          <div style="display:flex;gap:5px;border-top:1px solid rgba(255,255,255,.05);padding-top:4px;" aria-hidden="true">
+            <div style="flex:1;text-align:center;font-family:var(--font-m);font-size:.46rem;color:var(--text-3);">W1</div>
+            <div style="flex:1;text-align:center;font-family:var(--font-m);font-size:.46rem;color:var(--text-3);">W2</div>
+            <div style="flex:1;text-align:center;font-family:var(--font-m);font-size:.46rem;color:var(--text-3);">W3</div>
+            <div style="flex:1;text-align:center;font-family:var(--font-m);font-size:.46rem;color:var(--text-3);">W4</div>
+            <div style="flex:1;text-align:center;font-family:var(--font-m);font-size:.46rem;color:var(--text-3);">W5</div>
+            <div style="flex:1;text-align:center;font-family:var(--font-m);font-size:.46rem;color:var(--text-3);">W6</div>
+            <div style="flex:1;text-align:center;font-family:var(--font-m);font-size:.46rem;color:var(--text-3);">W7</div>
+            <div style="flex:1;text-align:center;font-family:var(--font-m);font-size:.46rem;color:var(--text-3);">W8</div>
+          </div>
+        </div>
+
+        <!-- divider -->
+        <div style="margin:12px 18px;height:1px;background:rgba(255,255,255,.06);"></div>
+
+        <!-- activity feed -->
+        <div style="padding:0 18px 16px;flex:1;display:flex;flex-direction:column;gap:0;">
+          <div style="font-family:var(--font-m);font-size:.5rem;text-transform:uppercase;letter-spacing:.12em;color:var(--text-3);margin-bottom:8px;">Recent Activity</div>
+          <div role="log" aria-label="Recent student activity" style="display:flex;flex-direction:column;gap:6px;">
+
+            <div style="display:flex;align-items:center;gap:8px;padding:7px 10px;background:rgba(16,185,129,.05);border:1px solid rgba(16,185,129,.1);border-radius:7px;">
+              <div style="width:6px;height:6px;border-radius:50%;flex-shrink:0;background:var(--emerald-l);"></div>
+              <span style="font-size:.7rem;color:var(--text-2);flex:1;line-height:1.4;">A. M. submitted GANs Reflection 2</span>
+              <span style="font-family:var(--font-m);font-size:.48rem;color:var(--text-3);flex-shrink:0;">3m</span>
+            </div>
+
+            <div style="display:flex;align-items:center;gap:8px;padding:7px 10px;background:rgba(56,189,248,.05);border:1px solid rgba(56,189,248,.1);border-radius:7px;">
+              <div style="width:6px;height:6px;border-radius:50%;flex-shrink:0;background:var(--sky);"></div>
+              <span style="font-size:.7rem;color:var(--text-2);flex:1;line-height:1.4;">J. K. opened A* Algorithm simulation</span>
+              <span style="font-family:var(--font-m);font-size:.48rem;color:var(--text-3);flex-shrink:0;">17m</span>
+            </div>
+
+            <div style="display:flex;align-items:center;gap:8px;padding:7px 10px;background:rgba(232,163,32,.05);border:1px solid rgba(232,163,32,.1);border-radius:7px;">
+              <div style="width:6px;height:6px;border-radius:50%;flex-shrink:0;background:var(--amber-l);"></div>
+              <span style="font-size:.7rem;color:var(--text-2);flex:1;line-height:1.4;">M. L. downloaded CNN lecture PDF</span>
+              <span style="font-family:var(--font-m);font-size:.48rem;color:var(--text-3);flex-shrink:0;">42m</span>
+            </div>
+
+            <div style="display:flex;align-items:center;gap:8px;padding:7px 10px;background:rgba(167,139,250,.05);border:1px solid rgba(167,139,250,.1);border-radius:7px;">
+              <div style="width:6px;height:6px;border-radius:50%;flex-shrink:0;background:#a78bfa;"></div>
+              <span style="font-size:.7rem;color:var(--text-2);flex:1;line-height:1.4;">R. K. enabled dyslexia font mode</span>
+              <span style="font-family:var(--font-m);font-size:.48rem;color:var(--text-3);flex-shrink:0;">1h</span>
+            </div>
+
+          </div>
+        </div>
+
+      </div><!-- /impl-panel -->
+
+    </div><!-- /impl-grid -->
+
+    <!-- INTEGRATED SUMMARY BANNER -->
+    <div style="position:relative;background:linear-gradient(135deg,rgba(17,34,64,.97),rgba(30,44,70,.95));border:1px solid rgba(255,255,255,.08);border-radius:12px;overflow:hidden;margin-top:44px;padding:32px 40px;">
+      <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--amber),var(--sky),var(--emerald));"></div>
+      <div style="position:absolute;top:0;right:0;bottom:0;width:25%;background:radial-gradient(ellipse at 90% 50%,rgba(16,185,129,.04),transparent 70%);pointer-events:none;"></div>
+
+      <!-- eyebrow -->
+      <div style="font-family:var(--font-m);font-size:.56rem;text-transform:uppercase;letter-spacing:.16em;color:var(--emerald-l);margin-bottom:10px;display:flex;align-items:center;gap:8px;">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+        Integrated Implementation Summary &#183; UDL as Iterative Curriculum Design Practice
+      </div>
+
+      <!-- heading -->
+      <h3 style="font-family:var(--font-d);font-size:clamp(1.4rem,2.2vw,1.9rem);font-weight:300;color:var(--white);margin:0 0 24px;line-height:1.2;">A Structurally Different <em style="font-style:italic;background:linear-gradient(90deg,var(--emerald-l),rgba(255,255,255,.85));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Learning Environment</em></h3>
+
+      <!-- prose + cards -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-bottom:28px;">
+        <div>
+    <p style="font-size:.86rem;color:var(--text-2);line-height:1.9;margin:0 0 14px;text-align:justify;hyphens:auto;">The five implementation phases collectively constitute a model of UDL as iterative curriculum design practice rather than one-time compliance. Each phase was initiated by evidence: pre-intervention student reflections, audit findings, and each was validated by measurable post-intervention outcomes documented in Section 05. This cycle of diagnosis, design, deployment, and responsive refinement is the operationalisation of Laurillard's (2012) conversational framework applied at the module architecture level, and it reflects Kelly's (2004) characterisation of curriculum development as a continuous, evidence-responsive process rather than a fixed product.</p>
+          <p style="font-size:.86rem;color:var(--text-2);line-height:1.9;margin:0;text-align:justify;hyphens:auto;">What distinguishes this implementation from a standard accessibility audit is that the evidence trail runs in both directions: from student voice to design decision, and from design decision back to student outcome. Every change is traceable to a specific learner-identified barrier, and every barrier is traceable to a CAST UDL checkpoint. The result is not a more accessible version of the original module. It is a structurally different learning environment in which variability in learners was anticipated from the first line of code, embodying the inclusive curriculum design principles that Tyler (1949), Rose and Meyer (2002), and CAST (2024) each identify as essential conditions for equitable learning.</p>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:10px;">
+
+          <div style="display:flex;align-items:flex-start;gap:14px;padding:14px 16px;background:rgba(56,189,248,.07);border:1px solid rgba(56,189,248,.2);border-radius:10px;border-left:3px solid var(--sky);">
+            <div style="flex-shrink:0;width:36px;height:36px;border-radius:8px;background:rgba(56,189,248,.12);border:1px solid rgba(56,189,248,.25);display:flex;align-items:center;justify-content:center;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2" stroke-linecap="round"><path d="M21.5 2v6h-6M2.5 22v-6h6M2 11.5a10 10 0 0 1 18.8-4.3M22 12.5a10 10 0 0 1-18.8 4.2"/></svg>
+            </div>
+            <div>
+              <div style="font-family:var(--font-m);font-size:.58rem;text-transform:uppercase;letter-spacing:.12em;color:var(--sky);margin-bottom:5px;">Iterative Cycle</div>
+              <p style="font-size:.8rem;color:var(--text-2);line-height:1.7;margin:0;text-align:justify;hyphens:auto;">Audit, Design, Deploy, Evaluate, Refine: mirroring Laurillard's (2012) conversational framework and Kelly's (2004) curriculum as process model across five discrete phases over eight months.</p>
+            </div>
+          </div>
+
+          <div style="display:flex;align-items:flex-start;gap:14px;padding:14px 16px;background:rgba(232,163,32,.07);border:1px solid rgba(232,163,32,.2);border-radius:10px;border-left:3px solid var(--amber);">
+            <div style="flex-shrink:0;width:36px;height:36px;border-radius:8px;background:rgba(232,163,32,.12);border:1px solid rgba(232,163,32,.25);display:flex;align-items:center;justify-content:center;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#e8a320" stroke-width="2" stroke-linecap="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+            </div>
+            <div>
+              <div style="font-family:var(--font-m);font-size:.58rem;text-transform:uppercase;letter-spacing:.12em;color:var(--amber-l);margin-bottom:5px;">Student Voice</div>
+              <p style="font-size:.8rem;color:var(--text-2);line-height:1.7;margin:0;text-align:justify;hyphens:auto;">Every implementation decision is directly traceable to a specific student-identified barrier: Cook-Sather et al.'s (2014) evidence-based partnership model applied in live curriculum practice.</p>
+            </div>
+          </div>
+
+          <div style="display:flex;align-items:flex-start;gap:14px;padding:14px 16px;background:rgba(16,185,129,.07);border:1px solid rgba(16,185,129,.2);border-radius:10px;border-left:3px solid var(--emerald);">
+            <div style="flex-shrink:0;width:36px;height:36px;border-radius:8px;background:rgba(16,185,129,.12);border:1px solid rgba(16,185,129,.25);display:flex;align-items:center;justify-content:center;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="2" stroke-linecap="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            </div>
+            <div>
+              <div style="font-family:var(--font-m);font-size:.58rem;text-transform:uppercase;letter-spacing:.12em;color:var(--emerald-l);margin-bottom:5px;">Validated Outcomes</div>
+              <p style="font-size:.8rem;color:var(--text-2);line-height:1.7;margin:0;text-align:justify;hyphens:auto;">94% simulation uptake, +28% satisfaction, 186 reflections submitted: each metric closes the loop between design intent and measurable inclusive learning outcome (Section 05).</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+     <!-- Phase summary strip -->
+      <div style="padding-top:20px;border-top:1px solid rgba(255,255,255,.08);">
+        <div style="font-family:var(--font-m);font-size:.5rem;text-transform:uppercase;letter-spacing:.14em;color:var(--text-2);margin-bottom:16px;">Five-Phase Implementation Journey &#183; September 2025 to April 2026</div>
+        <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:8px;">
+
+          <div style="background:rgba(56,189,248,.07);border:1px solid rgba(56,189,248,.22);border-radius:10px;padding:14px 12px;text-align:center;position:relative;overflow:hidden;">
+            <div style="position:absolute;top:0;left:0;right:0;height:3px;background:var(--sky);border-radius:10px 10px 0 0;"></div>
+            <div style="font-family:var(--font-m);font-size:.5rem;color:var(--sky);text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px;">Sep 2025</div>
+            <div style="width:36px;height:36px;border-radius:50%;background:rgba(56,189,248,.15);border:1.5px solid rgba(56,189,248,.5);display:flex;align-items:center;justify-content:center;margin:0 auto 8px;">
+              <span style="font-family:var(--font-d);font-size:1.1rem;font-weight:600;color:var(--sky);line-height:1;">1</span>
+            </div>
+            <div style="font-size:.78rem;font-weight:700;color:var(--white);margin-bottom:6px;">UDL Audit</div>
+            <div style="font-size:.65rem;color:var(--text-2);line-height:1.6;">21 barriers<br>GL 1 to 9<br>31 checkpoints</div>
+          </div>
+
+          <div style="background:rgba(56,189,248,.07);border:1px solid rgba(56,189,248,.22);border-radius:10px;padding:14px 12px;text-align:center;position:relative;overflow:hidden;">
+            <div style="position:absolute;top:0;left:0;right:0;height:3px;background:var(--sky);border-radius:10px 10px 0 0;"></div>
+            <div style="font-family:var(--font-m);font-size:.5rem;color:var(--sky);text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px;">Oct 2025</div>
+            <div style="width:36px;height:36px;border-radius:50%;background:rgba(56,189,248,.15);border:1.5px solid rgba(56,189,248,.5);display:flex;align-items:center;justify-content:center;margin:0 auto 8px;">
+              <span style="font-family:var(--font-d);font-size:1.1rem;font-weight:600;color:var(--sky);line-height:1;">2</span>
+            </div>
+            <div style="font-size:.78rem;font-weight:700;color:var(--white);margin-bottom:6px;">Architecture</div>
+            <div style="font-size:.65rem;color:var(--text-2);line-height:1.6;">18 modules<br>A11y panel<br>4 content modes</div>
+          </div>
+
+          <div style="background:rgba(16,185,129,.07);border:1px solid rgba(16,185,129,.25);border-radius:10px;padding:14px 12px;text-align:center;position:relative;overflow:hidden;">
+            <div style="position:absolute;top:0;left:0;right:0;height:3px;background:var(--emerald);border-radius:10px 10px 0 0;"></div>
+            <div style="font-family:var(--font-m);font-size:.5rem;color:var(--emerald-l);text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px;">Feb 2026</div>
+            <div style="width:36px;height:36px;border-radius:50%;background:rgba(16,185,129,.15);border:1.5px solid rgba(16,185,129,.5);display:flex;align-items:center;justify-content:center;margin:0 auto 8px;">
+              <span style="font-family:var(--font-d);font-size:1.1rem;font-weight:600;color:var(--emerald-l);line-height:1;">3</span>
+            </div>
+            <div style="font-size:.78rem;font-weight:700;color:var(--white);margin-bottom:6px;">Simulations</div>
+            <div style="font-size:.65rem;color:var(--text-2);line-height:1.6;">94% uptake<br>Kolb cycle<br>WCAG 2.1 AA</div>
+          </div>
+
+          <div style="background:rgba(232,163,32,.07);border:1px solid rgba(232,163,32,.25);border-radius:10px;padding:14px 12px;text-align:center;position:relative;overflow:hidden;">
+            <div style="position:absolute;top:0;left:0;right:0;height:3px;background:var(--amber);border-radius:10px 10px 0 0;"></div>
+            <div style="font-family:var(--font-m);font-size:.5rem;color:var(--amber-l);text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px;">Mar 2026</div>
+            <div style="width:36px;height:36px;border-radius:50%;background:rgba(232,163,32,.15);border:1.5px solid rgba(232,163,32,.5);display:flex;align-items:center;justify-content:center;margin:0 auto 8px;">
+              <span style="font-family:var(--font-d);font-size:1.1rem;font-weight:600;color:var(--amber-l);line-height:1;">4</span>
+            </div>
+            <div style="font-size:.78rem;font-weight:700;color:var(--white);margin-bottom:6px;">Reflection</div>
+            <div style="font-size:.65rem;color:var(--text-2);line-height:1.6;">+28% satisfaction<br>186 reflections<br>Moon (2004)</div>
+          </div>
+
+          <div style="background:rgba(232,163,32,.07);border:1px solid rgba(232,163,32,.25);border-radius:10px;padding:14px 12px;text-align:center;position:relative;overflow:hidden;">
+            <div style="position:absolute;top:0;left:0;right:0;height:3px;background:var(--amber);border-radius:10px 10px 0 0;"></div>
+            <div style="font-family:var(--font-m);font-size:.5rem;color:var(--amber-l);text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px;">Apr 2026</div>
+            <div style="width:36px;height:36px;border-radius:50%;background:rgba(232,163,32,.15);border:1.5px solid rgba(232,163,32,.5);display:flex;align-items:center;justify-content:center;margin:0 auto 8px;">
+              <span style="font-family:var(--font-d);font-size:1.1rem;font-weight:600;color:var(--amber-l);line-height:1;">5</span>
+            </div>
+            <div style="font-size:.78rem;font-weight:700;color:var(--white);margin-bottom:6px;">Refinement</div>
+            <div style="font-size:.65rem;color:var(--text-2);line-height:1.6;">EN/ES/FR<br>Iteration 2<br>Kelly (2004)</div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    
+	  
+	  <!-- ACCESSIBILITY IMPLEMENTATION BANNER -->
+  <div style="position:relative;background:linear-gradient(135deg,rgba(17,34,64,.97),rgba(24,36,58,.95));border:1px solid rgba(251,191,36,.2);border-radius:12px;overflow:hidden;margin-top:32px;padding:32px 40px;">
+      <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#fbbf24,#fde68a,#fbbf24);"></div>
+      <div style="position:absolute;top:0;right:0;bottom:0;width:25%;background:radial-gradient(ellipse at 90% 50%,rgba(251,191,36,.04),transparent 70%);pointer-events:none;"></div>
+
+      <!-- eyebrow -->
+      <div style="font-family:var(--font-m);font-size:.56rem;text-transform:uppercase;letter-spacing:.16em;color:#fbbf24;margin-bottom:10px;display:flex;align-items:center;gap:8px;">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#fbbf24" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="8" r="1.5" fill="#fbbf24" stroke="none"/><path d="M9 12h6"/><path d="M8 12c0 2.5 1.5 5 4 5s4-2.5 4-5"/></svg>
+        Accessibility Implementation &#183; CAST Checkpoints 1.1 to 1.5 &#183; Persistent Panel on All 18 Modules
+      </div>
+
+      <!-- heading -->
+      <h3 style="font-family:var(--font-d);font-size:clamp(1.4rem,2.2vw,1.9rem);font-weight:300;color:var(--white);margin:0 0 24px;line-height:1.2;">Access as <em style="font-style:italic;background:linear-gradient(90deg,#fbbf24,rgba(255,255,255,.85));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Infrastructure</em></h3>
+
+      <!-- prose + controls panel -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-bottom:20px;">
+        <div>
+          <p style="font-size:.86rem;color:var(--text-2);line-height:1.9;margin:0 0 14px;text-align:justify;hyphens:auto;">The persistent accessibility panel is not a feature of the dashboard: it is the dashboard's foundational architectural layer. Built into the base HTML template before any module content was written, the panel ensures that every learner who opens any of the 18 module pages encounters the same five access controls without navigating away from their learning content. Rose and Meyer (2002) describe this as the essential distinction between accessible design and inclusive design: accessibility ensures entry; inclusive design ensures engagement. The five controls directly operationalise CAST Checkpoints 1.1 to 1.5, removing perceptual and linguistic barriers at the structural level.</p>
+          <p style="font-size:.86rem;color:var(--text-2);line-height:1.9;margin:0;text-align:justify;hyphens:auto;">Blaschke (2012) identifies self-determined learnings as dependent on learner control over the conditions of engagement: when students can adjust font size, contrast, or language without institutional permission, they enact the autonomy that heutagogical approaches identify as essential for deep learning. This is particularly significant in an AI module where the cognitive demands of notation, algorithmic abstraction, and mathematical formalism are already high: removing perceptual barriers reduces the extraneous cognitive load that would otherwise compete with germane load required for conceptual understanding (Mayer, 2009).</p>
+        </div>
+
+        <div>
+          <div style="background:rgba(255,255,255,.03);border:1px solid rgba(251,191,36,.18);border-radius:10px;overflow:hidden;">
+            <div style="padding:10px 14px;background:rgba(251,191,36,.1);border-bottom:1px solid rgba(251,191,36,.15);display:flex;align-items:center;justify-content:space-between;">
+              <div style="font-family:var(--font-m);font-size:.54rem;text-transform:uppercase;letter-spacing:.1em;color:#fbbf24;">Five Accessibility Controls &#183; div.accessibility-panel</div>
+              <div style="font-family:var(--font-m);font-size:.5rem;padding:2px 8px;border-radius:20px;background:rgba(251,191,36,.12);border:1px solid rgba(251,191,36,.25);color:#fbbf24;">All 18 modules</div>
+            </div>
+            <div style="padding:12px 14px;display:flex;flex-direction:column;gap:8px;">
+
+              <div style="display:flex;align-items:flex-start;gap:10px;padding:8px 10px;background:rgba(251,191,36,.04);border:1px solid rgba(251,191,36,.1);border-radius:7px;">
+                <div style="flex-shrink:0;width:26px;height:26px;border-radius:6px;background:rgba(251,191,36,.12);border:1px solid rgba(251,191,36,.22);display:flex;align-items:center;justify-content:center;">
+                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#fbbf24" stroke-width="2.5" stroke-linecap="round"><path d="M4 7V4h16v3M9 20h6M12 4v16"/></svg>
+                </div>
+                <div style="flex:1;">
+                  <div style="display:flex;align-items:center;gap:6px;margin-bottom:2px;">
+                    <span style="font-size:.74rem;font-weight:600;color:var(--white);">Font size controls (A+ / A&#8722;)</span>
+                    <span style="font-family:var(--font-m);font-size:.52rem;padding:1px 6px;border-radius:20px;background:rgba(251,191,36,.12);border:1px solid rgba(251,191,36,.25);color:#fbbf24;">CP 1.1</span>
+                  </div>
+                  <div style="font-size:.7rem;color:var(--text-2);line-height:1.5;">increaseFont() / decreaseFont() via CSS class injection. No page reload. Persistent across session.</div>
+                </div>
+              </div>
+
+              <div style="display:flex;align-items:flex-start;gap:10px;padding:8px 10px;background:rgba(251,191,36,.04);border:1px solid rgba(251,191,36,.1);border-radius:7px;">
+                <div style="flex-shrink:0;width:26px;height:26px;border-radius:6px;background:rgba(251,191,36,.12);border:1px solid rgba(251,191,36,.22);display:flex;align-items:center;justify-content:center;">
+                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#fbbf24" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4" fill="#fbbf24" stroke="none"/></svg>
+                </div>
+                <div style="flex:1;">
+                  <div style="display:flex;align-items:center;gap:6px;margin-bottom:2px;">
+                    <span style="font-size:.74rem;font-weight:600;color:var(--white);">High contrast toggle</span>
+                    <span style="font-family:var(--font-m);font-size:.52rem;padding:1px 6px;border-radius:20px;background:rgba(251,191,36,.12);border:1px solid rgba(251,191,36,.25);color:#fbbf24;">CP 1.2</span>
+                  </div>
+                  <div style="font-size:.7rem;color:var(--text-2);line-height:1.5;">toggleHighContrast() applies body[data-theme="high-contrast"]. WCAG 4.5:1 contrast ratio maintained throughout.</div>
+                </div>
+              </div>
+
+              <div style="display:flex;align-items:flex-start;gap:10px;padding:8px 10px;background:rgba(251,191,36,.04);border:1px solid rgba(251,191,36,.1);border-radius:7px;">
+                <div style="flex-shrink:0;width:26px;height:26px;border-radius:6px;background:rgba(251,191,36,.12);border:1px solid rgba(251,191,36,.22);display:flex;align-items:center;justify-content:center;">
+                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#fbbf24" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h10M4 18h12"/></svg>
+                </div>
+                <div style="flex:1;">
+                  <div style="display:flex;align-items:center;gap:6px;margin-bottom:2px;">
+                    <span style="font-size:.74rem;font-weight:600;color:var(--white);">Dyslexia font (OpenDyslexic)</span>
+                    <span style="font-family:var(--font-m);font-size:.52rem;padding:1px 6px;border-radius:20px;background:rgba(251,191,36,.12);border:1px solid rgba(251,191,36,.25);color:#fbbf24;">CP 1.3</span>
+                  </div>
+                  <div style="font-size:.7rem;color:var(--text-2);line-height:1.5;">toggleDyslexiaFont() swaps font-family to OpenDyslexic across all module text. Reduces visual crowding.</div>
+                </div>
+              </div>
+
+              <div style="display:flex;align-items:flex-start;gap:10px;padding:8px 10px;background:rgba(251,191,36,.04);border:1px solid rgba(251,191,36,.1);border-radius:7px;">
+                <div style="flex-shrink:0;width:26px;height:26px;border-radius:6px;background:rgba(251,191,36,.12);border:1px solid rgba(251,191,36,.22);display:flex;align-items:center;justify-content:center;">
+                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#fbbf24" stroke-width="2" stroke-linecap="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+                </div>
+                <div style="flex:1;">
+                  <div style="display:flex;align-items:center;gap:6px;margin-bottom:2px;">
+                    <span style="font-size:.74rem;font-weight:600;color:var(--white);">Read aloud (Web Speech API)</span>
+                    <span style="font-family:var(--font-m);font-size:.52rem;padding:1px 6px;border-radius:20px;background:rgba(251,191,36,.12);border:1px solid rgba(251,191,36,.25);color:#fbbf24;">CP 1.4</span>
+                  </div>
+                  <div style="font-size:.7rem;color:var(--text-2);line-height:1.5;">readAloud() uses SpeechSynthesis API to convert visible module text to speech. Supports auditory learners.</div>
+                </div>
+              </div>
+
+              <div style="display:flex;align-items:flex-start;gap:10px;padding:8px 10px;background:rgba(251,191,36,.04);border:1px solid rgba(251,191,36,.1);border-radius:7px;">
+                <div style="flex-shrink:0;width:26px;height:26px;border-radius:6px;background:rgba(251,191,36,.12);border:1px solid rgba(251,191,36,.22);display:flex;align-items:center;justify-content:center;">
+                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#fbbf24" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                </div>
+                <div style="flex:1;">
+                  <div style="display:flex;align-items:center;gap:6px;margin-bottom:2px;">
+                    <span style="font-size:.74rem;font-weight:600;color:var(--white);">Language selector EN / ES / FR</span>
+                    <span style="font-family:var(--font-m);font-size:.52rem;padding:1px 6px;border-radius:20px;background:rgba(251,191,36,.12);border:1px solid rgba(251,191,36,.25);color:#fbbf24;">CP 1.5</span>
+                  </div>
+                  <div style="font-size:.7rem;color:var(--text-2);line-height:1.5;">changeLanguage(value) via select#languageSelect onchange. Interface translates without page reload. Kieran and Anderson (2018).</div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- UDL mapping footer -->
+      <div style="padding:12px 16px;background:rgba(251,191,36,.06);border:1px solid rgba(251,191,36,.18);border-radius:8px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;">
+        <div style="font-family:var(--font-m);font-size:.52rem;text-transform:uppercase;letter-spacing:.1em;color:#fbbf24;white-space:nowrap;">UDL Mapping</div>
+        <div style="width:1px;height:16px;background:rgba(251,191,36,.2);flex-shrink:0;"></div>
+        <div style="font-size:.74rem;color:var(--text-2);line-height:1.6;">Checkpoints 1.1 to 1.5 &#183; 5 controls &#183; 18 modules &#183; 0 clicks to activate &#183; Rose and Meyer (2002) &#183; Blaschke (2012) &#183; Mayer (2009) &#183; Kieran and Anderson (2018)</div>
+      </div>
+    </div>
+   
+	  <!-- COMPLIANCE BANNER -->
+    <div style="position:relative;background:linear-gradient(135deg,rgba(17,34,64,.97),rgba(25,38,64,.95));border:1px solid rgba(167,139,250,.18);border-radius:12px;overflow:hidden;margin-top:24px;padding:32px 40px;">
+      <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#a78bfa,var(--sky),var(--emerald));"></div>
+      <div style="position:absolute;top:0;right:0;bottom:0;width:25%;background:radial-gradient(ellipse at 90% 50%,rgba(167,139,250,.04),transparent 70%);pointer-events:none;"></div>
+
+      <!-- eyebrow -->
+      <div style="font-family:var(--font-m);font-size:.56rem;text-transform:uppercase;letter-spacing:.16em;color:#a78bfa;margin-bottom:10px;display:flex;align-items:center;gap:8px;">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#a78bfa" stroke-width="2.5" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        Policy and Legal Compliance &#183; UDL as Compliance Architecture &#183; WCAG 2.1 AA &#183; GDPR &#183; EU AI Act
+      </div>
+
+      <!-- heading -->
+      <h3 style="font-family:var(--font-d);font-size:clamp(1.4rem,2.2vw,1.9rem);font-weight:300;color:var(--white);margin:0 0 24px;line-height:1.2;">Compliance by <em style="font-style:italic;background:linear-gradient(90deg,#a78bfa,rgba(255,255,255,.85));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Design</em></h3>
+
+      <!-- prose + cards -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-bottom:20px;">
+        <div>
+        <p style="font-size:.86rem;color:var(--text-2);line-height:1.9;margin:0 0 14px;text-align:justify;hyphens:auto;">The Interactive AI Learning Dashboard treats policy compliance not as a checklist but as a curriculum design commitment embedded into the system architecture. The EU Web Accessibility Directive (2016) and the Irish Disability Act (2005) require that digital education materials are accessible to all learners including those registered with disability services. Rather than addressing these requirements through reactive accommodation, the dashboard operationalises them through the UDL accessibility panel built into every module page before content was written. This approach reflects the principle that inclusive design is the most legally robust form of compliance: when access is structural, no learner needs to disclose a disability to receive equitable participation.</p>
+          <p style="font-size:.86rem;color:var(--text-2);line-height:1.9;margin:0;text-align:justify;hyphens:auto;">GDPR compliance is addressed through privacy by design: the dashboard uses localStorage for reflection persistence, meaning student data remains on the learner's own device rather than being transmitted to external servers. No personal identifiers are collected beyond name and optional student ID entered voluntarily for reflection keying. The EU AI Act (2024) classifies educational AI tools as low-risk but imposes transparency obligations: every simulation embedded in the dashboard carries a descriptive title attribute, a written conceptual summary, and lecture content explaining the algorithm's behaviour, ensuring learners understand the AI system they are engaging with before and after interaction.</p>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:9px;">
+
+          <div style="display:flex;align-items:flex-start;gap:12px;padding:12px 14px;background:rgba(167,139,250,.07);border:1px solid rgba(167,139,250,.2);border-radius:10px;border-left:3px solid #a78bfa;">
+            <div style="flex-shrink:0;width:32px;height:32px;border-radius:7px;background:rgba(167,139,250,.12);border:1px solid rgba(167,139,250,.25);display:flex;align-items:center;justify-content:center;">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#a78bfa" stroke-width="2" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <div>
+              <div style="font-family:var(--font-m);font-size:.56rem;text-transform:uppercase;letter-spacing:.1em;color:#a78bfa;margin-bottom:4px;">Digital Accessibility &#183; WCAG 2.1 AA</div>
+              <p style="font-size:.76rem;color:var(--text-2);line-height:1.65;margin:0;text-align:justify;hyphens:auto;">All iframes carry descriptive title attributes. Keyboard navigation exits all simulation frames cleanly. Font scaling, contrast, and dyslexia font controls meet WCAG 1.4 and 1.4.3 requirements. EU Web Accessibility Directive (2016) and Irish Disability Act (2005) compliance embedded by design.</p>
+            </div>
+          </div>
+
+          <div style="display:flex;align-items:flex-start;gap:12px;padding:12px 14px;background:rgba(56,189,248,.07);border:1px solid rgba(56,189,248,.2);border-radius:10px;border-left:3px solid var(--sky);">
+            <div style="flex-shrink:0;width:32px;height:32px;border-radius:7px;background:rgba(56,189,248,.12);border:1px solid rgba(56,189,248,.25);display:flex;align-items:center;justify-content:center;">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2" stroke-linecap="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            </div>
+            <div>
+              <div style="font-family:var(--font-m);font-size:.56rem;text-transform:uppercase;letter-spacing:.1em;color:var(--sky);margin-bottom:4px;">Data Protection &#183; GDPR Privacy by Design</div>
+              <p style="font-size:.76rem;color:var(--text-2);line-height:1.65;margin:0;text-align:justify;hyphens:auto;">Reflections stored in localStorage on the learner's device. No server-side collection. Student ID optional and derived from name only. Retention controlled by learner. Aligns with GDPR Article 5 data minimisation and purpose limitation principles.</p>
+            </div>
+          </div>
+
+          <div style="display:flex;align-items:flex-start;gap:12px;padding:12px 14px;background:rgba(16,185,129,.07);border:1px solid rgba(16,185,129,.2);border-radius:10px;border-left:3px solid var(--emerald);">
+            <div style="flex-shrink:0;width:32px;height:32px;border-radius:7px;background:rgba(16,185,129,.12);border:1px solid rgba(16,185,129,.25);display:flex;align-items:center;justify-content:center;">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+            </div>
+            <div>
+              <div style="font-family:var(--font-m);font-size:.56rem;text-transform:uppercase;letter-spacing:.1em;color:var(--emerald-l);margin-bottom:4px;">AI Transparency &#183; EU AI Act (2024)</div>
+              <p style="font-size:.76rem;color:var(--text-2);line-height:1.65;margin:0;text-align:justify;hyphens:auto;">Every simulation carries a title attribute, written conceptual summary, and lecture explanation of algorithm behaviour. Educational AI classified as low-risk under EU AI Act. Transparency obligations embedded architecturally, not appended as disclaimers.</p>
+            </div>
+          </div>
+
+          <div style="display:flex;align-items:flex-start;gap:12px;padding:12px 14px;background:rgba(232,163,32,.07);border:1px solid rgba(232,163,32,.2);border-radius:10px;border-left:3px solid var(--amber);">
+            <div style="flex-shrink:0;width:32px;height:32px;border-radius:7px;background:rgba(232,163,32,.12);border:1px solid rgba(232,163,32,.25);display:flex;align-items:center;justify-content:center;">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#e8a320" stroke-width="2" stroke-linecap="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <div>
+              <div style="font-family:var(--font-m);font-size:.56rem;text-transform:uppercase;letter-spacing:.1em;color:var(--amber-l);margin-bottom:4px;">Inclusive Education Rights &#183; UN CRPD &#183; UNESCO 2030</div>
+              <p style="font-size:.76rem;color:var(--text-2);line-height:1.65;margin:0;text-align:justify;hyphens:auto;">UN CRPD: access to technology-enhanced learning without discrimination. UNESCO Education 2030 equity goals: language selector (EN/ES/FR) ensures linguistic inclusion. OECD AI Principles: transparency and fairness built into all interactive simulations.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- footer -->
+      <div style="padding:14px 16px;background:rgba(167,139,250,.06);border:1px solid rgba(167,139,250,.18);border-radius:8px;">
+        <div style="font-family:var(--font-m);font-size:.54rem;text-transform:uppercase;letter-spacing:.1em;color:#a78bfa;margin-bottom:6px;">Compliance as UDL Practice &#183; Theoretical Grounding &#183; Further detail: help.html#udl and udl_law.html</div>
+        <div style="font-size:.78rem;color:var(--text-2);line-height:1.7;">The dashboard demonstrates that UDL implementation and legal compliance are not parallel obligations but the same architectural commitment expressed in different registers. When access is built into the system by design, legal requirements are met not through accommodation workflows but through the learning environment itself. This reflects Biesta's (2009) argument that good education requires coherent alignment of purpose, process, and accountability: the compliance framework is the pedagogical framework, operationalised in code.</div>
+      </div>
+    </div>
+
+    <!-- REFERENCES -->
+<div class="s2-refs-box" role="note" aria-label="Implementation references" style="background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.08);margin-top:32px;">
+   <button onclick="var el=this.nextElementSibling;var open=el.classList.toggle('open');this.setAttribute('aria-expanded',open);this.querySelector('svg').style.transform=open?'rotate(180deg)':'rotate(0deg)';" aria-expanded="false" style="display:flex;align-items:center;gap:8px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:10px 18px;cursor:pointer;font-family:var(--font-m);font-size:.6rem;color:var(--text-2);width:100%;text-align:left;transition:background .2s;" onmouseover="this.style.background='rgba(255,255,255,.07)'" onmouseout="this.style.background='rgba(255,255,255,.04)'">
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--sky)" stroke-width="2" stroke-linecap="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+  References &#183; Section 04 &#8212; Implementation of Change
+  <svg style="margin-left:auto;transition:transform .3s" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+</button>
+      <div class="s2-refs-list" id="s4RefsList">
+ <div class="s2-ref-item">Biesta, G.J.J. (2010) <em>Good Education in an Age of Measurement: Ethics, Politics, Democracy.</em> New York: Routledge. Available at: <a href="https://doi.org/10.4324/9781315634319" target="_blank" rel="noopener" style="color:var(--sky)">https://doi.org/10.4324/9781315634319</a></div>
+  <div class="s2-ref-item">Biggs, J.B. and Tang, C. (2011) <em>Teaching for Quality Learning at University.</em> 4th edn. Maidenhead: Open University Press.</div>
+  <div class="s2-ref-item">Blaschke, L.M. (2012) &#8216;Heutagogy and lifelong learning: a review of heutagogical practice and self-determined learning&#8217;, <em>The International Review of Research in Open and Distributed Learning,</em> 13(1), pp. 56&#8211;71. Available at: <a href="https://doi.org/10.19173/irrodl.v13i1.1076" target="_blank" rel="noopener" style="color:var(--sky)">https://doi.org/10.19173/irrodl.v13i1.1076</a></div>
+  <div class="s2-ref-item">Boud, D. and Molloy, E. (eds.) (2013) <em>Feedback in Higher and Professional Education: Understanding It and Doing It Well.</em> London: Routledge.</div>
+  <div class="s2-ref-item">Brookfield, S.D. (2017) <em>Becoming a Critically Reflective Teacher.</em> 2nd edn. San Francisco, CA: Jossey-Bass.</div>
+  <div class="s2-ref-item">Carless, D. and Boud, D. (2018) &#8216;The development of student feedback literacy: enabling uptake of feedback&#8217;, <em>Assessment &amp; Evaluation in Higher Education,</em> 43(8), pp. 1315&#8211;1325. Available at: <a href="https://doi.org/10.1080/02602938.2018.1463354" target="_blank" rel="noopener" style="color:var(--sky)">https://doi.org/10.1080/02602938.2018.1463354</a></div>
+  <div class="s2-ref-item">CAST (2024) <em>Universal Design for Learning Guidelines Version 3.0.</em> Wakefield, MA: CAST. Available at: <a href="https://udlguidelines.cast.org" target="_blank" rel="noopener" style="color:var(--sky)">https://udlguidelines.cast.org</a> (Accessed: 1 May 2026).</div>
+  <div class="s2-ref-item">Cook-Sather, A., Bovill, C. and Felten, P. (2014) <em>Engaging Students as Partners in Learning and Teaching.</em> San Francisco, CA: Jossey-Bass.</div>
+  <div class="s2-ref-item">De Jong, T., Lazonder, A.W., Chinn, C.A., Fischer, F., Gobert, J., Hmelo-Silver, C.E., Koedinger, K.R., Krajcik, J.S., Kyza, E.A., Linn, M.C., Pedaste, M., Scheiter, K. and Zacharia, Z.C. (2023) &#8216;Let&#8217;s talk evidence: the case for combining inquiry-based and direct instruction&#8217;, <em>Educational Research Review,</em> 39, Article 100536. Available at: <a href="https://doi.org/10.1016/j.edurev.2023.100536" target="_blank" rel="noopener" style="color:var(--sky)">https://doi.org/10.1016/j.edurev.2023.100536</a></div>
+  <div class="s2-ref-item">European Parliament and Council of the European Union (2024) <em>Regulation (EU) 2024/1689 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act).</em> Official Journal of the European Union, L 1689. Available at: <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R1689" target="_blank" rel="noopener" style="color:var(--sky)">https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R1689</a> (Accessed: 1 May 2026).</div>
+  <div class="s2-ref-item">European Union (2016) <em>Directive (EU) 2016/2102 of the European Parliament and of the Council on the accessibility of the websites and mobile applications of public sector bodies.</em> Official Journal of the European Union, L 327, pp. 1&#8211;15. Available at: <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32016L2102" target="_blank" rel="noopener" style="color:var(--sky)">https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32016L2102</a> (Accessed: 1 May 2026).</div>
+  <div class="s2-ref-item">Government of Ireland (2005) <em>Disability Act 2005.</em> Dublin: Government of Ireland. Available at: <a href="https://www.irishstatutebook.ie/eli/2005/act/14/enacted/en/html" target="_blank" rel="noopener" style="color:var(--sky)">https://www.irishstatutebook.ie/eli/2005/act/14/enacted/en/html</a> (Accessed: 1 May 2026).</div>
+  <div class="s2-ref-item">Kelly, A.V. (2004) <em>The Curriculum: Theory and Practice.</em> London: Sage.</div>
+  <div class="s2-ref-item">Kieran, L. and Anderson, C. (2018) &#8216;Connecting Universal Design for Learning with culturally responsive teaching: a framework for making more equitable and inclusive classrooms&#8217;, <em>Educational Administration Quarterly,</em> 51(9). Available at: <a href="https://doi.org/10.1177/0013124518785012" target="_blank" rel="noopener" style="color:var(--sky)">https://doi.org/10.1177/0013124518785012</a></div>
+  <div class="s2-ref-item">Kolb, D.A. (1984) <em>Experiential Learning: Experience as the Source of Learning and Development.</em> Englewood Cliffs, NJ: Prentice Hall.</div>
+  <div class="s2-ref-item">Laurillard, D. (2012) <em>Teaching as a Design Science: Building Pedagogical Patterns for Learning and Technology.</em> New York: Routledge.</div>
+  <div class="s2-ref-item">Mayer, R.E. (2009) <em>Multimedia Learning.</em> 2nd edn. Cambridge: Cambridge University Press. Available at: <a href="https://doi.org/10.1017/CBO9780511811678" target="_blank" rel="noopener" style="color:var(--sky)">https://doi.org/10.1017/CBO9780511811678</a></div>
+  <div class="s2-ref-item">Mezirow, J. (1997) &#8216;Transformative learning: theory to practice&#8217;, <em>New Directions for Adult and Continuing Education,</em> 1997(74), pp. 5&#8211;12. Available at: <a href="https://doi.org/10.1002/ace.7401" target="_blank" rel="noopener" style="color:var(--sky)">https://doi.org/10.1002/ace.7401</a></div>
+  <div class="s2-ref-item">Moon, J.A. (2004) <em>A Handbook of Reflective and Experiential Learning: Theory and Practice.</em> London: Routledge. Available at: <a href="https://doi.org/10.4324/9780203416150" target="_blank" rel="noopener" style="color:var(--sky)">https://doi.org/10.4324/9780203416150</a></div>
+  <div class="s2-ref-item">Nicol, D.J. and Macfarlane-Dick, D. (2006) &#8216;Formative assessment and self-regulated learning: a model and seven principles of good feedback practice&#8217;, <em>Studies in Higher Education,</em> 31(2), pp. 199&#8211;218. Available at: <a href="https://doi.org/10.1080/03075070600572090" target="_blank" rel="noopener" style="color:var(--sky)">https://doi.org/10.1080/03075070600572090</a></div>
+  <div class="s2-ref-item">Ramsden, P. (2003) <em>Learning to Teach in Higher Education.</em> 2nd edn. London: Routledge Falmer.</div>
+  <div class="s2-ref-item">Rose, D.H. and Meyer, A. (2002) <em>Teaching Every Student in the Digital Age: Universal Design for Learning.</em> Alexandria, VA: Association for Supervision and Curriculum Development.</div>
+  <div class="s2-ref-item">Thijs, A. and van den Akker, J. (eds.) (2009) <em>Curriculum in Development.</em> Enschede: SLO Netherlands Institute for Curriculum Development.</div>
+  <div class="s2-ref-item">Tyler, R.W. (1949) <em>Basic Principles of Curriculum and Instruction.</em> Chicago: University of Chicago Press.</div>
+</div>
+    </div>
+
+  </div>
+</section>
+
+
+
+
+	<!-- S5 EVALUATION -->
+</main>
+<footer role="contentinfo" style="background:var(--navy-2);border-top:1px solid rgba(255,255,255,.06);">
+
+  <!-- gradient accent -->
+  <div style="height:2px;background:linear-gradient(90deg,var(--emerald) 0%,var(--sky) 40%,var(--amber) 100%);"></div>
+
+  <!-- main grid -->
+  <div style="max-width:1360px;margin:0 auto;padding:60px 28px 44px;display:grid;grid-template-columns:2fr 1fr 1fr;gap:64px;align-items:start;">
+
+    <!-- LEFT &ndash; identity + tagline + credentials row -->
+    <div>
+
+      <!-- name -->
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;">
+        <div style="width:42px;height:42px;border-radius:10px;background:linear-gradient(135deg,var(--emerald),var(--amber));display:flex;align-items:center;justify-content:center;font-family:var(--font-m);font-size:.75rem;font-weight:700;color:var(--navy);flex-shrink:0;letter-spacing:.04em;">SH</div>
+        <div>
+          <div style="font-family:var(--font-d);font-size:1.1rem;font-style:italic;color:var(--white);line-height:1.1;">Dr. Shagufta Henna</div>
+          <div style="font-family:var(--font-m);font-size:.5rem;color:var(--text-3);text-transform:uppercase;letter-spacing:.12em;margin-top:2px;">Lecturer in AI &amp; Computing &#183; ATU Ireland</div>
+        </div>
+      </div>
+
+      <!-- tagline -->
+      <p style="font-size:.8rem;color:var(--text-3);line-height:1.85;max-width:380px;margin:0 0 24px;text-align:justify;hyphens:auto;">An evidence-based teaching portfolio grounded in Universal Design for Learning, inclusive curriculum design, and AI-enhanced pedagogy, built for every learner, validated by research, and certified by the National Forum for the Enhancement of Teaching and Learning in Higher Education.</p>
+
+      <!-- credentials &ndash; SIDE BY SIDE -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:24px;">
+
+        <a href="https://openbadgefactory.com/v1/assertion/6fab207ec664a6b9ab14145b9adb650de0d7b9be.html" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:10px;padding:12px 14px;background:rgba(16,185,129,.04);border:1px solid rgba(16,185,129,.15);border-radius:10px;text-decoration:none;transition:all .2s;" onmouseover="this.style.background='rgba(16,185,129,.08)';this.style.borderColor='rgba(16,185,129,.3)'" onmouseout="this.style.background='rgba(16,185,129,.04)';this.style.borderColor='rgba(16,185,129,.15)'">
+          <img src="badge.jpg" alt="UDL Badge" style="width:42px;height:42px;border-radius:7px;flex-shrink:0;object-fit:contain;" />
+          <div style="min-width:0;">
+            <div style="font-family:var(--font-m);font-size:.47rem;color:var(--emerald-l);text-transform:uppercase;letter-spacing:.09em;margin-bottom:2px;">Verified &#8599;</div>
+            <div style="font-size:.7rem;color:var(--white);font-weight:600;line-height:1.25;">Universal Design in Teaching &amp; Learning</div>
+            <div style="font-family:var(--font-m);font-size:.48rem;color:var(--text-3);margin-top:3px;">National Forum &#183; Feb 2024</div>
+          </div>
+        </a>
+
+        <a href="https://openbadgefactory.com/v1/assertion/edf1564bff1221907cafb9ade5d0804c25d0796d.html" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:10px;padding:12px 14px;background:rgba(56,189,248,.04);border:1px solid rgba(56,189,248,.14);border-radius:10px;text-decoration:none;transition:all .2s;" onmouseover="this.style.background='rgba(56,189,248,.08)';this.style.borderColor='rgba(56,189,248,.3)'" onmouseout="this.style.background='rgba(56,189,248,.04)';this.style.borderColor='rgba(56,189,248,.14)'">
+          <img src="ntutr.jpg" alt="N-TUTORR Badge" style="width:42px;height:42px;border-radius:7px;flex-shrink:0;object-fit:contain;" />
+          <div style="min-width:0;">
+            <div style="font-family:var(--font-m);font-size:.47rem;color:var(--sky);text-transform:uppercase;letter-spacing:.09em;margin-bottom:2px;">Verified &#8599;</div>
+            <div style="font-size:.7rem;color:var(--white);font-weight:600;line-height:1.25;">N-TUTORR Community Member</div>
+            <div style="font-family:var(--font-m);font-size:.48rem;color:var(--text-3);margin-top:3px;">ATU Galway City &#183; May 2024</div>
+          </div>
+        </a>
+
+      </div>
+
+      <!-- compliance pills -->
+      <div style="display:flex;flex-wrap:wrap;gap:6px;">
+        <span style="font-family:var(--font-m);font-size:.52rem;padding:3px 10px;border-radius:20px;background:rgba(16,185,129,.07);border:1px solid rgba(16,185,129,.18);color:var(--emerald-l);">WCAG 2.1 AA</span>
+        <span style="font-family:var(--font-m);font-size:.52rem;padding:3px 10px;border-radius:20px;background:rgba(56,189,248,.07);border:1px solid rgba(56,189,248,.18);color:var(--sky);">GDPR Compliant</span>
+        <span style="font-family:var(--font-m);font-size:.52rem;padding:3px 10px;border-radius:20px;background:rgba(232,163,32,.07);border:1px solid rgba(232,163,32,.18);color:var(--amber-l);">UDL Guidelines v3.0</span>
+        <span style="font-family:var(--font-m);font-size:.52rem;padding:3px 10px;border-radius:20px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);color:var(--text-3);">EU AI Act 2024</span>
+      </div>
+
+    </div>
+
+    <!-- MIDDLE &ndash; portfolio nav -->
+    <div>
+      <div style="font-family:var(--font-m);font-size:.55rem;text-transform:uppercase;letter-spacing:.14em;color:var(--text-3);margin-bottom:18px;padding-bottom:10px;border-bottom:1px solid rgba(255,255,255,.06);">Portfolio</div>
+      <nav style="display:flex;flex-direction:column;gap:11px;" aria-label="Portfolio sections">
+        <a href="#s1" style="font-size:.78rem;color:var(--text-3);text-decoration:none;display:flex;align-items:center;gap:8px;transition:color .2s;" onmouseover="this.style.color='var(--amber-l)'" onmouseout="this.style.color='var(--text-3)'">
+          <span style="width:14px;height:1px;background:rgba(255,255,255,.12);flex-shrink:0;"></span>Teaching Philosophy
+        </a>
+        <a href="#s2" style="font-size:.78rem;color:var(--text-3);text-decoration:none;display:flex;align-items:center;gap:8px;transition:color .2s;" onmouseover="this.style.color='var(--amber-l)'" onmouseout="this.style.color='var(--text-3)'">
+          <span style="width:14px;height:1px;background:rgba(255,255,255,.12);flex-shrink:0;"></span>Student Reflections
+        </a>
+        <a href="#s3" style="font-size:.78rem;color:var(--text-3);text-decoration:none;display:flex;align-items:center;gap:8px;transition:color .2s;" onmouseover="this.style.color='var(--amber-l)'" onmouseout="this.style.color='var(--text-3)'">
+          <span style="width:14px;height:1px;background:rgba(255,255,255,.12);flex-shrink:0;"></span>UDL Plan
+        </a>
+        <a href="#s4" style="font-size:.78rem;color:var(--text-3);text-decoration:none;display:flex;align-items:center;gap:8px;transition:color .2s;" onmouseover="this.style.color='var(--amber-l)'" onmouseout="this.style.color='var(--text-3)'">
+          <span style="width:14px;height:1px;background:rgba(255,255,255,.12);flex-shrink:0;"></span>Implementation
+        </a>
+        <a href="#s5" style="font-size:.78rem;color:var(--text-3);text-decoration:none;display:flex;align-items:center;gap:8px;transition:color .2s;" onmouseover="this.style.color='var(--amber-l)'" onmouseout="this.style.color='var(--text-3)'">
+          <span style="width:14px;height:1px;background:rgba(255,255,255,.12);flex-shrink:0;"></span>Evaluation &amp; Effectiveness
+        </a>
+        <a href="#s6" style="font-size:.78rem;color:var(--text-3);text-decoration:none;display:flex;align-items:center;gap:8px;transition:color .2s;" onmouseover="this.style.color='var(--amber-l)'" onmouseout="this.style.color='var(--text-3)'">
+          <span style="width:14px;height:1px;background:rgba(255,255,255,.12);flex-shrink:0;"></span>Educator Reflection
+        </a>
+        <a href="#figures" style="font-size:.78rem;color:var(--text-3);text-decoration:none;display:flex;align-items:center;gap:8px;transition:color .2s;" onmouseover="this.style.color='var(--amber-l)'" onmouseout="this.style.color='var(--text-3)'">
+          <span style="width:14px;height:1px;background:rgba(255,255,255,.12);flex-shrink:0;"></span>Evidence
+        </a>
+      </nav>
+    </div>
+
+    <!-- RIGHT &ndash; contact -->
+    <div>
+      <div style="font-family:var(--font-m);font-size:.55rem;text-transform:uppercase;letter-spacing:.14em;color:var(--text-3);margin-bottom:18px;padding-bottom:10px;border-bottom:1px solid rgba(255,255,255,.06);">Contact &amp; Links</div>
+      <div style="display:flex;flex-direction:column;gap:12px;">
+<a href="https://www.linkedin.com/in/shagufta-h-436887172/" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:9px;font-size:.78rem;color:var(--text-3);text-decoration:none;transition:color .2s;" onmouseover="this.style.color='var(--sky)'" onmouseout="this.style.color='var(--text-3)'">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" style="flex-shrink:0;opacity:.4;"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          linkedin.com/in/shagufta-h
+        </a>
+        <a href="mailto:shagufta.henna@atu.ie" style="display:flex;align-items:center;gap:9px;font-size:.78rem;color:var(--text-3);text-decoration:none;transition:color .2s;" onmouseover="this.style.color='var(--amber-l)'" onmouseout="this.style.color='var(--text-3)'">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" style="flex-shrink:0;opacity:.4;"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+          shagufta.henna@atu.ie
+        </a>
+
+        <a href="https://www.atu.ie/courses/computing" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:9px;font-size:.78rem;color:var(--text-3);text-decoration:none;transition:color .2s;" onmouseover="this.style.color='var(--amber-l)'" onmouseout="this.style.color='var(--text-3)'">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" style="flex-shrink:0;opacity:.4;"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          Department of Computing
+        </a>
+
+        <a href="https://www.atu.ie" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:9px;font-size:.78rem;color:var(--text-3);text-decoration:none;transition:color .2s;" onmouseover="this.style.color='var(--amber-l)'" onmouseout="this.style.color='var(--text-3)'">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" style="flex-shrink:0;opacity:.4;"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          Atlantic Technological University
+        </a>
+
+        <div style="height:1px;background:rgba(255,255,255,.06);margin:2px 0;"></div>
+
+        <a href="https://udlguidelines.cast.org" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:9px;font-size:.78rem;color:var(--text-3);text-decoration:none;transition:color .2s;" onmouseover="this.style.color='var(--amber-l)'" onmouseout="this.style.color='var(--text-3)'">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" style="flex-shrink:0;opacity:.4;"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          CAST UDL Guidelines 3.0
+        </a>
+
+     
+       <a href="https://openbadgefactory.com/v1/assertion/6fab207ec664a6b9ab14145b9adb650de0d7b9be.html" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:9px;font-size:.78rem;color:var(--text-3);text-decoration:none;transition:color .2s;" onmouseover="this.style.color='var(--emerald-l)'" onmouseout="this.style.color='var(--text-3)'">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" style="flex-shrink:0;opacity:.4;"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
+          UDL Certified &#183; National Forum 2024
+        </a>
+
+      </div>
+    </div>
+
+  </div>
+
+  <!-- bottom bar -->
+  <div style="border-top:1px solid rgba(255,255,255,.05);background:rgba(0,0,0,.18);">
+    <div style="max-width:1360px;margin:0 auto;padding:14px 28px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;">
+      <p style="font-size:.68rem;color:var(--text-3);font-family:var(--font-m);">&#169; 2026 Dr. Shagufta Henna &#183; Atlantic Technological University, Ireland</p>
+      <p style="font-size:.68rem;color:var(--text-3);font-family:var(--font-m);">Interactive AI Learning Dashboard &#183; UDL v3.0 &#183; Academic Year 2025&#8211;26</p>
+    </div>
+  </div>
+
+</footer>
+
+
+</main>
+
+
+<script>
+
+// ── NAV ──
+const nav=document.getElementById('navWrap');
+const secs=[...document.querySelectorAll('section[id]'),...['s3','s4','s5','s6','figures'].map(id=>document.getElementById(id))].filter(Boolean);
+const navLinks=document.querySelectorAll('.nav-links a');
+window.addEventListener('scroll',()=>{
+  nav.classList.toggle('solid',window.scrollY>60);
+  let cur='';
+  secs.forEach(s=>{if(window.scrollY>=s.offsetTop-120)cur=s.id});
+  navLinks.forEach(a=>{a.classList.toggle('act',a.getAttribute('href')==='#'+cur)});
+},{passive:true});
+
+// ── MOBILE NAV ──
+function togMob(){
+  const mn=document.getElementById('mobNav');
+  const hb=document.getElementById('hbg');
+  const open=mn.classList.toggle('open');
+  hb.setAttribute('aria-expanded',open);
+  document.body.style.overflow=open?'hidden':'';
+}
+function closeMob(){
+  document.getElementById('mobNav').classList.remove('open');
+  document.getElementById('hbg').setAttribute('aria-expanded','false');
+  document.body.style.overflow='';
+}
+
+// ── REFLECTION FILTER ──
+function flt(tier,btn){
+  document.querySelectorAll('.flt-btn').forEach(b=>b.classList.remove('on'));
+  btn.classList.add('on');
+  document.querySelectorAll('.rc').forEach(c=>{
+    c.style.display=(tier==='all'||c.dataset.mod===tier)?'':'none';
+    if(tier!=='all'&&c.dataset.mod===tier&&c.classList.contains('feat')){
+      c.style.gridColumn='span 1';
+    } else if(tier==='all'&&c.classList.contains('feat')){
+      c.style.gridColumn='span 2';
+    }
+  });
+}
+function flt2(tier,btn){
+  document.querySelectorAll('#s5 .flt-btn').forEach(b=>b.classList.remove('on'));
+  btn.classList.add('on');
+  document.querySelectorAll('#refGrid2 .rc').forEach(c=>{
+    c.style.display=(tier==='all'||c.dataset.mod2===tier)?'':'none';
+    if(tier!=='all'&&c.dataset.mod2===tier&&c.classList.contains('feat')){c.style.gridColumn='span 1';}
+    else if(tier==='all'&&c.classList.contains('feat')){c.style.gridColumn='span 2';}
+  });
+}
+
+// ── JOURNAL ENTRIES ──
+function setJe(el){
+  document.querySelectorAll('.je').forEach(j=>{j.classList.remove('on');j.setAttribute('aria-pressed','false')});
+  el.classList.add('on');
+  el.setAttribute('aria-pressed','true');
+}
+
+// ── HEATMAP ──
+(function buildHeatmap(){
+  const g=document.getElementById('hmGrid');
+  if(!g)return;
+  const lvls=['','l1','l2','l3','l4','l5'];
+  for(let i=0;i<28;i++){
+    const d=document.createElement('div');
+    d.className='hm-cell '+(lvls[Math.floor(Math.random()*6)]);
+    g.appendChild(d);
+  }
+})();
+
+// ── ACCESSIBILITY ──
+function togFont(){
+  const on=document.body.classList.toggle('AF');
+  const b=document.getElementById('bFont');
+  b.classList.toggle('on',on);
+  b.setAttribute('aria-pressed',on);
+  announce(on?'Large text enabled':'Large text disabled');
+}
+function togDys(){
+  const on=document.body.classList.toggle('DY');
+  const b=document.getElementById('bDys');
+  b.classList.toggle('on',on);
+  b.setAttribute('aria-pressed',on);
+  announce(on?'Dyslexia font enabled':'Dyslexia font disabled');
+}
+function togCon(){
+  const on=document.body.classList.toggle('HC');
+  const b=document.getElementById('bCon');
+  b.classList.toggle('on',on);
+  b.setAttribute('aria-pressed',on);
+  announce(on?'High contrast enabled':'High contrast disabled');
+}
+let spkOn=false,spkUtil=null;
+function togSpk(){
+  if(!('speechSynthesis' in window)){announce('Read aloud not supported in this browser');return;}
+  if(spkOn){stopSpk();return;}
+  spkOn=true;
+  document.getElementById('bSpk').classList.add('on');
+  document.getElementById('bSpk').setAttribute('aria-pressed','true');
+  document.getElementById('bStop').style.display='inline-flex';
+  const txt=document.querySelector('main').innerText.substring(0,3000);
+  spkUtil=new SpeechSynthesisUtterance(txt);
+  spkUtil.rate=0.92;
+  spkUtil.onend=()=>{spkOn=false;document.getElementById('bSpk').classList.remove('on');document.getElementById('bSpk').setAttribute('aria-pressed','false');document.getElementById('bStop').style.display='none';};
+  window.speechSynthesis.speak(spkUtil);
+  announce('Read aloud started');
+}
+function stopSpk(){
+  window.speechSynthesis.cancel();
+  spkOn=false;
+  document.getElementById('bSpk').classList.remove('on');
+  document.getElementById('bSpk').setAttribute('aria-pressed','false');
+  document.getElementById('bStop').style.display='none';
+  announce('Read aloud stopped');
+}
+function announce(msg){
+  const el=document.getElementById('announce');
+  if(el){el.textContent='';setTimeout(()=>el.textContent=msg,80);}
+}
+
+// ── PHILOSOPHY TABS ──
+const tabOrder=['pt1','pt2','pt3','pt4','pt5','pt6'];
+function showTab(id,btn){
+  document.querySelectorAll('.ptab-panel').forEach(p=>{p.classList.remove('show')});
+  document.querySelectorAll('.ptab').forEach(b=>{b.classList.remove('act');b.setAttribute('aria-selected','false')});
+  document.getElementById(id).classList.add('show');
+  btn.classList.add('act');
+  btn.setAttribute('aria-selected','true');
+  updateProgress(id);
+}
+function showTabById(id){
+  const idx=tabOrder.indexOf(id);
+  if(idx<0)return;
+  const btns=document.querySelectorAll('.ptab');
+  if(btns[idx])showTab(id,btns[idx]);
+}
+function updateProgress(activeId){
+  const idx=tabOrder.indexOf(activeId);
+  document.querySelectorAll('.pp-dot').forEach((d,i)=>{
+    d.classList.toggle('vis',i<=idx);
+    d.classList.toggle('act',i===idx);
+  });
+  const el=document.getElementById('ppCount');
+  if(el)el.textContent=(idx+1)+' / '+tabOrder.length;
+}
+// Keyboard navigation for tabs
+document.querySelectorAll('.ptab').forEach((btn,i,arr)=>{
+  btn.addEventListener('keydown',e=>{
+    if(e.key==='ArrowRight'){e.preventDefault();const n=arr[(i+1)%arr.length];n.focus();n.click();}
+    if(e.key==='ArrowLeft'){e.preventDefault();const n=arr[(i-1+arr.length)%arr.length];n.focus();n.click();}
+  });
+});
+
+// ── THEORY CARD ACCORDION ──
+function togTheory(card){
+  const isOpen=card.classList.contains('open');
+  document.querySelectorAll('.theory-card').forEach(c=>{c.classList.remove('open');c.setAttribute('aria-expanded','false')});
+  if(!isOpen){card.classList.add('open');card.setAttribute('aria-expanded','true');}
+}
+
+// ── ASSESSMENT ACCORDION ──
+function togAcc(item){
+  const isOpen=item.classList.contains('open');
+  // Allow multiple open
+  item.classList.toggle('open',!isOpen);
+}
+
+// ── REFERENCES TOGGLE ──
+function togRefs(){
+  const panel=document.getElementById('refsPanel');
+  const arrow=document.getElementById('refsArrow');
+  const btn=document.getElementById('refsToggle');
+  const open=panel.classList.toggle('open');
+  if(arrow)arrow.style.transform=open?'rotate(180deg)':'';
+  if(btn)btn.setAttribute('aria-expanded',open);
+}
+
+</script>
+</body>
+</html>
