@@ -8,108 +8,107 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root{
-  --navy:#2a3f56;--navy-2:#344e68;--navy-3:#3d5a77;--navy-4:#476787;
-  --amber:#e8a320;--amber-l:#f0bc50;--amber-p:#fdf0d0;
-  --emerald:#10b981;--emerald-l:#34d399;--emerald-p:#d1fae5;
-  --sky:#38bdf8;--rose:#fb7185;
-  --text:#f0f4f8;--text-2:#a8c0d4;--text-3:#6a8aa8;
-  --white:#fff;--border:rgba(255,255,255,0.12);--border-2:rgba(255,255,255,0.2);
+  --navy:#f4f7fc;--navy-2:#eaf0f8;--navy-3:#dce8f4;--navy-4:#ccd8e8;
+  --amber:#8a5c00;--amber-l:#b07800;--amber-p:#fff8e8;
+  --emerald:#0a6b48;--emerald-l:#0d8a60;--emerald-p:#eafaf4;
+  --sky:#1254a0;--rose:#b02040;
+  --violet:#5040a0;
+  --text:#0e1c2e;--text-2:#284060;--text-3:#4a6882;
+  --white:#ffffff;--border:#cdd8e8;--border-2:#b4c4d8;
   --r-sm:6px;--r-md:12px;--r-lg:20px;--r-xl:28px;
-  --sh:0 12px 40px rgba(0,0,0,.35);--sh-sm:0 3px 14px rgba(0,0,0,.22);
+  --sh:0 2px 16px rgba(18,84,160,.08);--sh-sm:0 1px 6px rgba(18,84,160,.06);
   --font-d:'Cormorant Garamond','Georgia',serif;
   --font-b:'DM Sans',system-ui,sans-serif;
   --font-m:'JetBrains Mono',monospace;
   --ease:cubic-bezier(.4,0,.2,1);
-  --violet:#818cf8;
 }
 .AF{font-size:19px!important}.AF p,.AF li{font-size:1.1em!important;line-height:1.9!important}
 .DY{font-family:'OpenDyslexic','Comic Sans MS',cursive!important}.DY *{font-family:inherit!important}
-.HC{filter:contrast(1.4)}.HC body{background:#000!important}.HC .grant-card{background:#111!important;border-color:#555!important}
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+.HC{filter:contrast(1.4)}.HC body{background:#000!important}.HC *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;font-size:16px}
-body{font-family:var(--font-b);background:var(--navy);color:var(--text);line-height:1.7;overflow-x:hidden}
-::-webkit-scrollbar{width:4px}::-webkit-scrollbar-track{background:var(--navy)}::-webkit-scrollbar-thumb{background:var(--navy-4);border-radius:99px}
-::selection{background:rgba(232,163,32,.3);color:#fff}
-a{color:var(--amber);text-decoration:none;transition:color .2s}a:hover{color:var(--amber-l);text-decoration:underline}
+body{font-family:var(--font-b);background:#ffffff;color:var(--text);line-height:1.7;overflow-x:hidden}
+::-webkit-scrollbar{width:4px}::-webkit-scrollbar-track{background:#f4f7fc}::-webkit-scrollbar-thumb{background:#b4c4d8;border-radius:99px}
+::selection{background:rgba(18,84,160,.18);color:#1a2638}
+a{color:#1254a0;text-decoration:none;transition:color .2s}a:hover{color:var(--amber-l);text-decoration:underline}
 h1,h2,h3,h4{font-family:var(--font-d);line-height:1.15}p{color:var(--text-2)}
-.sec{padding:80px 24px;background:var(--navy)}
-.sec-alt{padding:80px 24px;background:var(--navy-2)}
+.sec{padding:80px 24px;background:#ffffff}
+.sec-alt{padding:80px 24px;background:#f4f7fc}
 .wrap{max-width:1360px;margin:0 auto}
-.s-eye{display:flex;align-items:center;gap:10px;font-family:var(--font-m);font-size:.64rem;color:var(--emerald);text-transform:uppercase;letter-spacing:.16em;margin-bottom:14px}
-.s-eye::before{content:'';width:24px;height:1px;background:var(--emerald)}
-.s-title{font-size:clamp(1.9rem,3.2vw,3rem);font-weight:300;color:var(--white);margin-bottom:12px;font-style:italic}
-.s-title strong{font-style:normal;font-weight:600;color:var(--amber-l)}
+.s-eye{display:flex;align-items:center;gap:10px;font-family:var(--font-m);font-size:.64rem;color:#1254a0;text-transform:uppercase;letter-spacing:.16em;margin-bottom:14px}
+.s-eye::before{content:'';width:24px;height:1px;background:#1254a0}
+.s-title{font-size:clamp(1.9rem,3.2vw,3rem);font-weight:300;color:#1a2638;margin-bottom:12px;font-style:italic}
+.s-title strong{font-style:normal;font-weight:600;color:#8a5c00}
 .s-desc{color:var(--text-2);max-width:600px;font-size:.92rem;line-height:1.8}
-.skip-link{position:fixed;top:-100px;left:16px;z-index:9999;background:var(--amber);color:var(--navy);padding:10px 20px;border-radius:var(--r-md);font-weight:700;transition:top .2s}.skip-link:focus{top:16px}
-.a11y-bar{position:fixed;top:0;left:0;right:0;z-index:1001;background:var(--navy-2);padding:7px 24px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;border-bottom:1px solid var(--border)}
-.a11y-lbl{font-family:var(--font-m);font-size:.6rem;color:var(--text-3);text-transform:uppercase;letter-spacing:.14em;margin-right:4px;white-space:nowrap}
-.ab-btn{display:inline-flex;align-items:center;gap:5px;padding:4px 13px;border-radius:30px;background:rgba(255,255,255,.05);border:1px solid var(--border-2);color:var(--text-2);font-size:.72rem;font-family:var(--font-b);cursor:pointer;transition:all .2s;white-space:nowrap}
-.ab-btn:hover{background:rgba(255,255,255,.1);color:var(--text);border-color:rgba(255,255,255,.25)}.ab-btn.on{background:var(--amber);border-color:var(--amber);color:var(--navy);font-weight:600}
-.nav-wrap{position:fixed;top:36px;left:0;right:0;z-index:900;padding:0 24px;transition:all .3s}.nav-wrap.solid .nav-inner{background:rgba(11,22,40,.96);backdrop-filter:blur(20px);box-shadow:0 4px 20px rgba(0,0,0,.3)}
-.nav-inner{max-width:1360px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:12px 28px;border-radius:28px;transition:all .3s;background:rgba(32,52,75,.96);backdrop-filter:blur(20px);box-shadow:0 2px 16px rgba(0,0,0,.3)}
+.skip-link{position:fixed;top:-100px;left:16px;z-index:9999;background:#8a5c00;color:var(--navy);padding:10px 20px;border-radius:var(--r-md);font-weight:700;transition:top .2s}.skip-link:focus{top:16px}
+.a11y-bar{position:fixed;top:0;left:0;right:0;z-index:1001;background:#eaf0f8;border-bottom:1px solid #cdd8e8;padding:7px 24px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.a11y-lbl{font-family:var(--font-m);font-size:.6rem;color:#6080a0;text-transform:uppercase;letter-spacing:.14em;margin-right:4px;white-space:nowrap}
+.ab-btn{display:inline-flex;align-items:center;gap:5px;padding:4px 13px;border-radius:30px;background:transparent;border:1px solid #b4c4d8;color:#3a5270;font-size:.72rem;font-family:var(--font-b);cursor:pointer;transition:all .2s;white-space:nowrap}
+.ab-btn:hover{background:#eaf0f8;color:#1a2638;border-color:#b4c4d8}.ab-btn.on{background:#1254a0;border-color:#1254a0;color:#fff;font-weight:600}
+.nav-wrap{position:fixed;top:36px;left:0;right:0;z-index:900;padding:0 24px;transition:all .3s}.nav-wrap.solid .nav-inner{max-width:1360px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:10px 24px;border-radius:var(--r-xl);transition:box-shadow .3s;background:#dce8f4;border:1px solid #b8cce0;box-shadow:0 2px 8px rgba(18,84,160,.07)}
+.nav-inner{max-width:1360px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:10px 24px;border-radius:var(--r-xl);transition:box-shadow .3s;background:#dce8f4;border:1px solid #b8cce0;box-shadow:0 2px 8px rgba(18,84,160,.07)}
 .nav-brand{display:flex;align-items:center;gap:10px;font-family:var(--font-d);font-size:1.1rem;font-weight:600;color:var(--text);letter-spacing:.01em;text-decoration:none}
 .brand-tag{font-family:var(--font-m);font-size:.65rem;color:var(--amber);background:rgba(232,163,32,.12);padding:3px 9px;border-radius:6px;border:1px solid rgba(232,163,32,.25)}
 .nav-links{display:flex;align-items:center;gap:1px;list-style:none}
 .nav-links a{padding:6px 9px;border-radius:30px;font-size:.72rem;font-weight:500;color:var(--text-2);transition:all .2s;text-decoration:none}
-.nav-links a:hover{color:var(--text);background:rgba(255,255,255,.07)}.nav-links a.act{color:var(--amber);background:rgba(232,163,32,.1);font-weight:600}
-.nav-cta{background:var(--emerald)!important;color:var(--navy)!important;font-weight:700!important;padding:7px 16px!important;border-radius:30px!important;font-size:.75rem!important}
-.nav-cta:hover{background:var(--emerald-l)!important;color:var(--navy)!important}
+.nav-links a:hover{color:#0e1c2e;background:rgba(18,84,160,.1)}.nav-links a.act{color:#0a3a7a;background:rgba(18,84,160,.15);font-weight:600}
+.nav-cta{background:#1254a0!important;color:#fff!important;font-weight:600!important;padding:6px 16px!important;border-radius:20px!important;font-size:.72rem!important}
+.nav-cta:hover{background:#0a3a80!important;color:#ffffff!important}
 .hbg{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px}
-.hbg span{display:block;width:22px;height:2px;background:var(--text);border-radius:2px;transition:all .3s}
-.mob-nav{position:fixed;inset:0;z-index:850;background:var(--navy);padding:100px 32px 48px;transform:translateX(100%);transition:transform .35s cubic-bezier(.4,0,.2,1);display:flex;flex-direction:column;gap:4px}
-.mob-nav.open{transform:translateX(0)}.mob-nav a{color:var(--text);font-family:var(--font-d);font-size:2rem;padding:14px 0;border-bottom:1px solid var(--border);display:block;font-style:italic;text-decoration:none}.mob-nav a:hover{color:var(--amber)}
+.hbg span{display:block;width:22px;height:2px;background:#0e1c2e;border-radius:2px;transition:all .3s}
+.mob-nav{position:fixed;inset:0;z-index:850;background:#ffffff;border-left:1px solid #cdd8e8;padding:90px 32px 48px;transform:translateX(100%);transition:transform .35s cubic-bezier(.4,0,.2,1);display:flex;flex-direction:column;gap:4px}
+.mob-nav.open{transform:translateX(0)}.mob-nav a{color:#1a2638;font-family:var(--font-d);font-size:2rem;padding:14px 0;border-bottom:1px solid var(--border);display:block;font-style:italic;text-decoration:none}.mob-nav a:hover{color:#1254a0}
 @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(1.6)}}
 /* hero */
-.hero-fund{min-height:36vh;position:relative;display:flex;align-items:flex-end;padding:140px 24px 60px;overflow:hidden;background:var(--navy)}
-.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 60% 60% at 20% 30%,rgba(232,163,32,.06) 0%,transparent 60%),radial-gradient(ellipse 50% 50% at 80% 70%,rgba(16,185,129,.05) 0%,transparent 55%)}
-.hero-grid{position:absolute;inset:0;opacity:.04;background-image:linear-gradient(rgba(255,255,255,.5) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.5) 1px,transparent 1px);background-size:60px 60px}
+.hero-fund{min-height:36vh;position:relative;display:flex;align-items:flex-end;padding:140px 24px 60px;overflow:hidden;background:linear-gradient(150deg,#eaf2ff 0%,#f4f7fc 55%,#fdf8ee 100%)}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 60% 60% at 20% 30%,rgba(18,84,160,.07) 0%,transparent 60%),radial-gradient(ellipse 50% 50% at 80% 70%,rgba(138,92,0,.05) 0%,transparent 55%)}
+.hero-grid{position:absolute;inset:0;opacity:.04;background-image:linear-gradient(rgba(18,84,160,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(18,84,160,.06) 1px,transparent 1px);background-size:60px 60px}
 .hero-body{max-width:1360px;margin:0 auto;width:100%;position:relative;z-index:2}
 .h-pill{display:inline-flex;align-items:center;gap:7px;background:rgba(232,163,32,.12);border:1px solid rgba(232,163,32,.3);color:var(--amber-l);padding:5px 16px;border-radius:30px;font-size:.71rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;margin-bottom:16px}
 .h-pill::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--amber-l);animation:pulse 2s infinite;flex-shrink:0}
-.h-name{font-family:var(--font-d);font-size:clamp(2.4rem,4.5vw,4rem);font-weight:300;color:var(--white);line-height:1.05}
-.h-name em{font-style:italic;color:var(--amber-l)}
+.h-name{font-family:var(--font-d);font-size:clamp(2.4rem,4.5vw,4rem);font-weight:300;color:#0e1c2e;line-height:1.05}
+.h-name em{font-style:italic;color:#8a5c00}
 /* summary */
 .sum-strip{display:flex;flex-wrap:wrap;gap:0;border:1px solid var(--border-2);border-radius:var(--r-xl);overflow:hidden;margin-bottom:56px}
-.sum-item{flex:1;min-width:120px;padding:20px 16px;border-right:1px solid var(--border);text-align:center}
+.sum-item{flex:1;min-width:120px;padding:20px 16px;border-right:1px solid #cdd8e8;text-align:center}
 .sum-item:last-child{border-right:none}
-.sum-val{font-family:var(--font-d);font-size:2rem;font-weight:600;line-height:1}
-.sum-val.a{color:var(--amber-l)}.sum-val.g{color:var(--emerald-l)}.sum-val.s{color:var(--sky)}.sum-val.v{color:var(--violet)}
-.sum-lbl{font-size:.6rem;color:var(--text-3);text-transform:uppercase;letter-spacing:.1em;margin-top:6px;font-family:var(--font-m)}
+.sum-val{font-family:var(--font-d);font-size:2rem;font-weight:600;line-height:1;color:#1a2638}
+.sum-val.a{color:#8a5c00}.sum-val.g{color:#0a6b48}.sum-val.s{color:#1254a0}.sum-val.v{color:#5040a0}
+.sum-lbl{font-size:.6rem;color:#4a6882;text-transform:uppercase;letter-spacing:.1em;margin-top:6px;font-family:var(--font-m)}
 /* grant cards */
-.grant-card{background:rgba(255,255,255,.025);border:1px solid var(--border);border-radius:var(--r-lg);padding:26px 28px 24px;margin-bottom:18px;position:relative;overflow:hidden}
-.grant-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--emerald),var(--amber),var(--sky))}
+.grant-card{background:#ffffff;border:1px solid var(--border);border-radius:var(--r-lg);padding:26px 28px 24px;margin-bottom:18px;position:relative;overflow:hidden}
+._grant-card-accent::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--emerald),var(--amber),var(--sky))}
 .grant-card:hover{border-color:var(--border-2)}
 .grant-top{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:12px}
-.grant-title{font-family:var(--font-d);font-size:1.25rem;font-weight:600;color:var(--white);line-height:1.25;flex:1}
+.grant-title{font-family:var(--font-d);font-size:1.25rem;font-weight:600;color:#1a2638;line-height:1.25;flex:1}
 .grant-amount{font-family:var(--font-d);font-size:1.35rem;font-weight:600;white-space:nowrap;padding:5px 14px;border-radius:var(--r-md);flex-shrink:0}
-.ga-amber{color:var(--amber-l);background:rgba(232,163,32,.1);border:1px solid rgba(232,163,32,.22)}
-.ga-emerald{color:var(--emerald-l);background:rgba(16,185,129,.1);border:1px solid rgba(16,185,129,.22)}
-.ga-sky{color:var(--sky);background:rgba(56,189,248,.08);border:1px solid rgba(56,189,248,.18)}
-.ga-violet{color:var(--violet);background:rgba(129,140,248,.08);border:1px solid rgba(129,140,248,.18)}
+.ga-amber{color:#8a5c00;background:rgba(232,163,32,.1);border:1px solid rgba(232,163,32,.22)}
+.ga-emerald{color:#0a6b48;background:rgba(16,185,129,.1);border:1px solid rgba(16,185,129,.22)}
+.ga-sky{color:#1254a0;background:rgba(56,189,248,.08);border:1px solid rgba(56,189,248,.18)}
+.ga-violet{color:#5040a0;background:rgba(129,140,248,.08);border:1px solid rgba(129,140,248,.18)}
 .grant-meta{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
-.gm-tag{font-family:var(--font-m);font-size:.61rem;padding:2px 9px;border-radius:3px;background:rgba(255,255,255,.05);border:1px solid var(--border-2);color:var(--text-3)}
-.gm-tag.role{border-color:rgba(232,163,32,.28);color:var(--amber-l);background:rgba(232,163,32,.06)}
-.grant-body p{font-size:.875rem;color:var(--text-2);line-height:1.78;margin-bottom:9px}
-.grant-body p:last-child{margin-bottom:0}.grant-body strong{color:var(--text);font-weight:600}
-.grant-body ul{margin:.5rem 0 .5rem 1.1rem}.grant-body li{font-size:.875rem;color:var(--text-2);line-height:1.72;margin-bottom:4px}
+.gm-tag{font-family:var(--font-m);font-size:.61rem;padding:2px 9px;border-radius:3px;background:#f4f7fc;border:1px solid #cdd8e8;color:#6080a0}
+.gm-tag.role{border-color:#d0b870;color:#8a5c00;background:#f8f0e0}
+.grant-body p{font-size:.875rem;color:#284060;line-height:1.78;margin-bottom:9px}
+.grant-body p:last-child{margin-bottom:0}.grant-body strong{color:#0e1c2e;font-weight:600}
+.grant-body ul{margin:.5rem 0 .5rem 1.1rem}.grant-body li{font-size:.875rem;color:#284060;line-height:1.72;margin-bottom:4px}
 .sub-projects{margin-top:14px;padding-top:13px;border-top:1px solid var(--border)}
 .sub-label{font-family:var(--font-m);font-size:.59rem;color:var(--text-3);text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px}
 .sub-list{list-style:none;padding:0;display:flex;flex-direction:column;gap:5px}
-.sub-list li{font-size:.83rem;color:var(--text-2);line-height:1.55;padding-left:14px;position:relative}
+.sub-list li{font-size:.83rem;color:#284060;line-height:1.55;padding-left:14px;position:relative}
 .sub-list li::before{content:"›";position:absolute;left:0;color:var(--amber);font-weight:700}
-.sub-list li strong{color:var(--text);font-weight:600}
+.sub-list li strong{color:#0e1c2e;font-weight:600}
 hr.div{border:none;border-top:1px solid var(--border);margin:36px 0}
 .sec-head{margin:0 0 18px}
-.sec-head h2{font-family:var(--font-d);font-size:1.35rem;font-weight:400;color:var(--white);display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.sec-head h2{font-family:var(--font-d);font-size:1.35rem;font-weight:400;color:#0e1c2e;display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
 .sec-head h2 span{font-family:var(--font-b);font-size:.67rem;color:var(--text-3);font-weight:400}
 /* logo section */
-.funder-sec{padding:60px 24px 52px;background:var(--navy-2)}
+.funder-sec{padding:60px 24px 52px;background:#f4f7fc;border-top:1px solid #cdd8e8}
 .funder-grid{display:flex;flex-wrap:wrap;gap:12px;margin-top:20px}
-.fp{display:flex;flex-direction:column;align-items:center;background:rgba(255,255,255,.04);border:1px solid var(--border-2);border-radius:12px;overflow:hidden;transition:border-color .2s,transform .2s}
-.fp:hover{border-color:rgba(255,255,255,.24);transform:translateY(-2px)}
+.fp{display:flex;flex-direction:column;align-items:center;background:#ffffff;border:1px solid #cdd8e8;border-radius:12px;overflow:hidden;transition:border-color .2s,transform .2s}
+.fp:hover{border-color:#1254a0;box-shadow:0 4px 16px rgba(18,84,160,.1);transform:translateY(-2px)}
 .fp .lbg{background:#fff;display:flex;align-items:center;justify-content:center;padding:10px 16px;width:100%;flex:1}
 .fp .lbg img{display:block;object-fit:contain;max-height:42px;width:auto}
-.fp .lcap{font-family:var(--font-m);font-size:.54rem;color:var(--text-3);text-transform:uppercase;letter-spacing:.07em;padding:5px 8px;background:rgba(0,0,0,.2);width:100%;text-align:center;line-height:1.4}
+.fp .lcap{font-family:var(--font-m);font-size:.54rem;color:#6080a0;text-transform:uppercase;letter-spacing:.07em;padding:5px 8px;background:#f4f7fc;border-top:1px solid #cdd8e8;width:100%;text-align:center;line-height:1.4}
 .fp-sq{width:90px}.fp-sq .lbg img{max-height:42px;max-width:48px}
 .fp-med{width:148px}.fp-med .lbg img{max-height:42px;max-width:116px}
 .fp-wide{width:196px}.fp-wide .lbg img{max-height:34px;max-width:170px}
@@ -125,12 +124,12 @@ hr.div{border:none;border-top:1px solid var(--border);margin:36px 0}
 <div class="a11y-bar" role="toolbar" aria-label="Accessibility tools">
   <span class="a11y-lbl">Accessibility</span>
   <button class="ab-btn" id="bFont" aria-pressed="false" onclick="togFont()">Aa Large Text</button>
-  <button class="ab-btn" id="bDys" aria-pressed="false" onclick="togDys()">💡 Dyslexia Font</button>
-  <button class="ab-btn" id="bCon" aria-pressed="false" onclick="togCon()">🌓 High Contrast</button>
+  <button class="ab-btn" id="bDys"  aria-pressed="false" onclick="togDys()">💡 Dyslexia Font</button>
+  <button class="ab-btn" id="bCon"  aria-pressed="false" onclick="togCon()">🌓 High Contrast</button>
 </div>
 <nav class="nav-wrap" id="navWrap" aria-label="Main navigation">
   <div class="nav-inner">
-    <a href="index.html" class="nav-brand" style="text-decoration:none">SH ePortfolio <span class="brand-tag">AI · UDL · 2025–26</span></a>
+    <a href="index.html" class="nav-brand" style="text-decoration:none;color:#0e1c2e">SH ePortfolio <span class="brand-tag">AI · UDL · 2025–26</span></a>
     <ul class="nav-links" role="list">
       <li><a href="teaching.html">Philosophy</a></li>
       <li><a href="reflections.html">Reflections</a></li>
@@ -158,12 +157,13 @@ hr.div{border:none;border-top:1px solid var(--border);margin:36px 0}
   <a href="reflection.html" onclick="closeMob()">Reflection</a>
   <a href="evidence.html" onclick="closeMob()">Evidence</a>
   <a href="publications.html" onclick="closeMob()">Publications</a>
-  <a href="funding.html" onclick="closeMob()" style="color:var(--amber)">Funding</a>
+  <a href="funding.html" onclick="closeMob()" style="color:#1254a0;font-weight:600">Funding</a>
 </div>
-<div style="background:rgba(255,255,255,.05);border-bottom:1px solid var(--border);padding:8px 24px;margin-top:84px">
-  <div style="max-width:1360px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:6px">
-    <a href="index.html" style="display:inline-flex;align-items:center;gap:6px;font-size:.72rem;color:var(--amber);text-decoration:none;font-family:var(--font-m)">&#8592; ePortfolio Home</a>
-    <span style="font-family:var(--font-m);font-size:.6rem;color:var(--text-3);text-transform:uppercase;letter-spacing:.08em">Research Funding</span>
+<div style="background:linear-gradient(150deg,#eaf2ff 0%,#f4f7fc 55%,#fdf8ee 100%);border-bottom:1px solid #cdd8e8;padding:52px 24px 40px;margin-top:82px">
+  <div style="max-width:1360px;margin:0 auto">
+    <a href="index.html" style="display:inline-flex;align-items:center;gap:5px;font-family:var(--font-m);font-size:.65rem;color:#1254a0;text-decoration:none;margin-bottom:16px;opacity:.8">&#8592; ePortfolio Home</a>
+    <h1 style="font-family:var(--font-d);font-size:clamp(1.9rem,3.5vw,2.8rem);font-weight:300;color:#0e1c2e;line-height:1.1;margin-bottom:8px">Research Funding & Grants</h1>
+    <p style="font-family:var(--font-m);font-size:.68rem;color:#506080;letter-spacing:.06em">Dr. Shagufta Henna · Atlantic Technological University</p>
   </div>
 </div>
 <main id="main">
@@ -324,8 +324,115 @@ hr.div{border:none;border-top:1px solid var(--border);margin:36px 0}
   </div>
 </section>
 
-<footer style="padding:28px 24px;background:var(--navy-2);border-top:1px solid var(--border);text-align:center">
-  <p style="font-size:.76rem;color:var(--text-3)">Dr. Shagufta Henna · AI Learning ePortfolio 2025–26 · <a href="index.html">Return to ePortfolio</a></p>
+<footer role="contentinfo" style="background:#eaf0f8;border-top:2px solid #cdd8e8;margin-top:0">
+
+  <!-- top accent line -->
+  <div style="height:3px;background:linear-gradient(90deg,#0a6b48 0%,#1254a0 40%,#8a5c00 100%);"></div>
+
+  <!-- main grid -->
+  <div style="max-width:1360px;margin:0 auto;padding:52px 28px 40px;display:grid;grid-template-columns:2fr 1fr 1fr;gap:56px;align-items:start;">
+
+    <!-- LEFT — identity + tagline + credentials -->
+    <div>
+      <!-- name -->
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;">
+        <div style="width:42px;height:42px;border-radius:10px;background:linear-gradient(135deg,#1254a0,#8a5c00);display:flex;align-items:center;justify-content:center;font-family:var(--font-m);font-size:.75rem;font-weight:700;color:#f0f6ff;flex-shrink:0;letter-spacing:.04em;">SH</div>
+        <div>
+          <div style="font-family:var(--font-d);font-size:1.1rem;font-style:italic;color:#0e1c2e;line-height:1.1;">Dr. Shagufta Henna</div>
+          <div style="font-family:var(--font-m);font-size:.5rem;color:#4a6882;text-transform:uppercase;letter-spacing:.12em;margin-top:2px;">Lecturer in AI &amp; Computing &middot; ATU Ireland</div>
+        </div>
+      </div>
+
+      <!-- tagline -->
+      <p style="font-size:.8rem;color:#284060;line-height:1.85;max-width:380px;margin:0 0 24px;text-align:justify;hyphens:auto;">An evidence-based teaching portfolio grounded in Universal Design for Learning, inclusive curriculum design, and AI-enhanced pedagogy, built for every learner, validated by research, and certified by the National Forum for the Enhancement of Teaching and Learning in Higher Education.</p>
+
+      <!-- credentials -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:20px;">
+        <a href="https://openbadgefactory.com/v1/assertion/6fab207ec664a6b9ab14145b9adb650de0d7b9be.html" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:10px;padding:12px 14px;background:#fff;border:1px solid #b8d0e8;border-radius:10px;text-decoration:none;transition:all .2s;" onmouseover="this.style.borderColor='#1254a0';this.style.boxShadow='0 2px 10px rgba(18,84,160,.12)'" onmouseout="this.style.borderColor='#b8d0e8';this.style.boxShadow=''">
+          <img src="badge.jpg" alt="UDL Badge" style="width:42px;height:42px;border-radius:7px;flex-shrink:0;object-fit:contain;" />
+          <div style="min-width:0;">
+            <div style="font-family:var(--font-m);font-size:.47rem;color:#0a6b48;text-transform:uppercase;letter-spacing:.09em;margin-bottom:2px;">Verified &#8599;</div>
+            <div style="font-size:.7rem;color:#0e1c2e;font-weight:600;line-height:1.25;">Universal Design in Teaching &amp; Learning</div>
+            <div style="font-family:var(--font-m);font-size:.48rem;color:#4a6882;margin-top:3px;">National Forum &middot; Feb 2024</div>
+          </div>
+        </a>
+        <a href="https://openbadgefactory.com/v1/assertion/edf1564bff1221907cafb9ade5d0804c25d0796d.html" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:10px;padding:12px 14px;background:#fff;border:1px solid #b8d0e8;border-radius:10px;text-decoration:none;transition:all .2s;" onmouseover="this.style.borderColor='#1254a0';this.style.boxShadow='0 2px 10px rgba(18,84,160,.12)'" onmouseout="this.style.borderColor='#b8d0e8';this.style.boxShadow=''">
+          <img src="ntutr.jpg" alt="N-TUTORR Badge" style="width:42px;height:42px;border-radius:7px;flex-shrink:0;object-fit:contain;" />
+          <div style="min-width:0;">
+            <div style="font-family:var(--font-m);font-size:.47rem;color:#1254a0;text-transform:uppercase;letter-spacing:.09em;margin-bottom:2px;">Verified &#8599;</div>
+            <div style="font-size:.7rem;color:#0e1c2e;font-weight:600;line-height:1.25;">N-TUTORR Community Member</div>
+            <div style="font-family:var(--font-m);font-size:.48rem;color:#4a6882;margin-top:3px;">ATU Galway City &middot; May 2024</div>
+          </div>
+        </a>
+      </div>
+
+      <!-- compliance pills -->
+      <div style="display:flex;flex-wrap:wrap;gap:6px;">
+        <span style="font-family:var(--font-m);font-size:.52rem;padding:3px 10px;border-radius:20px;background:#e0f0e8;border:1px solid #a8d4bc;color:#0a6b48;">WCAG 2.1 AA</span>
+        <span style="font-family:var(--font-m);font-size:.52rem;padding:3px 10px;border-radius:20px;background:#dceaf8;border:1px solid #a8c4e0;color:#1254a0;">GDPR Compliant</span>
+        <span style="font-family:var(--font-m);font-size:.52rem;padding:3px 10px;border-radius:20px;background:#f8f0e0;border:1px solid #d8c090;color:#8a5c00;">UDL Guidelines v3.0</span>
+        <span style="font-family:var(--font-m);font-size:.52rem;padding:3px 10px;border-radius:20px;background:#f0eaf8;border:1px solid #c8b0d8;color:#5040a0;">EU AI Act 2024</span>
+      </div>
+    </div>
+
+    <!-- MIDDLE — portfolio nav -->
+    <div>
+      <div style="font-family:var(--font-m);font-size:.55rem;text-transform:uppercase;letter-spacing:.14em;color:#0e1c2e;font-weight:600;margin-bottom:18px;padding-bottom:10px;border-bottom:2px solid #cdd8e8;">Portfolio</div>
+      <nav style="display:flex;flex-direction:column;gap:10px;" aria-label="Portfolio sections">
+        <a href="teaching.html"       style="font-size:.78rem;color:#284060;text-decoration:none;display:flex;align-items:center;gap:8px;transition:color .2s;" onmouseover="this.style.color='#1254a0'" onmouseout="this.style.color='#284060'"><span style="width:12px;height:1px;background:#cdd8e8;flex-shrink:0;"></span>Teaching Philosophy</a>
+        <a href="reflections.html"    style="font-size:.78rem;color:#284060;text-decoration:none;display:flex;align-items:center;gap:8px;transition:color .2s;" onmouseover="this.style.color='#1254a0'" onmouseout="this.style.color='#284060'"><span style="width:12px;height:1px;background:#cdd8e8;flex-shrink:0;"></span>Student Reflections</a>
+        <a href="udlplan.html"         style="font-size:.78rem;color:#284060;text-decoration:none;display:flex;align-items:center;gap:8px;transition:color .2s;" onmouseover="this.style.color='#1254a0'" onmouseout="this.style.color='#284060'"><span style="width:12px;height:1px;background:#cdd8e8;flex-shrink:0;"></span>UDL Plan</a>
+        <a href="implementation.html" style="font-size:.78rem;color:#284060;text-decoration:none;display:flex;align-items:center;gap:8px;transition:color .2s;" onmouseover="this.style.color='#1254a0'" onmouseout="this.style.color='#284060'"><span style="width:12px;height:1px;background:#cdd8e8;flex-shrink:0;"></span>Implementation</a>
+        <a href="evaluation.html"     style="font-size:.78rem;color:#284060;text-decoration:none;display:flex;align-items:center;gap:8px;transition:color .2s;" onmouseover="this.style.color='#1254a0'" onmouseout="this.style.color='#284060'"><span style="width:12px;height:1px;background:#cdd8e8;flex-shrink:0;"></span>Evaluation</a>
+        <a href="reflection.html"     style="font-size:.78rem;color:#284060;text-decoration:none;display:flex;align-items:center;gap:8px;transition:color .2s;" onmouseover="this.style.color='#1254a0'" onmouseout="this.style.color='#284060'"><span style="width:12px;height:1px;background:#cdd8e8;flex-shrink:0;"></span>Educator Reflection</a>
+        <a href="evidence.html"       style="font-size:.78rem;color:#284060;text-decoration:none;display:flex;align-items:center;gap:8px;transition:color .2s;" onmouseover="this.style.color='#1254a0'" onmouseout="this.style.color='#284060'"><span style="width:12px;height:1px;background:#cdd8e8;flex-shrink:0;"></span>Evidence &amp; Figures</a>
+        <a href="publications.html"   style="font-size:.78rem;color:#284060;text-decoration:none;display:flex;align-items:center;gap:8px;transition:color .2s;" onmouseover="this.style.color='#1254a0'" onmouseout="this.style.color='#284060'"><span style="width:12px;height:1px;background:#cdd8e8;flex-shrink:0;"></span>Publications</a>
+        <a href="funding.html"        style="font-size:.78rem;color:#284060;text-decoration:none;display:flex;align-items:center;gap:8px;transition:color .2s;" onmouseover="this.style.color='#1254a0'" onmouseout="this.style.color='#284060'"><span style="width:12px;height:1px;background:#cdd8e8;flex-shrink:0;"></span>Research Funding</a>
+      </nav>
+    </div>
+
+    <!-- RIGHT — contact -->
+    <div>
+      <div style="font-family:var(--font-m);font-size:.55rem;text-transform:uppercase;letter-spacing:.14em;color:#0e1c2e;font-weight:600;margin-bottom:18px;padding-bottom:10px;border-bottom:2px solid #cdd8e8;">Contact &amp; Links</div>
+      <div style="display:flex;flex-direction:column;gap:12px;">
+        <a href="https://www.linkedin.com/in/shagufta-h-436887172/" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:9px;font-size:.78rem;color:#284060;text-decoration:none;transition:color .2s;" onmouseover="this.style.color='#1254a0'" onmouseout="this.style.color='#284060'">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" style="flex-shrink:0;color:#4a6882;"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          linkedin.com/in/shagufta-h
+        </a>
+        <a href="mailto:shagufta.henna@atu.ie" style="display:flex;align-items:center;gap:9px;font-size:.78rem;color:#284060;text-decoration:none;transition:color .2s;" onmouseover="this.style.color='#1254a0'" onmouseout="this.style.color='#284060'">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" style="flex-shrink:0;color:#4a6882;"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+          shagufta.henna@atu.ie
+        </a>
+        <a href="https://www.atu.ie/courses/computing" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:9px;font-size:.78rem;color:#284060;text-decoration:none;transition:color .2s;" onmouseover="this.style.color='#1254a0'" onmouseout="this.style.color='#284060'">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" style="flex-shrink:0;color:#4a6882;"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          Department of Computing
+        </a>
+        <a href="https://www.atu.ie" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:9px;font-size:.78rem;color:#284060;text-decoration:none;transition:color .2s;" onmouseover="this.style.color='#1254a0'" onmouseout="this.style.color='#284060'">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" style="flex-shrink:0;color:#4a6882;"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          Atlantic Technological University
+        </a>
+        <div style="height:1px;background:#cdd8e8;margin:2px 0;"></div>
+        <a href="https://udlguidelines.cast.org" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:9px;font-size:.78rem;color:#284060;text-decoration:none;transition:color .2s;" onmouseover="this.style.color='#0a6b48'" onmouseout="this.style.color='#284060'">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" style="flex-shrink:0;color:#4a6882;"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          CAST UDL Guidelines 3.0
+        </a>
+        <a href="https://openbadgefactory.com/v1/assertion/6fab207ec664a6b9ab14145b9adb650de0d7b9be.html" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:9px;font-size:.78rem;color:#284060;text-decoration:none;transition:color .2s;" onmouseover="this.style.color='#0a6b48'" onmouseout="this.style.color='#284060'">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" style="flex-shrink:0;color:#4a6882;"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
+          UDL Certified &middot; National Forum 2024
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- bottom bar -->
+  <div style="border-top:1px solid #cdd8e8;background:#dce8f4;">
+    <div style="max-width:1360px;margin:0 auto;padding:14px 28px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;">
+      <p style="font-size:.68rem;color:#284060;font-family:var(--font-m);">&#169; 2026 Dr. Shagufta Henna &middot; Atlantic Technological University, Ireland</p>
+      <p style="font-size:.68rem;color:#284060;font-family:var(--font-m);">Interactive AI Learning ePortfolio &middot; UDL v3.0 &middot; Academic Year 2025&ndash;26</p>
+    </div>
+  </div>
+
 </footer>
 
 
