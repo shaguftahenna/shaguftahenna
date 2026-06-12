@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Dr. Shagufta Henna — Teaching</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#f4f7fc;--navy-2:#eaf0f8;--navy-3:#dce8f4;--navy-4:#ccd8e8;
+  --amber:#8a5c00;--amber-l:#b07800;--amber-p:#fff8e8;
+  --emerald:#0a6b48;--emerald-l:#0d8a60;--emerald-p:#eafaf4;
+  --sky:#1254a0;--rose:#b02040;
+  --violet:#5040a0;
+  --text:#0e1c2e;--text-2:#284060;--text-3:#4a6882;
+  --white:#ffffff;--border:#cdd8e8;--border-2:#b4c4d8;
+  --r-sm:6px;--r-md:12px;--r-lg:20px;--r-xl:28px;
+  --sh:0 2px 16px rgba(18,84,160,.08);--sh-sm:0 1px 6px rgba(18,84,160,.06);
+  --font-d:'Cormorant Garamond','Georgia',serif;
+  --font-b:'DM Sans',system-ui,sans-serif;
+  --font-m:'JetBrains Mono',monospace;
+}
+.AF{font-size:19px!important}.AF p,.AF li{font-size:1.1em!important;line-height:1.9!important}
+.DY{font-family:'OpenDyslexic','Comic Sans MS',cursive!important}.DY *{font-family:inherit!important}
+.HC{filter:contrast(1.4)}.HC body{background:#000!important}.HC .grant-card{background:#111!important;border-color:#555!important}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:var(--font-b);background:var(--navy);color:var(--text);line-height:1.7;overflow-x:hidden}
+::-webkit-scrollbar{width:4px}::-webkit-scrollbar-track{background:var(--navy)}::-webkit-scrollbar-thumb{background:var(--navy-4);border-radius:99px}
+::selection{background:rgba(18,84,160,.18);color:var(--text)}
+a{color:var(--amber);text-decoration:none;transition:color .2s}a:hover{color:#8a5c00;text-decoration:underline}
+h1,h2,h3,h4{font-family:var(--font-d);line-height:1.15}p{color:var(--text-2)}
+.sec{padding:80px 24px;background:var(--navy)}
+.sec-alt{padding:80px 24px;background:var(--navy-2)}
+.wrap{max-width:1360px;margin:0 auto}
+.s-eye{display:flex;align-items:center;gap:10px;font-family:var(--font-m);font-size:.64rem;color:var(--emerald);text-transform:uppercase;letter-spacing:.16em;margin-bottom:14px}
+.s-eye::before{content:'';width:24px;height:1px;background:var(--emerald)}
+.s-title{font-size:clamp(1.9rem,3.2vw,3rem);font-weight:300;color:var(--text);margin-bottom:12px;font-style:italic}
+.s-title strong{font-style:normal;font-weight:600;color:var(--amber)}
+.s-desc{color:var(--text-2);max-width:600px;font-size:.92rem;line-height:1.8}
+.skip-link{position:fixed;top:-100px;left:16px;z-index:9999;background:var(--amber);color:var(--navy);padding:10px 20px;border-radius:var(--r-md);font-weight:700;transition:top .2s}.skip-link:focus{top:16px}
+.a11y-bar{position:fixed;top:0;left:0;right:0;z-index:1001;background:var(--navy-2);padding:7px 24px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;border-bottom:1px solid var(--border)}
+.a11y-lbl{font-family:var(--font-m);font-size:.6rem;color:var(--text-3);text-transform:uppercase;letter-spacing:.14em;margin-right:4px;white-space:nowrap}
+.ab-btn{display:inline-flex;align-items:center;gap:5px;padding:4px 13px;border-radius:30px;background:rgba(255,255,255,.05);border:1px solid var(--border-2);color:var(--text-2);font-size:.72rem;font-family:var(--font-b);cursor:pointer;transition:all .2s;white-space:nowrap}
+.ab-btn:hover{background:rgba(255,255,255,.1);color:var(--text);border-color:#b4c4d8}.ab-btn.on{background:var(--amber);border-color:var(--amber);color:var(--navy);font-weight:600}
+.nav-wrap{position:fixed;top:36px;left:0;right:0;z-index:900;padding:0 24px;transition:all .3s}.nav-wrap.solid .nav-inner{background:#dce8f4;backdrop-filter:blur(20px);box-shadow:0 4px 20px rgba(0,0,0,.3)}
+.nav-inner{max-width:1360px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:12px 28px;border-radius:28px;transition:all .3s}
+.nav-brand{display:flex;align-items:center;gap:10px;font-family:var(--font-d);font-size:1.1rem;font-weight:600;color:var(--text);letter-spacing:.01em;text-decoration:none}
+.brand-tag{font-family:var(--font-m);font-size:.65rem;color:var(--amber);background:rgba(232,163,32,.12);padding:3px 9px;border-radius:6px;border:1px solid rgba(232,163,32,.25)}
+.nav-links{display:flex;align-items:center;gap:1px;list-style:none}
+.nav-links a{padding:6px 9px;border-radius:30px;font-size:.72rem;font-weight:500;color:var(--text-2);transition:all .2s;text-decoration:none}
+.nav-links a:hover{color:var(--text);background:rgba(255,255,255,.07)}.nav-links a.act{color:var(--amber);background:rgba(232,163,32,.1);font-weight:600}
+.nav-cta{background:var(--emerald)!important;color:var(--navy)!important;font-weight:700!important;padding:7px 16px!important;border-radius:30px!important;font-size:.75rem!important}
+.nav-cta:hover{background:var(--emerald-l)!important;color:var(--navy)!important}
+.hbg{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px}
+.hbg span{display:block;width:22px;height:2px;background:var(--text);border-radius:2px;transition:all .3s}
+.mob-nav{position:fixed;inset:0;z-index:850;background:var(--navy);padding:100px 32px 48px;transform:translateX(100%);transition:transform .35s cubic-bezier(.4,0,.2,1);display:flex;flex-direction:column;gap:4px}
+.mob-nav.open{transform:translateX(0)}.mob-nav a{color:var(--text);font-family:var(--font-d);font-size:2rem;padding:14px 0;border-bottom:1px solid var(--border);display:block;font-style:italic;text-decoration:none}.mob-nav a:hover{color:var(--amber)}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(1.6)}}
+/* hero */
+.hero-fund{min-height:36vh;position:relative;display:flex;align-items:flex-end;padding:140px 24px 60px;background:var(--navy)}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 60% 60% at 20% 30%,rgba(232,163,32,.06) 0%,transparent 60%),radial-gradient(ellipse 50% 50% at 80% 70%,rgba(16,185,129,.05) 0%,transparent 55%)}
+.hero-grid{position:absolute;inset:0;opacity:.04;background-image:linear-gradient(rgba(255,255,255,.5) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.5) 1px,transparent 1px);background-size:60px 60px}
+.hero-body{max-width:1360px;margin:0 auto;width:100%;position:relative;z-index:2}
+.h-pill{display:inline-flex;align-items:center;gap:7px;background:rgba(18,84,160,.1);border:1px solid rgba(18,84,160,.3);color:#1254a0;padding:5px 16px;border-radius:30px;font-size:.71rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;margin-bottom:16px}
+.h-pill::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--amber-l);animation:pulse 2s infinite;flex-shrink:0}
+.h-name{font-family:var(--font-d);font-size:clamp(2.4rem,4.5vw,4rem);font-weight:300;color:var(--text);line-height:1.05}
+.h-name em{font-style:italic;color:var(--amber)}
+/* summary */
+.sum-strip{display:flex;flex-wrap:wrap;gap:0;border:1px solid var(--border-2);border-radius:var(--r-xl);margin-bottom:56px}
+.sum-item{flex:1;min-width:120px;padding:20px 16px;border-right:1px solid var(--border);text-align:center}
+.sum-item:last-child{border-right:none}
+.sum-val{font-family:var(--font-d);font-size:2rem;font-weight:600;line-height:1}
+.sum-val.a{color:var(--amber)}.sum-val.g{color:var(--emerald)}.sum-val.s{color:var(--sky)}.sum-val.v{color:var(--violet)}
+.sum-lbl{font-size:.6rem;color:var(--text-3);text-transform:uppercase;letter-spacing:.1em;margin-top:6px;font-family:var(--font-m)}
+/* grant cards */
+.grant-card{background:rgba(255,255,255,.025);border:1px solid var(--border);border-radius:var(--r-lg);padding:26px 28px 24px;margin-bottom:18px;position:relative}
+.grant-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--emerald),var(--amber),var(--sky))}
+.grant-card:hover{border-color:var(--border-2)}
+.grant-top{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:12px}
+.grant-title{font-family:var(--font-d);font-size:1.25rem;font-weight:600;color:var(--text);line-height:1.25;flex:1}
+.grant-amount{font-family:var(--font-d);font-size:1.35rem;font-weight:600;white-space:nowrap;padding:5px 14px;border-radius:var(--r-md);flex-shrink:0}
+.ga-amber{color:var(--amber);background:rgba(232,163,32,.1);border:1px solid rgba(232,163,32,.22)}
+.ga-emerald{color:var(--emerald);background:rgba(16,185,129,.1);border:1px solid rgba(16,185,129,.22)}
+.ga-sky{color:var(--sky);background:rgba(56,189,248,.08);border:1px solid rgba(56,189,248,.18)}
+.ga-violet{color:var(--violet);background:rgba(129,140,248,.08);border:1px solid rgba(129,140,248,.18)}
+.grant-meta{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
+.gm-tag{font-family:var(--font-m);font-size:.61rem;padding:2px 9px;border-radius:3px;background:rgba(255,255,255,.05);border:1px solid var(--border-2);color:var(--text-3)}
+.gm-tag.role{border-color:#d0b870;color:var(--amber);background:rgba(232,163,32,.06)}
+.grant-body p{font-size:.875rem;color:var(--text-2);line-height:1.78;margin-bottom:9px}
+.grant-body p:last-child{margin-bottom:0}.grant-body strong{color:var(--text);font-weight:600}
+.grant-body ul{margin:.5rem 0 .5rem 1.1rem}.grant-body li{font-size:.875rem;color:var(--text-2);line-height:1.72;margin-bottom:4px}
+.sub-projects{margin-top:14px;padding-top:13px;border-top:1px solid var(--border)}
+.sub-label{font-family:var(--font-m);font-size:.59rem;color:var(--text-3);text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px}
+.sub-list{list-style:none;padding:0;display:flex;flex-direction:column;gap:5px}
+.sub-list li{font-size:.83rem;color:var(--text-2);line-height:1.55;padding-left:14px;position:relative}
+.sub-list li::before{content:"›";position:absolute;left:0;color:#1254a0;font-weight:700}
+.sub-list li strong{color:var(--text);font-weight:600}
+hr.div{border:none;border-top:1px solid var(--border);margin:36px 0}
+.sec-head{margin:0 0 18px}
+.sec-head h2{font-family:var(--font-d);font-size:1.35rem;font-weight:400;color:var(--text);display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.sec-head h2 span{font-family:var(--font-b);font-size:.67rem;color:var(--text-3);font-weight:400}
+/* logo section */
+.funder-sec{padding:60px 24px 52px;background:var(--navy-2)}
+.funder-grid{display:flex;flex-wrap:wrap;gap:12px;margin-top:20px}
+.fp{display:flex;flex-direction:column;align-items:center;background:rgba(255,255,255,.04);border:1px solid var(--border-2);border-radius:12px;transition:border-color .2s,transform .2s}
+.fp:hover{border-color:#1254a0;transform:translateY(-2px)}
+.fp .lbg{background:#fff;display:flex;align-items:center;justify-content:center;padding:10px 16px;width:100%;flex:1}
+.fp .lbg img{display:block;object-fit:contain;max-height:42px;width:auto}
+.fp .lcap{font-family:var(--font-m);font-size:.54rem;color:var(--text-3);text-transform:uppercase;letter-spacing:.07em;padding:5px 8px;background:rgba(0,0,0,.2);width:100%;text-align:center;line-height:1.4}
+.fp-sq{width:90px}.fp-sq .lbg img{max-height:42px;max-width:48px}
+.fp-med{width:148px}.fp-med .lbg img{max-height:42px;max-width:116px}
+.fp-wide{width:196px}.fp-wide .lbg img{max-height:34px;max-width:170px}
+.fp-dcc{width:172px}.fp-dcc .lbg{background:#ebebeb}.fp-dcc .lbg img{max-height:50px;max-width:150px}
+.fp-scene{width:172px}.fp-scene .lbg img{max-height:36px;max-width:150px}
+@media(max-width:900px){.grant-top{flex-direction:column}.grant-amount{align-self:flex-start}.sum-strip{flex-direction:column}.sum-item{border-right:none;border-bottom:1px solid var(--border)}.sum-item:last-child{border-bottom:none}}
+@media(max-width:600px){.hero-fund{padding-top:110px}}
+
+/* ── THEME SYNC FROM INDEX ── */
+html{scroll-behavior:smooth;font-size:16px;background:#eaf0f8}
+body{font-family:var(--font-b);background:#eaf0f8;color:var(--text);line-height:1.7;overflow-x:hidden}
+.sec{padding:80px 24px;background:#eaf0f8}
+.sec-alt{padding:80px 24px;background:#dce8f4}
+.a11y-bar{position:fixed;top:0;left:0;right:0;z-index:1001;background:#eaf0f8;border-bottom:1px solid #cdd8e8;padding:7px 24px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;min-height:36px}
+.a11y-lbl{font-family:var(--font-m);font-size:.6rem;color:#6080a0;text-transform:uppercase;letter-spacing:.14em;margin-right:4px;white-space:nowrap}
+.ab-btn{display:inline-flex;align-items:center;gap:5px;padding:4px 13px;border-radius:30px;background:transparent;border:1px solid #b4c4d8;color:#3a5270;font-size:.72rem;font-family:var(--font-b);cursor:pointer;transition:all .2s;white-space:nowrap}
+.ab-btn:hover{background:#dce8f4;color:#0e1c2e;border-color:#b4c4d8}
+.ab-btn.on{background:#1254a0;border-color:#1254a0;color:#fff;font-weight:600}
+.nav-wrap{position:fixed;top:36px;left:0;right:0;z-index:900;padding:0 24px;transition:all .3s;background:#eaf0f8}
+.nav-inner{max-width:1360px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:10px 24px;border-radius:var(--r-xl);transition:all .3s;background:#dce8f4;backdrop-filter:blur(16px);box-shadow:0 4px 16px rgba(18,84,160,.1)}
+.nav-wrap.solid .nav-inner{background:#dce8f4;backdrop-filter:blur(20px);box-shadow:0 6px 24px rgba(18,84,160,.15)}
+.nav-brand{display:flex;align-items:center;gap:10px;font-family:var(--font-d);font-size:1.1rem;font-weight:600;color:#0e1c2e;letter-spacing:.01em;text-decoration:none}
+.brand-tag{font-family:var(--font-m);font-size:.65rem;color:#8a5c00;background:#fff8e8;padding:3px 9px;border-radius:var(--r-sm);border:1px solid #e0c080}
+.nav-links{display:flex;align-items:center;gap:1px;list-style:none}
+.nav-links a{padding:6px 9px;border-radius:20px;font-size:.72rem;font-weight:500;color:#1a2e42;transition:all .2s;text-decoration:none;white-space:nowrap}
+.nav-links a:hover{color:#0e1c2e;background:rgba(18,84,160,.1)}
+.nav-links a.act{color:#0a3a7a;background:rgba(18,84,160,.15);font-weight:600}
+.nav-cta{background:#1254a0!important;color:#fff!important;font-weight:600!important;padding:6px 16px!important;border-radius:20px!important;font-size:.72rem!important}
+.nav-cta:hover{background:#0a3a80!important;color:#fff!important}
+.hbg{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px}
+.hbg span{display:block;width:22px;height:2px;background:#0e1c2e;border-radius:2px;transition:all .3s}
+.mob-nav{position:fixed;inset:0;z-index:850;background:#fff;border-left:1px solid #cdd8e8;padding:90px 32px 48px;transform:translateX(100%);transition:transform .35s cubic-bezier(.4,0,.2,1);display:flex;flex-direction:column;gap:4px}
+.mob-nav.open{transform:translateX(0)}
+.mob-nav a{color:#1a2638;font-family:var(--font-d);font-size:1.8rem;padding:12px 0;border-bottom:1px solid #cdd8e8;display:block;font-style:italic;text-decoration:none}
+.mob-nav a:hover{color:#1254a0}
+::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:#eaf0f8}::-webkit-scrollbar-thumb{background:#b4c4d8;border-radius:99px}
+::selection{background:rgba(18,84,160,.18);color:#0e1c2e}
+a{color:#1254a0;text-decoration:none;transition:color .2s}a:hover{color:#0a3a80}
+h1,h2,h3,h4{font-family:var(--font-d);line-height:1.15;color:var(--text)}
+p{color:var(--text-2)}
+.wrap{max-width:1360px;margin:0 auto}
+.s-eye{display:flex;align-items:center;gap:10px;font-family:var(--font-m);font-size:.64rem;color:#1254a0;text-transform:uppercase;letter-spacing:.16em;margin-bottom:14px}
+.s-eye::before{content:'';width:24px;height:1px;background:#1254a0}
+.s-title{font-size:clamp(1.9rem,3.2vw,3rem);font-weight:300;color:#0e1c2e;margin-bottom:12px;font-style:italic}
+.s-title strong{font-style:normal;font-weight:600;color:#8a5c00}
+@media(max-width:900px){}
+
+.gc-body{padding:26px 28px 24px}
+
+@media(max-width:1280px){.nav-links{display:none}.hbg{display:flex}}
+</style>
+</head>
+<body>
+<a href="#main" class="skip-link">Skip to main content</a>
+<div id="announce" role="status" aria-live="polite" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden"></div>
+<div class="a11y-bar" role="toolbar" aria-label="Accessibility tools">
+  <span class="a11y-lbl">Accessibility</span>
+  <button class="ab-btn" id="bFont" aria-pressed="false" onclick="togFont()">Aa Large Text</button>
+  <button class="ab-btn" id="bDys"  aria-pressed="false" onclick="togDys()">💡 Dyslexia Font</button>
+  <button class="ab-btn" id="bCon"  aria-pressed="false" onclick="togCon()">🌓 High Contrast</button>
+</div>
+<nav class="nav-wrap" id="navWrap" aria-label="Main navigation">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-brand" style="text-decoration:none;color:#0e1c2e">SH ePortfolio <span class="brand-tag">AI · UDL · 2025–26</span></a>
+    <ul class="nav-links" role="list">
+      <li><a href="teaching.html">Philosophy</a></li>
+      <li><a href="teaching_career.html" class="act" class="act">Teaching</a></li>
+      <li><a href="implementation.html">Implementation</a></li>
+      <li><a href="evidence.html">Evidence</a></li>
+      <li><a href="supervisions.html">Supervisions</a></li>
+      <li><a href="commercialisation.html">AI Commercialisation</a></li>
+      <li><a href="events.html">Events</a></li>
+      <li><a href="impact.html">Impact</a></li>
+      <li><a href="publications.html">Publications</a></li>
+      <li><a href="funding.html" class="act">Funding</a></li>
+      <li><a href="index.html" class="nav-cta">Home</a></li>
+    </ul>
+    <button class="hbg" id="hbg" aria-expanded="false" aria-label="Open menu" onclick="togMob()">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="mob-nav" id="mobNav" role="dialog" aria-label="Mobile menu">
+  <a href="index.html" onclick="closeMob()">Home</a>
+  <a href="implementation.html" onclick="closeMob()">Implementation</a>
+  <a href="evidence.html" onclick="closeMob()">Evidence</a>
+  <a href="commercialisation.html" onclick="closeMob()">AI Commercialisation</a>
+  <a href="events.html" onclick="closeMob()">Events</a>
+  <a href="impact.html" onclick="closeMob()">Impact</a>
+  <a href="teaching.html" onclick="closeMob()">Philosophy</a>
+  <a href="teaching_career.html" onclick="closeMob()">Teaching</a>
+  <a href="publications.html" onclick="closeMob()">Publications</a>
+  <a href="funding.html" onclick="closeMob()">Funding</a>
+</div>
+
+<div style="background:#eaf0f8;padding-top:82px;margin-top:-1px"><div style="background:linear-gradient(150deg,#dce8f4 0%,#eaf0f8 55%,#f0f6ff 100%);border-bottom:1px solid #b8cce0;padding:52px 24px 40px">
+  <div style="max-width:1360px;margin:0 auto;display:grid;grid-template-columns:1fr auto;gap:48px;align-items:center">
+    <div>
+      <a href="index.html" style="display:inline-flex;align-items:center;gap:5px;font-family:var(--font-m);font-size:.65rem;color:#1254a0;text-decoration:none;margin-bottom:16px;opacity:.8">&#8592; ePortfolio Home</a>
+      <h1 style="font-family:var(--font-d);font-size:clamp(1.9rem,3.5vw,2.8rem);font-weight:300;color:#0e1c2e;line-height:1.1;margin-bottom:8px">Teaching</h1>
+      <p style="font-family:var(--font-m);font-size:.68rem;color:#506080;letter-spacing:.06em">Dr. Shagufta Henna · Lecturer in AI &amp; Data Science · ATU Ireland</p>
+    </div>
+    <div style="flex-shrink:0;opacity:.85">
+      <!-- robot -->
+          <svg width="180" height="180" viewBox="0 0 340 300" style="flex-shrink:0;align-self:center;" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <radialGradient id="gsky3" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#f0bc50" stop-opacity="0.12"/>
+                <stop offset="100%" stop-color="#f0bc50" stop-opacity="0"/>
+              </radialGradient>
+              <filter id="sb3"><feGaussianBlur stdDeviation="3"/></filter>
+            </defs>
+
+            <!-- glow -->
+            <ellipse cx="170" cy="150" rx="88" ry="88" fill="url(#gsky3)" filter="url(#sb3)"/>
+
+            <!-- torso -->
+            <rect x="136" y="138" width="68" height="56" rx="8" fill="rgba(17,34,64,.9)" stroke="rgba(232,163,32,.5)" stroke-width="1.5"/>
+            <rect x="144" y="146" width="52" height="32" rx="5" fill="rgba(232,163,32,.05)" stroke="rgba(232,163,32,.18)" stroke-width="1"/>
+            <circle cx="156" cy="155" r="3" fill="rgba(16,185,129,.8)"><animate attributeName="opacity" values="1;0.3;1" dur="1.8s" repeatCount="indefinite"/></circle>
+            <circle cx="167" cy="155" r="3" fill="rgba(56,189,248,.8)"><animate attributeName="opacity" values="0.3;1;0.3" dur="1.8s" repeatCount="indefinite"/></circle>
+            <circle cx="178" cy="155" r="3" fill="rgba(251,191,36,.8)"><animate attributeName="opacity" values="1;0.3;1" dur="2.2s" repeatCount="indefinite"/></circle>
+            <circle cx="189" cy="155" r="3" fill="rgba(167,139,250,.8)"><animate attributeName="opacity" values="0.3;1;0.3" dur="1.5s" repeatCount="indefinite"/></circle>
+            <rect x="148" y="166" width="44" height="5" rx="2.5" fill="rgba(255,255,255,.06)" stroke="rgba(232,163,32,.2)" stroke-width=".5"/>
+            <rect x="148" y="166" width="33" height="5" rx="2.5" fill="rgba(232,163,32,.6)"/>
+            <text x="170" y="179" text-anchor="middle" font-size="5.5" fill="rgba(232,163,32,.7)" font-family="monospace">14+</text>
+            <text x="170" y="192" text-anchor="middle" font-size="9" fill="rgba(232,163,32,.9)" font-family="'Cormorant Garamond','Georgia',serif" font-weight="600" font-style="italic" letter-spacing="2">AI</text>
+            <line x1="150" y1="195" x2="190" y2="195" stroke="rgba(232,163,32,.25)" stroke-width=".7"/>
+
+            <!-- head -->
+            <rect x="144" y="102" width="52" height="38" rx="10" fill="rgba(17,34,64,.9)" stroke="rgba(232,163,32,.5)" stroke-width="1.5"/>
+            <ellipse cx="159" cy="118" rx="7" ry="6" fill="rgba(232,163,32,.1)" stroke="rgba(232,163,32,.6)" stroke-width="1.2"/>
+            <ellipse cx="181" cy="118" rx="7" ry="6" fill="rgba(232,163,32,.1)" stroke="rgba(232,163,32,.6)" stroke-width="1.2"/>
+            <circle cx="159" cy="118" r="3.5" fill="#f0bc50" opacity=".9"><animate attributeName="cx" values="159;161;159;157;159" dur="4s" repeatCount="indefinite"/></circle>
+            <circle cx="181" cy="118" r="3.5" fill="#f0bc50" opacity=".9"><animate attributeName="cx" values="181;183;181;179;181" dur="4s" repeatCount="indefinite"/></circle>
+            <path d="M158 132 Q170 138 182 132" fill="none" stroke="rgba(232,163,32,.5)" stroke-width="1.2" stroke-linecap="round"/>
+
+            <!-- antenna -->
+            <line x1="170" y1="102" x2="170" y2="86" stroke="rgba(232,163,32,.4)" stroke-width="1.2"/>
+            <circle cx="170" cy="82" r="4" fill="rgba(232,163,32,.15)" stroke="rgba(232,163,32,.7)" stroke-width="1.2"/>
+            <circle cx="170" cy="82" r="2" fill="#f0bc50"><animate attributeName="opacity" values="1;0.2;1" dur="1.2s" repeatCount="indefinite"/></circle>
+
+            <!-- ears -->
+            <rect x="128" y="108" width="16" height="22" rx="5" fill="rgba(17,34,64,.9)" stroke="rgba(232,163,32,.3)" stroke-width="1"/>
+            <rect x="196" y="108" width="16" height="22" rx="5" fill="rgba(17,34,64,.9)" stroke="rgba(232,163,32,.3)" stroke-width="1"/>
+
+            <!-- neck -->
+            <rect x="162" y="136" width="16" height="6" rx="3" fill="rgba(232,163,32,.15)" stroke="rgba(232,163,32,.3)" stroke-width="1"/>
+
+            <!-- arms -->
+            <rect x="110" y="142" width="26" height="12" rx="6" fill="rgba(17,34,64,.9)" stroke="rgba(232,163,32,.4)" stroke-width="1.2"/>
+            <rect x="204" y="142" width="26" height="12" rx="6" fill="rgba(17,34,64,.9)" stroke="rgba(16,185,129,.4)" stroke-width="1.2"/>
+
+            <!-- legs -->
+            <rect x="148" y="194" width="20" height="28" rx="6" fill="rgba(17,34,64,.9)" stroke="rgba(232,163,32,.35)" stroke-width="1.2"/>
+            <rect x="172" y="194" width="20" height="28" rx="6" fill="rgba(17,34,64,.9)" stroke="rgba(232,163,32,.35)" stroke-width="1.2"/>
+            <rect x="144" y="218" width="28" height="8" rx="4" fill="rgba(17,34,64,.95)" stroke="rgba(232,163,32,.3)" stroke-width="1"/>
+            <rect x="168" y="218" width="28" height="8" rx="4" fill="rgba(17,34,64,.95)" stroke="rgba(232,163,32,.3)" stroke-width="1"/>
+            <ellipse cx="170" cy="232" rx="36" ry="5" fill="rgba(232,163,32,.06)"/>
+
+            <!-- floating labels &ndash; uniform pill style -->
+
+            <!-- top centre -->
+            <g transform="translate(100,28)">
+              <rect x="0" y="0" width="140" height="22" rx="11" fill="rgba(56,189,248,.1)" stroke="rgba(56,189,248,.28)" stroke-width="1"/>
+              <text x="70" y="15" text-anchor="middle" font-size="7.5" fill="#38bdf8" font-family="monospace" font-weight="600">AI · Deep Learning · Big Data</text>
+              <line x1="70" y1="22" x2="70" y2="75" stroke="rgba(56,189,248,.22)" stroke-width=".8" stroke-dasharray="3 3"/>
+            </g>
+
+            <!-- left -->
+            <g transform="translate(18,138)">
+              <rect x="0" y="0" width="82" height="22" rx="11" fill="rgba(232,163,32,.1)" stroke="rgba(232,163,32,.3)" stroke-width="1"/>
+              <text x="41" y="15" text-anchor="middle" font-size="7.5" fill="#f0bc50" font-family="monospace" font-weight="600">100+ Supervised</text>
+              <line x1="82" y1="11" x2="110" y2="11" stroke="rgba(232,163,32,.25)" stroke-width=".8" stroke-dasharray="3 3"/>
+            </g>
+
+            <!-- right -->
+            <g transform="translate(240,138)">
+              <rect x="0" y="0" width="82" height="22" rx="11" fill="rgba(16,185,129,.1)" stroke="rgba(16,185,129,.3)" stroke-width="1"/>
+              <text x="41" y="15" text-anchor="middle" font-size="7.5" fill="#34d399" font-family="monospace" font-weight="600">ATU · UK · Pakistan</text>
+              <line x1="0" y1="11" x2="-28" y2="11" stroke="rgba(16,185,129,.25)" stroke-width=".8" stroke-dasharray="3 3"/>
+            </g>
+
+            <!-- bottom centre -->
+            <g transform="translate(83,252)">
+              <rect x="0" y="0" width="174" height="22" rx="11" fill="rgba(167,139,250,.1)" stroke="rgba(167,139,250,.3)" stroke-width="1"/>
+              <text x="87" y="15" text-anchor="middle" font-size="7.5" fill="#a78bfa" font-family="monospace" font-weight="600">Postgrad · Undergrad · PhD</text>
+            </g>
+
+          </svg>
+    </div>
+  </div>
+</div></div>
+
+<main id="main">
+<section class="sec"><div class="wrap">
+
+  <div class="sec-head"><h2>Current Teaching <span>Postgraduate AI &amp; Data Science · ATU Ireland · 2019 – Present</span></h2></div>
+  <div style="background:linear-gradient(135deg,#dce8f4 0%,#eaf0f8 100%);border:1px solid #b0c4dc;border-radius:14px;padding:24px 28px;margin-bottom:24px">
+    <div style="font-family:var(--font-m);font-size:.54rem;text-transform:uppercase;letter-spacing:.12em;color:#1254a0;margin-bottom:14px;display:flex;align-items:center;gap:8px"><span style="width:14px;height:1px;background:#1254a0"></span>Primary lecturer in Artificial Intelligence, Deep Learning &amp; Big Data Analytics at postgraduate level</div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:10px">
+      <div style="background:#fff;border:1px solid #b0c4dc;border-left:4px solid #1254a0;border-radius:10px;padding:12px 16px"><div style="font-family:var(--font-m);font-size:.5rem;text-transform:uppercase;letter-spacing:.1em;color:#1254a0;margin-bottom:4px">MSc Big Data and AI</div><div style="font-family:var(--font-d);font-size:.95rem;font-weight:600;color:#0e1c2e;margin-bottom:2px">Artificial Intelligence</div><div style="font-size:.7rem;color:#4a6882">Core module · 2019 – present</div></div><div style="background:#fff;border:1px solid #b0c4dc;border-left:4px solid #1254a0;border-radius:10px;padding:12px 16px"><div style="font-family:var(--font-m);font-size:.5rem;text-transform:uppercase;letter-spacing:.1em;color:#1254a0;margin-bottom:4px">MSc Big Data and AI</div><div style="font-family:var(--font-d);font-size:.95rem;font-weight:600;color:#0e1c2e;margin-bottom:2px">Big Data Analytics</div><div style="font-size:.7rem;color:#4a6882">Core module · 2019 – present</div></div><div style="background:#fff;border:1px solid #b0c4dc;border-left:4px solid #0a6b48;border-radius:10px;padding:12px 16px"><div style="font-family:var(--font-m);font-size:.5rem;text-transform:uppercase;letter-spacing:.1em;color:#0a6b48;margin-bottom:4px">MSc Data Science</div><div style="font-family:var(--font-d);font-size:.95rem;font-weight:600;color:#0e1c2e;margin-bottom:2px">Deep Learning</div><div style="font-size:.7rem;color:#4a6882">Core module · 2019 – present</div></div><div style="background:#fff;border:1px solid #b0c4dc;border-left:4px solid #0a6b48;border-radius:10px;padding:12px 16px"><div style="font-family:var(--font-m);font-size:.5rem;text-transform:uppercase;letter-spacing:.1em;color:#0a6b48;margin-bottom:4px">MSc Data Science</div><div style="font-family:var(--font-d);font-size:.95rem;font-weight:600;color:#0e1c2e;margin-bottom:2px">Predictive Analytics</div><div style="font-size:.7rem;color:#4a6882">Core module · 2019 – present</div></div><div style="background:#fff;border:1px solid #b0c4dc;border-left:4px solid #0a6b48;border-radius:10px;padding:12px 16px"><div style="font-family:var(--font-m);font-size:.5rem;text-transform:uppercase;letter-spacing:.1em;color:#0a6b48;margin-bottom:4px">MSc Data Science</div><div style="font-family:var(--font-d);font-size:.95rem;font-weight:600;color:#0e1c2e;margin-bottom:2px">Data Science Project</div><div style="font-size:.7rem;color:#4a6882">Project module · 2019 – present</div></div><div style="background:#fff;border:1px solid #b0c4dc;border-left:4px solid #8a5c00;border-radius:10px;padding:12px 16px"><div style="font-family:var(--font-m);font-size:.5rem;text-transform:uppercase;letter-spacing:.1em;color:#8a5c00;margin-bottom:4px">MSc Supply Chain Analytics</div><div style="font-family:var(--font-d);font-size:.95rem;font-weight:600;color:#0e1c2e;margin-bottom:2px">Data Analytics and Visualisations</div><div style="font-size:.7rem;color:#4a6882">Core module · 2019 – present</div></div>
+    </div>
+  </div>
+
+  <hr class="div">
+  <div class="sec-head"><h2>Full Teaching Career <span>2008 – Present · 4 Institutions · 3 Countries</span></h2></div>
+
+  <div class="grant-card" style="border-left-color:#1254a0">
+    <div class="grant-top"><div class="grant-title">Lecturer in Artificial Intelligence &amp; Data Science</div>
+    <div style="background:rgba(18,84,160,.07);color:#1254a0;border:1px solid #1254a0;font-size:.58rem;padding:3px 10px;border-radius:10px;white-space:nowrap;flex-shrink:0">2019 – Present</div></div>
+    <div class="grant-meta"><span class="gm-tag role">Atlantic Technological University (ATU), Ireland</span></div>
+    <div class="grant-body"><p>Primary AI, Deep Learning, Big Data Analytics, and Data Science lecturer at postgraduate level.</p></div>
+    <div class="grant-meta" style="margin-top:12px"><span class="gm-tag">Artificial Intelligence (MSc Big Data and AI)</span><span class="gm-tag">Big Data Analytics (MSc Big Data and AI)</span><span class="gm-tag">Deep Learning (MSc Data Science)</span><span class="gm-tag">Predictive Analytics (MSc Data Science)</span><span class="gm-tag">Data Science Project (MSc Data Science)</span><span class="gm-tag">Data Analytics and Visualisations (MSc Supply Chain Analytics)</span></div></div>
+
+  <div class="grant-card" style="border-left-color:#8a5c00">
+    <div class="grant-top"><div class="grant-title">Senior Assistant Professor (Full Time)</div>
+    <div style="background:rgba(18,84,160,.07);color:#8a5c00;border:1px solid #8a5c00;font-size:.58rem;padding:3px 10px;border-radius:10px;white-space:nowrap;flex-shrink:0">Feb 2013 – Aug 2018</div></div>
+    <div class="grant-meta"><span class="gm-tag role">Bahria University, Islamabad, Pakistan</span></div>
+    <div class="grant-body"><p>Full-time faculty in Computer Science, teaching undergraduate and postgraduate modules including PhD-level courses.</p></div>
+    <div class="grant-meta" style="margin-top:12px"><span class="gm-tag">Machine Learning</span><span class="gm-tag">Artificial Intelligence</span><span class="gm-tag">Big Data Analytics</span><span class="gm-tag">Wireless Communication</span><span class="gm-tag">Mobile Ad Hoc Networks (PhD)</span><span class="gm-tag">Advanced Computer Networks</span><span class="gm-tag">Network Programming</span><span class="gm-tag">Network Security</span><span class="gm-tag">Distributed/Parallel Systems</span><span class="gm-tag">Web Application Security</span><span class="gm-tag">Web Technologies</span><span class="gm-tag">Web Application Development</span><span class="gm-tag">Data Communication</span><span class="gm-tag">Operating System</span><span class="gm-tag">System Analysis and Design</span><span class="gm-tag">Database Systems</span><span class="gm-tag">Object-Oriented Programming</span><span class="gm-tag">Enterprise Systems</span><span class="gm-tag">Information Systems</span><span class="gm-tag">Communication Systems</span><span class="gm-tag">System Programming</span><span class="gm-tag">Data Operations</span><span class="gm-tag">Software Engineering</span><span class="gm-tag">Wireless and Mobile Communication</span></div><div style="margin-top:12px;background:#fff8e8;border:1px solid #d4b870;border-radius:8px;padding:10px 14px;display:flex;align-items:center;gap:10px"><span style="font-size:1.1rem">🏆</span><div><div style="font-family:var(--font-m);font-size:.6rem;color:#8a5c00;font-weight:600">Distinguished Teacher of the Year Award 2017</div><div style="font-size:.72rem;color:var(--text-2);margin-top:2px">Based on student feedback, successful supervisions, and curriculum improvements. Area: Machine Learning for Virtualised Networks for Resource Management.</div></div></div></div>
+
+  <div class="grant-card" style="border-left-color:#0a6b48">
+    <div class="grant-top"><div class="grant-title">Part-Time Teaching Assistant &amp; Mentor for Students with Disabilities</div>
+    <div style="background:rgba(18,84,160,.07);color:#0a6b48;border:1px solid #0a6b48;font-size:.58rem;padding:3px 10px;border-radius:10px;white-space:nowrap;flex-shrink:0">2008 – 2012</div></div>
+    <div class="grant-meta"><span class="gm-tag role">University of Leicester, UK</span></div>
+    <div class="grant-body"><p>Mentored and supported students with disabilities through their undergraduate and postgraduate studies during doctoral studies.</p></div>
+    </div>
+
+  <div class="grant-card" style="border-left-color:#5040a0">
+    <div class="grant-top"><div class="grant-title">Part-Time Undergraduate &amp; Postgraduate Lecturer</div>
+    <div style="background:rgba(18,84,160,.07);color:#5040a0;border:1px solid #5040a0;font-size:.58rem;padding:3px 10px;border-radius:10px;white-space:nowrap;flex-shrink:0">2009 – 2012</div></div>
+    <div class="grant-meta"><span class="gm-tag role">Albert College, Leicester, UK — NCC &amp; BCS Curriculum</span></div>
+    <div class="grant-body"><p>Covered curriculum of the National Computing Centre (NCC) and British Computing Society (BCS).</p></div>
+    <div class="grant-meta" style="margin-top:12px"><span class="gm-tag">System Analysis and Design</span><span class="gm-tag">Database Systems</span><span class="gm-tag">Data Communication</span><span class="gm-tag">Computer Networks</span><span class="gm-tag">Operating System</span><span class="gm-tag">Enterprise Systems</span><span class="gm-tag">Information Systems</span><span class="gm-tag">Communication Systems</span><span class="gm-tag">Object-Oriented Programming</span><span class="gm-tag">Wireless and Mobile Communication</span><span class="gm-tag">System Programming</span><span class="gm-tag">Advanced Computer Networks</span><span class="gm-tag">Web Application Security</span><span class="gm-tag">Web Technologies</span><span class="gm-tag">Distributed Systems</span><span class="gm-tag">Network Programming</span><span class="gm-tag">Network Security</span><span class="gm-tag">Artificial Intelligence</span><span class="gm-tag">Big Data Analytics</span><span class="gm-tag">Web Application Development</span><span class="gm-tag">Data Operations</span></div></div>
+
+  <div class="grant-card" style="border-left-color:#4a6882">
+    <div class="grant-top"><div class="grant-title">Senior System Analyst</div>
+    <div style="background:rgba(18,84,160,.07);color:#4a6882;border:1px solid #4a6882;font-size:.58rem;padding:3px 10px;border-radius:10px;white-space:nowrap;flex-shrink:0">Jan 2008 – Jun 2008</div></div>
+    <div class="grant-meta"><span class="gm-tag role">National Institute of Electronics (NIE), Islamabad, Pakistan</span></div>
+    <div class="grant-body"><p>Senior System Analyst at the National Institute of Electronics, Islamabad.</p></div>
+    </div>
+
+</div></section>
+</main>
+<footer role="contentinfo" style="background:#dce8f4;border-top:2px solid #b4c4d8;margin-top:0">
+
+  <!-- top accent line -->
+  <div style="height:3px;background:linear-gradient(90deg,#0a6b48 0%,#1254a0 40%,#8a5c00 100%);"></div>
+
+  <!-- main grid -->
+  <div style="max-width:1360px;margin:0 auto;padding:52px 28px 40px;display:grid;grid-template-columns:2fr 1fr 1fr;gap:56px;align-items:start;">
+
+    <!-- LEFT — identity + tagline + credentials -->
+    <div>
+      <!-- name -->
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;">
+        <div style="width:42px;height:42px;border-radius:10px;background:linear-gradient(135deg,#1254a0,#8a5c00);display:flex;align-items:center;justify-content:center;font-family:var(--font-m);font-size:.75rem;font-weight:700;color:#f0f6ff;flex-shrink:0;letter-spacing:.04em;">SH</div>
+        <div>
+          <div style="font-family:var(--font-d);font-size:1.1rem;font-style:italic;color:#0e1c2e;line-height:1.1;">Dr. Shagufta Henna</div>
+          <div style="font-family:var(--font-m);font-size:.5rem;color:#4a6882;text-transform:uppercase;letter-spacing:.12em;margin-top:2px;">Lecturer in AI &amp; Computing &middot; ATU Ireland</div>
+        </div>
+      </div>
+
+      <!-- tagline -->
+      <p style="font-size:.8rem;color:#284060;line-height:1.85;max-width:380px;margin:0 0 24px;text-align:justify;hyphens:auto;">An evidence-based teaching portfolio grounded in Universal Design for Learning, inclusive curriculum design, and AI-enhanced pedagogy, built for every learner, validated by research, and certified by the National Forum for the Enhancement of Teaching and Learning in Higher Education.</p>
+
+      <!-- credentials -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:20px;">
+        <a href="https://openbadgefactory.com/v1/assertion/6fab207ec664a6b9ab14145b9adb650de0d7b9be.html" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:10px;padding:12px 14px;background:#eaf0f8;border:1px solid #b8d0e8;border-radius:10px;text-decoration:none;transition:all .2s;" onmouseover="this.style.borderColor='#1254a0';this.style.boxShadow='0 2px 10px rgba(18,84,160,.12)'" onmouseout="this.style.borderColor='#b8d0e8';this.style.boxShadow=''">
+          <img src="badge.jpg" alt="UDL Badge" style="width:42px;height:42px;border-radius:7px;flex-shrink:0;object-fit:contain;" />
+          <div style="min-width:0;">
+            <div style="font-family:var(--font-m);font-size:.47rem;color:#0a6b48;text-transform:uppercase;letter-spacing:.09em;margin-bottom:2px;">Verified &#8599;</div>
+            <div style="font-size:.7rem;color:#0e1c2e;font-weight:600;line-height:1.25;">Universal Design in Teaching &amp; Learning</div>
+            <div style="font-family:var(--font-m);font-size:.48rem;color:#4a6882;margin-top:3px;">National Forum &middot; Feb 2024</div>
+          </div>
+        </a>
+        <a href="https://openbadgefactory.com/v1/assertion/edf1564bff1221907cafb9ade5d0804c25d0796d.html" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:10px;padding:12px 14px;background:#eaf0f8;border:1px solid #b8d0e8;border-radius:10px;text-decoration:none;transition:all .2s;" onmouseover="this.style.borderColor='#1254a0';this.style.boxShadow='0 2px 10px rgba(18,84,160,.12)'" onmouseout="this.style.borderColor='#b8d0e8';this.style.boxShadow=''">
+          <img src="ntutr.jpg" alt="N-TUTORR Badge" style="width:42px;height:42px;border-radius:7px;flex-shrink:0;object-fit:contain;" />
+          <div style="min-width:0;">
+            <div style="font-family:var(--font-m);font-size:.47rem;color:#1254a0;text-transform:uppercase;letter-spacing:.09em;margin-bottom:2px;">Verified &#8599;</div>
+            <div style="font-size:.7rem;color:#0e1c2e;font-weight:600;line-height:1.25;">N-TUTORR Community Member</div>
+            <div style="font-family:var(--font-m);font-size:.48rem;color:#4a6882;margin-top:3px;">ATU Galway City &middot; May 2024</div>
+          </div>
+        </a>
+      </div>
+
+      <!-- compliance pills -->
+      <div style="display:flex;flex-wrap:wrap;gap:6px;">
+        <span style="font-family:var(--font-m);font-size:.52rem;padding:3px 10px;border-radius:20px;background:#e0f0e8;border:1px solid #a8d4bc;color:#0a6b48;">WCAG 2.1 AA</span>
+        <span style="font-family:var(--font-m);font-size:.52rem;padding:3px 10px;border-radius:20px;background:#dceaf8;border:1px solid #a8c4e0;color:#1254a0;">GDPR Compliant</span>
+        <span style="font-family:var(--font-m);font-size:.52rem;padding:3px 10px;border-radius:20px;background:#f8f0e0;border:1px solid #d8c090;color:#8a5c00;">UDL Guidelines v3.0</span>
+        <span style="font-family:var(--font-m);font-size:.52rem;padding:3px 10px;border-radius:20px;background:#f0eaf8;border:1px solid #c8b0d8;color:#5040a0;">EU AI Act 2024</span>
+      </div>
+    </div>
+
+    <!-- MIDDLE — portfolio nav -->
+    <div>
+      <div style="font-family:var(--font-m);font-size:.55rem;text-transform:uppercase;letter-spacing:.14em;color:#0e1c2e;font-weight:600;margin-bottom:18px;padding-bottom:10px;border-bottom:2px solid #cdd8e8;">Portfolio</div>
+      <nav style="display:flex;flex-direction:column;gap:10px;" aria-label="Portfolio sections">
+        <a href="teaching.html"       style="font-size:.78rem;color:#284060;text-decoration:none;display:flex;align-items:center;gap:8px;transition:color .2s;" onmouseover="this.style.color='#1254a0'" onmouseout="this.style.color='#284060'"><span style="width:12px;height:1px;background:#cdd8e8;flex-shrink:0;"></span>Teaching Philosophy</a>
+              <a href="udlplan.html"         style="font-size:.78rem;color:#284060;text-decoration:none;display:flex;align-items:center;gap:8px;transition:color .2s;" onmouseover="this.style.color='#1254a0'" onmouseout="this.style.color='#284060'"><span style="width:12px;height:1px;background:#cdd8e8;flex-shrink:0;"></span>UDL Plan</a>
+        <a href="implementation.html" style="font-size:.78rem;color:#284060;text-decoration:none;display:flex;align-items:center;gap:8px;transition:color .2s;" onmouseover="this.style.color='#1254a0'" onmouseout="this.style.color='#284060'"><span style="width:12px;height:1px;background:#cdd8e8;flex-shrink:0;"></span>Implementation</a>
+                    <a href="evidence.html"       style="font-size:.78rem;color:#284060;text-decoration:none;display:flex;align-items:center;gap:8px;transition:color .2s;" onmouseover="this.style.color='#1254a0'" onmouseout="this.style.color='#284060'"><span style="width:12px;height:1px;background:#cdd8e8;flex-shrink:0;"></span>Evidence &amp; Figures</a>
+        <a href="publications.html"   style="font-size:.78rem;color:#284060;text-decoration:none;display:flex;align-items:center;gap:8px;transition:color .2s;" onmouseover="this.style.color='#1254a0'" onmouseout="this.style.color='#284060'"><span style="width:12px;height:1px;background:#cdd8e8;flex-shrink:0;"></span>Publications</a>
+        <a href="funding.html"        style="font-size:.78rem;color:#284060;text-decoration:none;display:flex;align-items:center;gap:8px;transition:color .2s;" onmouseover="this.style.color='#1254a0'" onmouseout="this.style.color='#284060'"><span style="width:12px;height:1px;background:#cdd8e8;flex-shrink:0;"></span>Research Funding</a>
+      </nav>
+    </div>
+
+    <!-- RIGHT — contact -->
+    <div>
+      <div style="font-family:var(--font-m);font-size:.55rem;text-transform:uppercase;letter-spacing:.14em;color:#0e1c2e;font-weight:600;margin-bottom:18px;padding-bottom:10px;border-bottom:2px solid #cdd8e8;">Contact &amp; Links</div>
+      <div style="display:flex;flex-direction:column;gap:12px;">
+        <a href="https://www.linkedin.com/in/shagufta-h-436887172/" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:9px;font-size:.78rem;color:#284060;text-decoration:none;transition:color .2s;" onmouseover="this.style.color='#1254a0'" onmouseout="this.style.color='#284060'">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" style="flex-shrink:0;color:#4a6882;"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          linkedin.com/in/shagufta-h
+        </a>
+        <a href="mailto:shagufta.henna@atu.ie" style="display:flex;align-items:center;gap:9px;font-size:.78rem;color:#284060;text-decoration:none;transition:color .2s;" onmouseover="this.style.color='#1254a0'" onmouseout="this.style.color='#284060'">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" style="flex-shrink:0;color:#4a6882;"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+          shagufta.henna@atu.ie
+        </a>
+        <a href="https://www.atu.ie/courses/computing" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:9px;font-size:.78rem;color:#284060;text-decoration:none;transition:color .2s;" onmouseover="this.style.color='#1254a0'" onmouseout="this.style.color='#284060'">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" style="flex-shrink:0;color:#4a6882;"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          Department of Computing
+        </a>
+        <a href="https://www.atu.ie" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:9px;font-size:.78rem;color:#284060;text-decoration:none;transition:color .2s;" onmouseover="this.style.color='#1254a0'" onmouseout="this.style.color='#284060'">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" style="flex-shrink:0;color:#4a6882;"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          Atlantic Technological University
+        </a>
+        <div style="height:1px;background:#cdd8e8;margin:2px 0;"></div>
+        <a href="https://udlguidelines.cast.org" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:9px;font-size:.78rem;color:#284060;text-decoration:none;transition:color .2s;" onmouseover="this.style.color='#0a6b48'" onmouseout="this.style.color='#284060'">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" style="flex-shrink:0;color:#4a6882;"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          CAST UDL Guidelines 3.0
+        </a>
+        <a href="https://openbadgefactory.com/v1/assertion/6fab207ec664a6b9ab14145b9adb650de0d7b9be.html" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:9px;font-size:.78rem;color:#284060;text-decoration:none;transition:color .2s;" onmouseover="this.style.color='#0a6b48'" onmouseout="this.style.color='#284060'">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" style="flex-shrink:0;color:#4a6882;"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
+          UDL Certified &middot; National Forum 2024
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- bottom bar -->
+  <div style="border-top:1px solid #cdd8e8;background:#dce8f4;">
+    <div style="max-width:1360px;margin:0 auto;padding:14px 28px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;">
+      <p style="font-size:.68rem;color:#284060;font-family:var(--font-m);">&#169; 2026 Dr. Shagufta Henna &middot; Atlantic Technological University, Ireland</p>
+      <p style="font-size:.68rem;color:#284060;font-family:var(--font-m);">Interactive AI Learning ePortfolio &middot; UDL v3.0 &middot; Academic Year 2025&ndash;26</p>
+    </div>
+  </div>
+
+</footer>
+<script>
+
+// ── NAV ──
+const nav=document.getElementById('navWrap');
+const secs=[...document.querySelectorAll('section[id]'),...['s3','s4','s5','s6','figures'].map(id=>document.getElementById(id))].filter(Boolean);
+const navLinks=document.querySelectorAll('.nav-links a');
+window.addEventListener('scroll',()=>{
+  nav.classList.toggle('solid',window.scrollY>60);
+  let cur='';
+  secs.forEach(s=>{if(window.scrollY>=s.offsetTop-120)cur=s.id});
+  navLinks.forEach(a=>{a.classList.toggle('act',a.getAttribute('href')==='#'+cur)});
+},{passive:true});
+
+// ── MOBILE NAV ──
+function togMob(){
+  const mn=document.getElementById('mobNav');
+  const hb=document.getElementById('hbg');
+  const open=mn.classList.toggle('open');
+  hb.setAttribute('aria-expanded',open);
+  document.body.style.overflow=open?'hidden':'';
+}
+function closeMob(){
+  document.getElementById('mobNav').classList.remove('open');
+  document.getElementById('hbg').setAttribute('aria-expanded','false');
+  document.body.style.overflow='';
+}
+
+// ── REFLECTION FILTER ──
+function flt(tier,btn){
+  document.querySelectorAll('.flt-btn').forEach(b=>b.classList.remove('on'));
+  btn.classList.add('on');
+  document.querySelectorAll('.rc').forEach(c=>{
+    c.style.display=(tier==='all'||c.dataset.mod===tier)?'':'none';
+    if(tier!=='all'&&c.dataset.mod===tier&&c.classList.contains('feat')){
+      c.style.gridColumn='span 1';
+    } else if(tier==='all'&&c.classList.contains('feat')){
+      c.style.gridColumn='span 2';
+    }
+  });
+}
+function flt2(tier,btn){
+  document.querySelectorAll('#s5 .flt-btn').forEach(b=>b.classList.remove('on'));
+  btn.classList.add('on');
+  document.querySelectorAll('#refGrid2 .rc').forEach(c=>{
+    c.style.display=(tier==='all'||c.dataset.mod2===tier)?'':'none';
+    if(tier!=='all'&&c.dataset.mod2===tier&&c.classList.contains('feat')){c.style.gridColumn='span 1';}
+    else if(tier==='all'&&c.classList.contains('feat')){c.style.gridColumn='span 2';}
+  });
+}
+
+// ── JOURNAL ENTRIES ──
+function setJe(el){
+  document.querySelectorAll('.je').forEach(j=>{j.classList.remove('on');j.setAttribute('aria-pressed','false')});
+  el.classList.add('on');
+  el.setAttribute('aria-pressed','true');
+}
+
+// ── HEATMAP ──
+(function buildHeatmap(){
+  const g=document.getElementById('hmGrid');
+  if(!g)return;
+  const lvls=['','l1','l2','l3','l4','l5'];
+  for(let i=0;i<28;i++){
+    const d=document.createElement('div');
+    d.className='hm-cell '+(lvls[Math.floor(Math.random()*6)]);
+    g.appendChild(d);
+  }
+})();
+
+// ── ACCESSIBILITY ──
+function togFont(){
+  const on=document.body.classList.toggle('AF');
+  const b=document.getElementById('bFont');
+  b.classList.toggle('on',on);
+  b.setAttribute('aria-pressed',on);
+  announce(on?'Large text enabled':'Large text disabled');
+}
+function togDys(){
+  const on=document.body.classList.toggle('DY');
+  const b=document.getElementById('bDys');
+  b.classList.toggle('on',on);
+  b.setAttribute('aria-pressed',on);
+  announce(on?'Dyslexia font enabled':'Dyslexia font disabled');
+}
+function togCon(){
+  const on=document.body.classList.toggle('HC');
+  const b=document.getElementById('bCon');
+  b.classList.toggle('on',on);
+  b.setAttribute('aria-pressed',on);
+  announce(on?'High contrast enabled':'High contrast disabled');
+}
+let spkOn=false,spkUtil=null;
+function togSpk(){
+  if(!('speechSynthesis' in window)){announce('Read aloud not supported in this browser');return;}
+  if(spkOn){stopSpk();return;}
+  spkOn=true;
+  document.getElementById('bSpk').classList.add('on');
+  document.getElementById('bSpk').setAttribute('aria-pressed','true');
+  document.getElementById('bStop').style.display='inline-flex';
+  const txt=document.querySelector('main').innerText.substring(0,3000);
+  spkUtil=new SpeechSynthesisUtterance(txt);
+  spkUtil.rate=0.92;
+  spkUtil.onend=()=>{spkOn=false;document.getElementById('bSpk').classList.remove('on');document.getElementById('bSpk').setAttribute('aria-pressed','false');document.getElementById('bStop').style.display='none';};
+  window.speechSynthesis.speak(spkUtil);
+  announce('Read aloud started');
+}
+function stopSpk(){
+  window.speechSynthesis.cancel();
+  spkOn=false;
+  document.getElementById('bSpk').classList.remove('on');
+  document.getElementById('bSpk').setAttribute('aria-pressed','false');
+  document.getElementById('bStop').style.display='none';
+  announce('Read aloud stopped');
+}
+function announce(msg){
+  const el=document.getElementById('announce');
+  if(el){el.textContent='';setTimeout(()=>el.textContent=msg,80);}
+}
+
+// ── PHILOSOPHY TABS ──
+const tabOrder=['pt1','pt2','pt3','pt4','pt5','pt6'];
+function showTab(id,btn){
+  document.querySelectorAll('.ptab-panel').forEach(p=>{p.classList.remove('show')});
+  document.querySelectorAll('.ptab').forEach(b=>{b.classList.remove('act');b.setAttribute('aria-selected','false')});
+  document.getElementById(id).classList.add('show');
+  btn.classList.add('act');
+  btn.setAttribute('aria-selected','true');
+  updateProgress(id);
+}
+function showTabById(id){
+  const idx=tabOrder.indexOf(id);
+  if(idx<0)return;
+  const btns=document.querySelectorAll('.ptab');
+  if(btns[idx])showTab(id,btns[idx]);
+}
+function updateProgress(activeId){
+  const idx=tabOrder.indexOf(activeId);
+  document.querySelectorAll('.pp-dot').forEach((d,i)=>{
+    d.classList.toggle('vis',i<=idx);
+    d.classList.toggle('act',i===idx);
+  });
+  const el=document.getElementById('ppCount');
+  if(el)el.textContent=(idx+1)+' / '+tabOrder.length;
+}
+// Keyboard navigation for tabs
+document.querySelectorAll('.ptab').forEach((btn,i,arr)=>{
+  btn.addEventListener('keydown',e=>{
+    if(e.key==='ArrowRight'){e.preventDefault();const n=arr[(i+1)%arr.length];n.focus();n.click();}
+    if(e.key==='ArrowLeft'){e.preventDefault();const n=arr[(i-1+arr.length)%arr.length];n.focus();n.click();}
+  });
+});
+
+// ── THEORY CARD ACCORDION ──
+function togTheory(card){
+  const isOpen=card.classList.contains('open');
+  document.querySelectorAll('.theory-card').forEach(c=>{c.classList.remove('open');c.setAttribute('aria-expanded','false')});
+  if(!isOpen){card.classList.add('open');card.setAttribute('aria-expanded','true');}
+}
+
+// ── ASSESSMENT ACCORDION ──
+function togAcc(item){
+  const isOpen=item.classList.contains('open');
+  // Allow multiple open
+  item.classList.toggle('open',!isOpen);
+}
+
+// ── REFERENCES TOGGLE ──
+function togRefs(){
+  const panel=document.getElementById('refsPanel');
+  const arrow=document.getElementById('refsArrow');
+  const btn=document.getElementById('refsToggle');
+  const open=panel.classList.toggle('open');
+  if(arrow)arrow.style.transform=open?'rotate(180deg)':'';
+  if(btn)btn.setAttribute('aria-expanded',open);
+}
+
+</script>
+</body>
+</html>

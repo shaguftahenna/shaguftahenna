@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Dr. Shagufta Henna — Research Supervisions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#f4f7fc;--navy-2:#eaf0f8;--navy-3:#dce8f4;--navy-4:#ccd8e8;
+  --amber:#8a5c00;--amber-l:#b07800;--amber-p:#fff8e8;
+  --emerald:#0a6b48;--emerald-l:#0d8a60;--emerald-p:#eafaf4;
+  --sky:#1254a0;--rose:#b02040;
+  --violet:#5040a0;
+  --text:#0e1c2e;--text-2:#284060;--text-3:#4a6882;
+  --white:#ffffff;--border:#cdd8e8;--border-2:#b4c4d8;
+  --r-sm:6px;--r-md:12px;--r-lg:20px;--r-xl:28px;
+  --sh:0 2px 16px rgba(18,84,160,.08);--sh-sm:0 1px 6px rgba(18,84,160,.06);
+  --font-d:'Cormorant Garamond','Georgia',serif;
+  --font-b:'DM Sans',system-ui,sans-serif;
+  --font-m:'JetBrains Mono',monospace;
+}
+.AF{font-size:19px!important}.AF p,.AF li{font-size:1.1em!important;line-height:1.9!important}
+.DY{font-family:'OpenDyslexic','Comic Sans MS',cursive!important}.DY *{font-family:inherit!important}
+.HC{filter:contrast(1.4)}.HC body{background:#000!important}.HC .grant-card{background:#111!important;border-color:#555!important}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:var(--font-b);background:var(--navy);color:var(--text);line-height:1.7;overflow-x:hidden}
+::-webkit-scrollbar{width:4px}::-webkit-scrollbar-track{background:var(--navy)}::-webkit-scrollbar-thumb{background:var(--navy-4);border-radius:99px}
+::selection{background:rgba(18,84,160,.18);color:var(--text)}
+a{color:var(--amber);text-decoration:none;transition:color .2s}a:hover{color:#8a5c00;text-decoration:underline}
+h1,h2,h3,h4{font-family:var(--font-d);line-height:1.15}p{color:var(--text-2)}
+.sec{padding:80px 24px;background:var(--navy)}
+.sec-alt{padding:80px 24px;background:var(--navy-2)}
+.wrap{max-width:1360px;margin:0 auto}
+.s-eye{display:flex;align-items:center;gap:10px;font-family:var(--font-m);font-size:.64rem;color:var(--emerald);text-transform:uppercase;letter-spacing:.16em;margin-bottom:14px}
+.s-eye::before{content:'';width:24px;height:1px;background:var(--emerald)}
+.s-title{font-size:clamp(1.9rem,3.2vw,3rem);font-weight:300;color:var(--text);margin-bottom:12px;font-style:italic}
+.s-title strong{font-style:normal;font-weight:600;color:var(--amber)}
+.s-desc{color:var(--text-2);max-width:600px;font-size:.92rem;line-height:1.8}
+.skip-link{position:fixed;top:-100px;left:16px;z-index:9999;background:var(--amber);color:var(--navy);padding:10px 20px;border-radius:var(--r-md);font-weight:700;transition:top .2s}.skip-link:focus{top:16px}
+.a11y-bar{position:fixed;top:0;left:0;right:0;z-index:1001;background:var(--navy-2);padding:7px 24px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;border-bottom:1px solid var(--border)}
+.a11y-lbl{font-family:var(--font-m);font-size:.6rem;color:var(--text-3);text-transform:uppercase;letter-spacing:.14em;margin-right:4px;white-space:nowrap}
+.ab-btn{display:inline-flex;align-items:center;gap:5px;padding:4px 13px;border-radius:30px;background:rgba(255,255,255,.05);border:1px solid var(--border-2);color:var(--text-2);font-size:.72rem;font-family:var(--font-b);cursor:pointer;transition:all .2s;white-space:nowrap}
+.ab-btn:hover{background:rgba(255,255,255,.1);color:var(--text);border-color:#b4c4d8}.ab-btn.on{background:var(--amber);border-color:var(--amber);color:var(--navy);font-weight:600}
+.nav-wrap{position:fixed;top:36px;left:0;right:0;z-index:900;padding:0 24px;transition:all .3s}.nav-wrap.solid .nav-inner{background:#dce8f4;backdrop-filter:blur(20px);box-shadow:0 4px 20px rgba(0,0,0,.3)}
+.nav-inner{max-width:1360px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:12px 28px;border-radius:28px;transition:all .3s}
+.nav-brand{display:flex;align-items:center;gap:10px;font-family:var(--font-d);font-size:1.1rem;font-weight:600;color:var(--text);letter-spacing:.01em;text-decoration:none}
+.brand-tag{font-family:var(--font-m);font-size:.65rem;color:var(--amber);background:rgba(232,163,32,.12);padding:3px 9px;border-radius:6px;border:1px solid rgba(232,163,32,.25)}
+.nav-links{display:flex;align-items:center;gap:1px;list-style:none}
+.nav-links a{padding:6px 9px;border-radius:30px;font-size:.72rem;font-weight:500;color:var(--text-2);transition:all .2s;text-decoration:none}
+.nav-links a:hover{color:var(--text);background:rgba(255,255,255,.07)}.nav-links a.act{color:var(--amber);background:rgba(232,163,32,.1);font-weight:600}
+.nav-cta{background:var(--emerald)!important;color:var(--navy)!important;font-weight:700!important;padding:7px 16px!important;border-radius:30px!important;font-size:.75rem!important}
+.nav-cta:hover{background:var(--emerald-l)!important;color:var(--navy)!important}
+.hbg{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px}
+.hbg span{display:block;width:22px;height:2px;background:var(--text);border-radius:2px;transition:all .3s}
+.mob-nav{position:fixed;inset:0;z-index:850;background:var(--navy);padding:100px 32px 48px;transform:translateX(100%);transition:transform .35s cubic-bezier(.4,0,.2,1);display:flex;flex-direction:column;gap:4px}
+.mob-nav.open{transform:translateX(0)}.mob-nav a{color:var(--text);font-family:var(--font-d);font-size:2rem;padding:14px 0;border-bottom:1px solid var(--border);display:block;font-style:italic;text-decoration:none}.mob-nav a:hover{color:var(--amber)}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(1.6)}}
+/* hero */
+.hero-fund{min-height:36vh;position:relative;display:flex;align-items:flex-end;padding:140px 24px 60px;background:var(--navy)}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 60% 60% at 20% 30%,rgba(232,163,32,.06) 0%,transparent 60%),radial-gradient(ellipse 50% 50% at 80% 70%,rgba(16,185,129,.05) 0%,transparent 55%)}
+.hero-grid{position:absolute;inset:0;opacity:.04;background-image:linear-gradient(rgba(255,255,255,.5) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.5) 1px,transparent 1px);background-size:60px 60px}
+.hero-body{max-width:1360px;margin:0 auto;width:100%;position:relative;z-index:2}
+.h-pill{display:inline-flex;align-items:center;gap:7px;background:rgba(18,84,160,.1);border:1px solid rgba(18,84,160,.3);color:#1254a0;padding:5px 16px;border-radius:30px;font-size:.71rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;margin-bottom:16px}
+.h-pill::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--amber-l);animation:pulse 2s infinite;flex-shrink:0}
+.h-name{font-family:var(--font-d);font-size:clamp(2.4rem,4.5vw,4rem);font-weight:300;color:var(--text);line-height:1.05}
+.h-name em{font-style:italic;color:var(--amber)}
+/* summary */
+.sum-strip{display:flex;flex-wrap:wrap;gap:0;border:1px solid var(--border-2);border-radius:var(--r-xl);margin-bottom:56px}
+.sum-item{flex:1;min-width:120px;padding:20px 16px;border-right:1px solid var(--border);text-align:center}
+.sum-item:last-child{border-right:none}
+.sum-val{font-family:var(--font-d);font-size:2rem;font-weight:600;line-height:1}
+.sum-val.a{color:var(--amber)}.sum-val.g{color:var(--emerald)}.sum-val.s{color:var(--sky)}.sum-val.v{color:var(--violet)}
+.sum-lbl{font-size:.6rem;color:var(--text-3);text-transform:uppercase;letter-spacing:.1em;margin-top:6px;font-family:var(--font-m)}
+/* grant cards */
+.grant-card{background:rgba(255,255,255,.025);border:1px solid var(--border);border-radius:var(--r-lg);padding:26px 28px 24px;margin-bottom:18px;position:relative}
+.grant-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--emerald),var(--amber),var(--sky))}
+.grant-card:hover{border-color:var(--border-2)}
+.grant-top{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:12px}
+.grant-title{font-family:var(--font-d);font-size:1.25rem;font-weight:600;color:var(--text);line-height:1.25;flex:1}
+.grant-amount{font-family:var(--font-d);font-size:1.35rem;font-weight:600;white-space:nowrap;padding:5px 14px;border-radius:var(--r-md);flex-shrink:0}
+.ga-amber{color:var(--amber);background:rgba(232,163,32,.1);border:1px solid rgba(232,163,32,.22)}
+.ga-emerald{color:var(--emerald);background:rgba(16,185,129,.1);border:1px solid rgba(16,185,129,.22)}
+.ga-sky{color:var(--sky);background:rgba(56,189,248,.08);border:1px solid rgba(56,189,248,.18)}
+.ga-violet{color:var(--violet);background:rgba(129,140,248,.08);border:1px solid rgba(129,140,248,.18)}
+.grant-meta{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
+.gm-tag{font-family:var(--font-m);font-size:.61rem;padding:2px 9px;border-radius:3px;background:rgba(255,255,255,.05);border:1px solid var(--border-2);color:var(--text-3)}
+.gm-tag.role{border-color:#d0b870;color:var(--amber);background:rgba(232,163,32,.06)}
+.grant-body p{font-size:.875rem;color:var(--text-2);line-height:1.78;margin-bottom:9px}
+.grant-body p:last-child{margin-bottom:0}.grant-body strong{color:var(--text);font-weight:600}
+.grant-body ul{margin:.5rem 0 .5rem 1.1rem}.grant-body li{font-size:.875rem;color:var(--text-2);line-height:1.72;margin-bottom:4px}
+.sub-projects{margin-top:14px;padding-top:13px;border-top:1px solid var(--border)}
+.sub-label{font-family:var(--font-m);font-size:.59rem;color:var(--text-3);text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px}
+.sub-list{list-style:none;padding:0;display:flex;flex-direction:column;gap:5px}
+.sub-list li{font-size:.83rem;color:var(--text-2);line-height:1.55;padding-left:14px;position:relative}
+.sub-list li::before{content:"›";position:absolute;left:0;color:#1254a0;font-weight:700}
+.sub-list li strong{color:var(--text);font-weight:600}
+hr.div{border:none;border-top:1px solid var(--border);margin:36px 0}
+.sec-head{margin:0 0 18px}
+.sec-head h2{font-family:var(--font-d);font-size:1.35rem;font-weight:400;color:var(--text);display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.sec-head h2 span{font-family:var(--font-b);font-size:.67rem;color:var(--text-3);font-weight:400}
+/* logo section */
+.funder-sec{padding:60px 24px 52px;background:var(--navy-2)}
+.funder-grid{display:flex;flex-wrap:wrap;gap:12px;margin-top:20px}
+.fp{display:flex;flex-direction:column;align-items:center;background:rgba(255,255,255,.04);border:1px solid var(--border-2);border-radius:12px;transition:border-color .2s,transform .2s}
+.fp:hover{border-color:#1254a0;transform:translateY(-2px)}
+.fp .lbg{background:#fff;display:flex;align-items:center;justify-content:center;padding:10px 16px;width:100%;flex:1}
+.fp .lbg img{display:block;object-fit:contain;max-height:42px;width:auto}
+.fp .lcap{font-family:var(--font-m);font-size:.54rem;color:var(--text-3);text-transform:uppercase;letter-spacing:.07em;padding:5px 8px;background:rgba(0,0,0,.2);width:100%;text-align:center;line-height:1.4}
+.fp-sq{width:90px}.fp-sq .lbg img{max-height:42px;max-width:48px}
+.fp-med{width:148px}.fp-med .lbg img{max-height:42px;max-width:116px}
+.fp-wide{width:196px}.fp-wide .lbg img{max-height:34px;max-width:170px}
+.fp-dcc{width:172px}.fp-dcc .lbg{background:#ebebeb}.fp-dcc .lbg img{max-height:50px;max-width:150px}
+.fp-scene{width:172px}.fp-scene .lbg img{max-height:36px;max-width:150px}
+@media(max-width:900px){.grant-top{flex-direction:column}.grant-amount{align-self:flex-start}.sum-strip{flex-direction:column}.sum-item{border-right:none;border-bottom:1px solid var(--border)}.sum-item:last-child{border-bottom:none}}
+@media(max-width:600px){.hero-fund{padding-top:110px}}
+
+/* ── THEME SYNC FROM INDEX ── */
+html{scroll-behavior:smooth;font-size:16px;background:#eaf0f8}
+body{font-family:var(--font-b);background:#eaf0f8;color:var(--text);line-height:1.7;overflow-x:hidden}
+.sec{padding:80px 24px;background:#eaf0f8}
+.sec-alt{padding:80px 24px;background:#dce8f4}
+.a11y-bar{position:fixed;top:0;left:0;right:0;z-index:1001;background:#eaf0f8;border-bottom:1px solid #cdd8e8;padding:7px 24px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;min-height:36px}
+.a11y-lbl{font-family:var(--font-m);font-size:.6rem;color:#6080a0;text-transform:uppercase;letter-spacing:.14em;margin-right:4px;white-space:nowrap}
+.ab-btn{display:inline-flex;align-items:center;gap:5px;padding:4px 13px;border-radius:30px;background:transparent;border:1px solid #b4c4d8;color:#3a5270;font-size:.72rem;font-family:var(--font-b);cursor:pointer;transition:all .2s;white-space:nowrap}
+.ab-btn:hover{background:#dce8f4;color:#0e1c2e;border-color:#b4c4d8}
+.ab-btn.on{background:#1254a0;border-color:#1254a0;color:#fff;font-weight:600}
+.nav-wrap{position:fixed;top:36px;left:0;right:0;z-index:900;padding:0 24px;transition:all .3s;background:#eaf0f8}
+.nav-inner{max-width:1360px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:10px 24px;border-radius:var(--r-xl);transition:all .3s;background:#dce8f4;backdrop-filter:blur(16px);box-shadow:0 4px 16px rgba(18,84,160,.1)}
+.nav-wrap.solid .nav-inner{background:#dce8f4;backdrop-filter:blur(20px);box-shadow:0 6px 24px rgba(18,84,160,.15)}
+.nav-brand{display:flex;align-items:center;gap:10px;font-family:var(--font-d);font-size:1.1rem;font-weight:600;color:#0e1c2e;letter-spacing:.01em;text-decoration:none}
+.brand-tag{font-family:var(--font-m);font-size:.65rem;color:#8a5c00;background:#fff8e8;padding:3px 9px;border-radius:var(--r-sm);border:1px solid #e0c080}
+.nav-links{display:flex;align-items:center;gap:1px;list-style:none}
+.nav-links a{padding:6px 9px;border-radius:20px;font-size:.72rem;font-weight:500;color:#1a2e42;transition:all .2s;text-decoration:none;white-space:nowrap}
+.nav-links a:hover{color:#0e1c2e;background:rgba(18,84,160,.1)}
+.nav-links a.act{color:#0a3a7a;background:rgba(18,84,160,.15);font-weight:600}
+.nav-cta{background:#1254a0!important;color:#fff!important;font-weight:600!important;padding:6px 16px!important;border-radius:20px!important;font-size:.72rem!important}
+.nav-cta:hover{background:#0a3a80!important;color:#fff!important}
+.hbg{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px}
+.hbg span{display:block;width:22px;height:2px;background:#0e1c2e;border-radius:2px;transition:all .3s}
+.mob-nav{position:fixed;inset:0;z-index:850;background:#fff;border-left:1px solid #cdd8e8;padding:90px 32px 48px;transform:translateX(100%);transition:transform .35s cubic-bezier(.4,0,.2,1);display:flex;flex-direction:column;gap:4px}
+.mob-nav.open{transform:translateX(0)}
+.mob-nav a{color:#1a2638;font-family:var(--font-d);font-size:1.8rem;padding:12px 0;border-bottom:1px solid #cdd8e8;display:block;font-style:italic;text-decoration:none}
+.mob-nav a:hover{color:#1254a0}
+::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:#eaf0f8}::-webkit-scrollbar-thumb{background:#b4c4d8;border-radius:99px}
+::selection{background:rgba(18,84,160,.18);color:#0e1c2e}
+a{color:#1254a0;text-decoration:none;transition:color .2s}a:hover{color:#0a3a80}
+h1,h2,h3,h4{font-family:var(--font-d);line-height:1.15;color:var(--text)}
+p{color:var(--text-2)}
+.wrap{max-width:1360px;margin:0 auto}
+.s-eye{display:flex;align-items:center;gap:10px;font-family:var(--font-m);font-size:.64rem;color:#1254a0;text-transform:uppercase;letter-spacing:.16em;margin-bottom:14px}
+.s-eye::before{content:'';width:24px;height:1px;background:#1254a0}
+.s-title{font-size:clamp(1.9rem,3.2vw,3rem);font-weight:300;color:#0e1c2e;margin-bottom:12px;font-style:italic}
+.s-title strong{font-style:normal;font-weight:600;color:#8a5c00}
+@media(max-width:900px){}
+
+.gc-body{padding:26px 28px 24px}
+
+@media(max-width:1280px){.nav-links{display:none}.hbg{display:flex}}
+</style>
+<style>
+.sup-badge{font-family:var(--font-m);font-size:.58rem;padding:3px 11px;border-radius:12px;font-weight:600;white-space:nowrap;flex-shrink:0}
+.sup-badge.phd{background:#fff8e8;color:#8a5c00;border:1px solid #d4b870}
+.sup-badge.mres{background:#eafaf4;color:#0a6b48;border:1px solid #90d4b8}
+.sup-badge.msc{background:#dceaf8;color:#1254a0;border:1px solid #a8c4e0}
+.sup-badge.active{background:#f0eaf8;color:#5040a0;border:1px solid #c0a8e0}
+.sup-badge.co{background:#f4f4f4;color:#4a5568;border:1px solid #cccccc}
+.sup-name{font-family:var(--font-d);font-size:1.05rem;font-weight:600;color:#0e1c2e;line-height:1.2}
+.sup-thesis{font-size:.78rem;color:#284060;line-height:1.65;margin:6px 0 8px}
+.year-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:10px;margin-top:12px}
+.msc-card{background:#ffffff;border:1px solid #cdd8e8;border-radius:10px;padding:12px 16px;box-shadow:0 1px 4px rgba(18,84,160,.06)}
+.msc-name{font-size:.75rem;font-weight:600;color:#0e1c2e;margin-bottom:4px}
+.msc-title{font-size:.68rem;color:#4a6882;line-height:1.5}
+.yg-label{font-family:var(--font-m);font-size:.62rem;text-transform:uppercase;letter-spacing:.14em;color:#1254a0;margin:28px 0 12px;padding-bottom:8px;border-bottom:2px solid #cdd8e8;display:flex;align-items:center;gap:8px}
+.yg-label::before{content:'';width:16px;height:2px;background:#1254a0;flex-shrink:0}
+</style>
+</head>
+<body>
+<a href="#main" class="skip-link">Skip to main content</a>
+<div id="announce" role="status" aria-live="polite" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden"></div>
+<div class="a11y-bar" role="toolbar" aria-label="Accessibility tools">
+  <span class="a11y-lbl">Accessibility</span>
+  <button class="ab-btn" id="bFont" aria-pressed="false" onclick="togFont()">Aa Large Text</button>
+  <button class="ab-btn" id="bDys"  aria-pressed="false" onclick="togDys()">💡 Dyslexia Font</button>
+  <button class="ab-btn" id="bCon"  aria-pressed="false" onclick="togCon()">🌓 High Contrast</button>
+</div>
+<nav class="nav-wrap" id="navWrap" aria-label="Main navigation">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-brand" style="text-decoration:none;color:#0e1c2e">SH ePortfolio <span class="brand-tag">AI · UDL · 2025–26</span></a>
+    <ul class="nav-links" role="list">
+      <li><a href="teaching.html">Philosophy</a></li>
+      <li><a href="teaching_career.html">Teaching</a></li>
+      <li><a href="implementation.html">Implementation</a></li>
+      <li><a href="evidence.html">Evidence</a></li>
+      <li><a href="supervisions.html">Supervisions</a></li>
+      <li><a href="commercialisation.html">AI Commercialisation</a></li>
+      <li><a href="events.html">Events</a></li>
+      <li><a href="impact.html">Impact</a></li>
+      <li><a href="publications.html">Publications</a></li>
+      <li><a href="funding.html" class="act">Funding</a></li>
+      <li><a href="index.html" class="nav-cta">Home</a></li>
+    </ul>
+    <button class="hbg" id="hbg" aria-expanded="false" aria-label="Open menu" onclick="togMob()">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="mob-nav" id="mobNav" role="dialog" aria-label="Mobile menu">
+  <a href="index.html" onclick="closeMob()">Home</a>
+  <a href="implementation.html" onclick="closeMob()">Implementation</a>
+  <a href="evidence.html" onclick="closeMob()">Evidence</a>
+  <a href="commercialisation.html" onclick="closeMob()">AI Commercialisation</a>
+  <a href="events.html" onclick="closeMob()">Events</a>
+  <a href="impact.html" onclick="closeMob()">Impact</a>
+  <a href="teaching.html" onclick="closeMob()">Philosophy</a>
+  <a href="teaching_career.html" onclick="closeMob()">Teaching</a>
+  <a href="publications.html" onclick="closeMob()">Publications</a>
+  <a href="funding.html" onclick="closeMob()">Funding</a>
+</div></div>
+
+
+<div style="background:#eaf0f8;padding-top:82px;margin-top:-1px"><div style="background:linear-gradient(150deg,#dce8f4 0%,#eaf0f8 55%,#f0f6ff 100%);border-bottom:1px solid #b8cce0;padding:52px 24px 40px">
+  <div style="max-width:1360px;margin:0 auto">
+    <a href="index.html" style="display:inline-flex;align-items:center;gap:5px;font-family:var(--font-m);font-size:.65rem;color:#1254a0;text-decoration:none;margin-bottom:16px;opacity:.8">&#8592; ePortfolio Home</a>
+    <h1 style="font-family:var(--font-d);font-size:clamp(1.9rem,3.5vw,2.8rem);font-weight:300;color:#0e1c2e;line-height:1.1;margin-bottom:8px">Research Supervisions</h1>
+    <p style="font-family:var(--font-m);font-size:.68rem;color:#506080;letter-spacing:.06em">Dr. Shagufta Henna · Atlantic Technological University</p>
+  </div>
+</div></div>
+<main id="main">
+<section class="sec"><div class="wrap">
+
+  <!-- SUMMARY STRIP -->
+  <div class="sum-strip" role="list">
+    <div class="sum-item" role="listitem"><div class="sum-val a">105</div><div class="sum-lbl">Total supervisions</div></div>
+    <div class="sum-item" role="listitem"><div class="sum-val g">100</div><div class="sum-lbl">Completed</div></div>
+    <div class="sum-item" role="listitem"><div class="sum-val s">6</div><div class="sum-lbl">PhD &amp; MRes completed</div></div>
+    <div class="sum-item" role="listitem"><div class="sum-val v">5</div><div class="sum-lbl">Active PhD/Postdoc</div></div>
+  </div>
+
+  <!-- CURRENT -->
+  <div class="sec-head"><h2>Current PhD &amp; Postdoctoral Researchers <span>5 active · Principal Supervisor</span></h2></div>
+  <!-- Postdoctoral Researchers -->
+  <div class="grant-card">
+    <div class="grant-top">
+      <div class="grant-title">Postdoctoral Researchers</div>
+      <div class="grant-amount ga-sky">2 Active</div>
+    </div>
+    <div class="grant-meta">
+      <span class="gm-tag role">Principal Supervisor</span>
+      <span class="gm-tag">ATU Ireland</span>
+      <span class="gm-tag">2024–Present</span>
+    </div>
+    <div class="grant-body">
+      <p>Supervising two postdoctoral researchers as Principal Supervisor, working on <strong>open RAN closed-loop control</strong> and <strong>federated learning for IoT health security</strong>.</p>
+    </div>
+    <div class="sub-projects"><p class="sub-label">Postdoctoral Researchers</p><ul class="sub-list">
+      <li><strong>Mallikharjuna Rao Sakhamuri —</strong> RANControl: Reinforced Structural Learning-based xApps for Open RAN Closed-loop Control on Programmable Experimental Platforms</li>
+      <li><strong>Amjath Mohamed Ibrahim —</strong> FedHealthSecure: Few-Shot Federated Learning with Variance Reduction for Ransomware Attack Detection in Internet of Health Things (IoHTs)</li>
+    </ul></div>
+  </div>
+
+  <!-- PhD Students -->
+  <div class="grant-card">
+    <div class="grant-top">
+      <div class="grant-title">PhD Students</div>
+      <div class="grant-amount ga-violet">3 Active</div>
+    </div>
+    <div class="grant-meta">
+      <span class="gm-tag role">Principal Supervisor</span>
+      <span class="gm-tag">ATU Ireland</span>
+      <span class="gm-tag">2023–Present</span>
+    </div>
+    <div class="grant-body">
+      <p>Supervising three PhD students as Principal Supervisor across <strong>coastal digital twins</strong>, <strong>precision agriculture</strong>, and <strong>graph-based deep learning for environmental monitoring</strong>.</p>
+    </div>
+    <div class="sub-projects"><p class="sub-label">PhD Students</p><ul class="sub-list">
+      <li><strong>Kathy Bannigan —</strong> Enhancing Coastal Resilience: A Digital Twin Approach to Contrastive Graph Generative Models for Coastal Environment Monitoring</li>
+      <li><strong>Mohammed Jawad Bashir —</strong> Sustainable Precision Farming: An Explainable Self-Supervised Generative Learning Approach Leveraging Digital Twin Integration</li>
+      <li><strong>Asif Yar —</strong> Graph Based Extreme Deep Learning for Uncontrolled Environment Monitoring</li>
+    </ul></div>
+  </div>
+
+  <hr class="div">
+
+  <!-- COMPLETED PhD & MRes -->
+  <div class="sec-head"><h2>Completed PhD &amp; Masters by Research <span>6 completed · 2022–2026</span></h2></div>
+  <div class="grant-card">
+    <div class="grant-top">
+      <div class="grant-title">Completed PhD — Mallikharjuna Rao Sakhamuri</div>
+      <div class="grant-amount ga-amber">PhD · 2026</div>
+    </div>
+    <div class="grant-meta"><span class="gm-tag role">Principal Supervisor</span><span class="gm-tag">ATU Ireland</span><span class="gm-tag">Graph Deep Learning</span><span class="gm-tag">Computational Immunology</span></div>
+    <div class="grant-body"><p>Towards Graph Modelling and Graph-based Deep Learning for Computational Immunology: A Focus on the Innate Immune Response.</p></div>
+    
+  </div>  <div class="grant-card">
+    <div class="grant-top">
+      <div class="grant-title">Completed PhD — Amjath Mohamed Ibrahim</div>
+      <div class="grant-amount ga-amber">PhD · 2026</div>
+    </div>
+    <div class="grant-meta"><span class="gm-tag role">Principal Supervisor</span><span class="gm-tag">ATU Ireland</span><span class="gm-tag">Federated Learning</span><span class="gm-tag">IoHT Security</span></div>
+    <div class="grant-body"><p>Graph-based Federated Learning Approaches for Security and Privacy in the Internet of Health Things (IoHTs).</p></div>
+    
+  </div>  <div class="grant-card">
+    <div class="grant-top">
+      <div class="grant-title">Completed PhD — Zulfiqar Ali</div>
+      <div class="grant-amount ga-sky">PhD · 2022</div>
+    </div>
+    <div class="grant-meta"><span class="gm-tag role">Co-Supervisor</span><span class="gm-tag">Bahria University, Islamabad</span><span class="gm-tag">LoRaWAN</span><span class="gm-tag">Wireless Networks</span></div>
+    <div class="grant-body"><p>Efficient Adaptive Data Rate and Multiple Access in Long Range Wide Area Networks (LoRaWAN).</p></div>
+    
+  </div>  <div class="grant-card">
+    <div class="grant-top">
+      <div class="grant-title">MRes — Dushmantha Sachith Wijenayake</div>
+      <div class="grant-amount ga-emerald">MRes · 2025</div>
+    </div>
+    <div class="grant-meta"><span class="gm-tag role">Principal Supervisor</span><span class="gm-tag">ATU Ireland</span><span class="gm-tag">Cloud Security</span><span class="gm-tag">Representation Learning</span></div>
+    <div class="grant-body"><p>Representation Learning for Security Posture-aware Cloud Service Provider Prediction under Multi-tenant Multi-cloud Environments.</p></div>
+    
+  </div>  <div class="grant-card">
+    <div class="grant-top">
+      <div class="grant-title">MRes — Saheed Kazeem</div>
+      <div class="grant-amount ga-emerald">MRes · 2024</div>
+    </div>
+    <div class="grant-meta"><span class="gm-tag role">Principal Supervisor</span><span class="gm-tag">ATU Ireland</span><span class="gm-tag">IoT Security</span><span class="gm-tag">Reinforcement Learning</span></div>
+    <div class="grant-body"><p>Graph-based and Multi-Agent Deep Reinforcement Learning Approaches for Advanced Persistent Threat Detection for Internet of Things.</p></div>
+    
+  </div>  <div class="grant-card">
+    <div class="grant-top">
+      <div class="grant-title">MRes — Stephen Azeez</div>
+      <div class="grant-amount ga-emerald">MRes · 2023</div>
+    </div>
+    <div class="grant-meta"><span class="gm-tag role">Principal Supervisor</span><span class="gm-tag">ATU Ireland</span><span class="gm-tag">Graph Neural Networks</span><span class="gm-tag">Wireless LANs</span></div>
+    <div class="grant-body"><p>Affinity Graph Neural Networks with Attention for IEEE 802.11ax Wireless Local Area Networks.</p></div>
+    
+  </div>
+
+  <hr class="div">
+
+  <!-- TAUGHT MASTERS -->
+  <div class="sec-head"><h2>Taught Masters Dissertations <span>87 completed · 2019–2025 · ATU Ireland</span></h2></div>
+  <div class="yg-label">Masters 2025 <span style="color:#4a6882;font-weight:400;margin-left:4px">(8 students)</span></div>
+  <div class="year-grid"><div class="msc-card"><div class="msc-name">Sathish Kumar Samaiyan</div><div class="msc-title">Decentralized and Privacy-Preserving Resource Allocation Using Federated Temporal Models in Next-Generation Networks</div></div><div class="msc-card"><div class="msc-name">David Ibrahim Godiah</div><div class="msc-title">Explainable Plant Disease Classification Using Squeeze-and-Excitation ResNet and Multi-Scale XAI Frameworks</div></div><div class="msc-card"><div class="msc-name">Lipna Roshmi Sahaya Raj</div><div class="msc-title">Interpretable Temporal Fusion Model for Multi-horizon Time Series Fraud Forecasting</div></div><div class="msc-card"><div class="msc-name">Veena Vijayan</div><div class="msc-title">Dilated-Residual TCN Framework for ECG Arrhythmia Detection</div></div><div class="msc-card"><div class="msc-name">Linus M Ngatia</div><div class="msc-title">Time-Aware GAN and TCN for Intelligent 5G Resource Orchestration</div></div><div class="msc-card"><div class="msc-name">Berkay Senyasa</div><div class="msc-title">Context-Aware PointNet++ for 3D Indoor Scene Segmentation</div></div><div class="msc-card"><div class="msc-name">Naomi C Onwuemerie</div><div class="msc-title">Siamese Networks for Person Re-Identification in Surveillance</div></div><div class="msc-card"><div class="msc-name">John Kirubaharan Ravichandran</div><div class="msc-title">Adversarial ML-Based Robust Anomaly Detection in CI/CD</div></div></div>
+  <div class="yg-label">Masters 2024 <span style="color:#4a6882;font-weight:400;margin-left:4px">(13 students)</span></div>
+  <div class="year-grid"><div class="msc-card"><div class="msc-name">Golda Titus</div><div class="msc-title">Optimizing Short-Term Forecasting with Temporal Lagged Adjustments in Deep Learning</div></div><div class="msc-card"><div class="msc-name">Achul Eldad</div><div class="msc-title">Carbon Emission Evaluation Framework for Large-Scale Deep Learning Pipelines</div></div><div class="msc-card"><div class="msc-name">Richard Ogujawa</div><div class="msc-title">Generative Data Augmentation in Computer Vision Using VAEs and DCGANs</div></div><div class="msc-card"><div class="msc-name">Yadnesh Mankame</div><div class="msc-title">Unsupervised Representation Learning With DCGANs for Precision Agriculture</div></div><div class="msc-card"><div class="msc-name">Sunil Sharma</div><div class="msc-title">Intelligent Resource Allocation in NFV Using Machine Learning and Time Series</div></div><div class="msc-card"><div class="msc-name">Riya Sudheer</div><div class="msc-title">An Intelligent Precision Agriculture Framework</div></div><div class="msc-card"><div class="msc-name">Vineeth Menon</div><div class="msc-title">Generative AI for Financial Time Series Augmentation and GRU-Based Stock Prediction</div></div><div class="msc-card"><div class="msc-name">Saeed Ahmed</div><div class="msc-title">Accelerated Deep Learning for Edge Deployment for Anomaly Detection in IIoT</div></div><div class="msc-card"><div class="msc-name">Phanindra Kumar</div><div class="msc-title">Survival Analysis using Cox Proportional Hazard and Accelerated Failure Time Models</div></div><div class="msc-card"><div class="msc-name">Rohith Mamidi</div><div class="msc-title">Generative AI Augmented BiLSTM with Attention for Enhanced Predictions</div></div><div class="msc-card"><div class="msc-name">Azmeera Suman</div><div class="msc-title">DDoS Attack Detection Based on Sequential Deep Learning with Attention</div></div><div class="msc-card"><div class="msc-name">Heena Azhar Khan</div><div class="msc-title">Optimizing Supply Chain Energy Management: ARIMA and SARIMA Statistical Approach</div></div><div class="msc-card"><div class="msc-name">Marco Olcese Brozovich</div><div class="msc-title">Cybersecurity Methods Based on Machine Learning with the UNSW Dataset for IoT</div></div></div>
+  <div class="yg-label">Masters 2023 <span style="color:#4a6882;font-weight:400;margin-left:4px">(8 students)</span></div>
+  <div class="year-grid"><div class="msc-card"><div class="msc-name">Ashwitha Sunitha</div><div class="msc-title">Generative AI for Ethereum Fraud Detection in Blockchain</div></div><div class="msc-card"><div class="msc-name">Athar Hashmi</div><div class="msc-title">Time-series Analysis and Epileptic Seizure Detection</div></div><div class="msc-card"><div class="msc-name">Kathy Bannigan</div><div class="msc-title">Few Shot Learning for Brain Tumor Detection</div></div><div class="msc-card"><div class="msc-name">Munishvaraan Jayabalan</div><div class="msc-title">Intelligent Orchestration of VNFs for Efficient Resource Management in 5G</div></div><div class="msc-card"><div class="msc-name">Shon Mathew</div><div class="msc-title">Graph-based Collaborative Filtering with Attention for Group Recommendations</div></div><div class="msc-card"><div class="msc-name">Wasim Abubaker Nagori</div><div class="msc-title">Sentiment Analysis of Ukraine-Russia Conflict using Twitter Data</div></div><div class="msc-card"><div class="msc-name">Vamsi Krishna Desari</div><div class="msc-title">Sequence-based Deep Learning for Predictive Maintenance in Industry 4.0</div></div><div class="msc-card"><div class="msc-name">Nikhil Raj</div><div class="msc-title">Explainable AI for Tree-based Classifier for Phishing Attack Detection</div></div></div>
+  <div class="yg-label">Masters 2022 <span style="color:#4a6882;font-weight:400;margin-left:4px">(14 students)</span></div>
+  <div class="year-grid"><div class="msc-card"><div class="msc-name">Abhilash Kumar</div><div class="msc-title">Irish Sign Language Recognition using Hierarchical Vision Transformer</div></div><div class="msc-card"><div class="msc-name">Sriram Muthaiah</div><div class="msc-title">Object Locating and Masking using Mask R-CNN</div></div><div class="msc-card"><div class="msc-name">Sreejesh Thankappan Pillai</div><div class="msc-title">PSO-based Deep Reinforcement Learning for Autonomous Driving</div></div><div class="msc-card"><div class="msc-name">Nishant Ranjan Verma</div><div class="msc-title">Inflation Forecasting using Hybrid Neural Networks with Attention</div></div><div class="msc-card"><div class="msc-name">Noel Hynes</div><div class="msc-title">Hybrid Prophet-deBiLSTM for Time Series Forecasting</div></div><div class="msc-card"><div class="msc-name">Aishwarya Moray</div><div class="msc-title">Architectural Implications of FaaS Serverless Computing on QoS</div></div><div class="msc-card"><div class="msc-name">Aswin Rajasekharan</div><div class="msc-title">Explainable Adversarial Deep Learning for Malicious Domain Detection</div></div><div class="msc-card"><div class="msc-name">Fazeelat Nandgadi</div><div class="msc-title">GANs based on CNNs for Forgery Detection</div></div><div class="msc-card"><div class="msc-name">Lakshya Gourav Moitra</div><div class="msc-title">Responsible Machine Learning for Cyber-security</div></div><div class="msc-card"><div class="msc-name">Mallikharjuna Rao Sakhamuri</div><div class="msc-title">GraphImmuno: GCNs with Physicochemical Properties for Adaptive Immune Response</div></div><div class="msc-card"><div class="msc-name">Miriyam Philip Venattu</div><div class="msc-title">Distributed Deep Learning using Spark and BigDL Orca</div></div><div class="msc-card"><div class="msc-name">Olajide Adewale Olaniyan</div><div class="msc-title">Superconstrastive Learning for Vision Transformers using Patch Embeddings</div></div><div class="msc-card"><div class="msc-name">Paulson Grigarichan</div><div class="msc-title">Attention-based GRU for WSN Recalibration for Air Quality Monitoring</div></div><div class="msc-card"><div class="msc-name">Oluwasei Adebeye</div><div class="msc-title">Cloud Services for Distributed and Scalable Deep Learning</div></div></div>
+  <div class="yg-label">Masters 2021 <span style="color:#4a6882;font-weight:400;margin-left:4px">(11 students)</span></div>
+  <div class="year-grid"><div class="msc-card"><div class="msc-name">Mohammad Ibrahim</div><div class="msc-title">Self-supervised Learning for GCNs for Breast Cancer Detection</div></div><div class="msc-card"><div class="msc-name">Juan Miguel Lopez</div><div class="msc-title">Explainable AI: Interpretable CNNs Filters and Feature Maps</div></div><div class="msc-card"><div class="msc-name">Rajinder Singh</div><div class="msc-title">T-FasterRCNN: Transfer Learning for Real-time Traffic Sign Detection</div></div><div class="msc-card"><div class="msc-name">Bilal Ali Saiyed</div><div class="msc-title">Extremist Group Identification using Bidirectional Seq2Seq Deep Learning</div></div><div class="msc-card"><div class="msc-name">Varun Sehgal</div><div class="msc-title">BiLSTM with Attention for Sentiment Analysis</div></div><div class="msc-card"><div class="msc-name">Catherine de Andres Arceno</div><div class="msc-title">Ensemble Transfer Learning for Breast Cancer Classification</div></div><div class="msc-card"><div class="msc-name">Pooja Prakash Awalegaonkar</div><div class="msc-title">Multimodal Deep Learning for Emotion Recognition</div></div><div class="msc-card"><div class="msc-name">Nikita Ganesh Phirke</div><div class="msc-title">Cascaded CNNs using Separable Convolution in GoogLeNet</div></div><div class="msc-card"><div class="msc-name">Siddharth Bangera</div><div class="msc-title">Stacked Ensemble Deep Learning for Employee Attrition Prediction</div></div><div class="msc-card"><div class="msc-name">Hardik Trivedi</div><div class="msc-title">Multi-head Attention for Content-based Music Classification</div></div><div class="msc-card"><div class="msc-name">Raghav Thakur</div><div class="msc-title">Attention-based BiLSTM for Weather Prediction</div></div></div>
+  <div class="yg-label">Masters 2019 <span style="color:#4a6882;font-weight:400;margin-left:4px">(16 students)</span></div>
+  <div class="year-grid"><div class="msc-card"><div class="msc-name">Praveen David Mathew</div><div class="msc-title">Self-Adaptive Security and Functional Testing in CI/CD Pipeline</div></div><div class="msc-card"><div class="msc-name">Bailon Manlagnit Jr.</div><div class="msc-title">Double Transfer Learning for Breast Cancer Detection</div></div><div class="msc-card"><div class="msc-name">Chitteti Vijay</div><div class="msc-title">Zombie Attacks Prediction using Machine Learning</div></div><div class="msc-card"><div class="msc-name">Aparna Reiji</div><div class="msc-title">CLAHE-based Transfer Learning for Covid-19 Detection</div></div><div class="msc-card"><div class="msc-name">Shyam Krishnan Kalliadan</div><div class="msc-title">Predictive CRM based on Graph Analytics using Deep Learning</div></div><div class="msc-card"><div class="msc-name">Saurabh Jangid</div><div class="msc-title">Hybrid Deep Learning for Advanced Persistent Threats Prediction</div></div><div class="msc-card"><div class="msc-name">David Agboga</div><div class="msc-title">Activity Prediction using ML Classifiers with Talking Device</div></div><div class="msc-card"><div class="msc-name">Deepak Vikram</div><div class="msc-title">Offensive Speech Identification with Machine Learning</div></div><div class="msc-card"><div class="msc-name">Ajay Chowdary Vemulapalli</div><div class="msc-title">Face Mask Detection based on Real-Time Video using Deep Learning</div></div><div class="msc-card"><div class="msc-name">Tejinder Singh Ramgadiya</div><div class="msc-title">DoS Attack Detection based on RNNs and LSTM</div></div><div class="msc-card"><div class="msc-name">Yaswanth Venkata Sai Charan Akkisetty</div><div class="msc-title">ML-Driven Recommender System for Nutrition</div></div><div class="msc-card"><div class="msc-name">Borja Isabel</div><div class="msc-title">Best Match Question Answering Chatbot for Sport E-commerce</div></div><div class="msc-card"><div class="msc-name">Veera Venkata Siva Rama Krishna Chundru</div><div class="msc-title">Malicious URL Prediction using ML with Distributed Processing</div></div><div class="msc-card"><div class="msc-name">Ramisetti Vamsi Krishna</div><div class="msc-title">Auto Scaling Enhancement using ML for Virtualized Networks</div></div><div class="msc-card"><div class="msc-name">Janeesh George</div><div class="msc-title">Intrusion Detection for IoT Data using Deep and Machine Learning</div></div><div class="msc-card"><div class="msc-name">Mohammad Faraz</div><div class="msc-title">Policy Network-based RL Approach to Virtual Network Embeddings</div></div></div>
+
+  <hr class="div">
+
+  <!-- EARLIER PROJECTS -->
+  <div class="sec-head"><h2>Earlier Masters Dissertations &amp; Projects <span>2016–2020 · Bahria University, Islamabad</span></h2></div>
+
+  <div class="grant-card">
+    <div class="grant-top">
+      <div class="grant-title">Masters Dissertations — Wireless Networks &amp; IoT</div>
+      <div class="grant-amount ga-amber">14 Dissertations</div>
+    </div>
+    <div class="grant-meta">
+      <span class="gm-tag role">Principal Supervisor</span>
+      <span class="gm-tag">Bahria University, Islamabad</span>
+      <span class="gm-tag">2016–2020</span>
+      <span class="gm-tag">WSN · WBAN · MAC Protocols · IoT</span>
+    </div>
+    <div class="grant-body">
+      <p>Masters dissertation supervision at Bahria University covering <strong>wireless sensor networks</strong>, <strong>wireless body area networks</strong>, <strong>MAC protocol design</strong>, and <strong>IoT systems</strong>.</p>
+    </div>
+    <div class="sub-projects"><p class="sub-label">Dissertations supervised</p>
+      <ul class="sub-list">
+        <li>A learning-based self-adaptive MAC for Wireless Body Area Networks</li><li>A novel wireless power transfer technique for wireless rechargeable sensor networks</li><li>Learning-based spectrum utilization for underlay cognitive radio networks</li><li>Reinforcement learning-based homogeneous coexistence interference management in WBAN</li><li>An intelligent optimized charger deployment for rechargeable wireless sensor network</li><li>Interference management in bonded channel WBANs based on IEEE 802.15.6</li><li>An energy aware next hop selection algorithm for WBANs</li><li>A novel retransmission strategy for Wireless Body Area Networks</li><li>A priority-based MAC Protocol for WBANs</li><li>HE-PRMAC: Hop Extended Pipelined Routing Enhanced MAC for WSNs</li><li>AS-PW-MAC: Adaptive Scheduling Predictive Wake-up MAC for WSNs</li><li>Asynchronous Hybrid Duty Cycle MAC Protocol for WSNs</li><li>Receiver-Initiated Asynchronous Duty Cycle Multi-Channel MAC for WSNs</li><li>Stability Analysis of Multipath Routing under Different Mobility Models in MANETs</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="grant-card">
+    <div class="grant-top">
+      <div class="grant-title">Undergraduate Projects — IoT &amp; Augmented Reality</div>
+      <div class="grant-amount ga-sky">6 Projects</div>
+    </div>
+    <div class="grant-meta">
+      <span class="gm-tag role">Supervisor</span>
+      <span class="gm-tag">Bahria University, Islamabad</span>
+      <span class="gm-tag">2016–2020</span>
+      <span class="gm-tag">IoT · AR/VR</span>
+    </div>
+    <div class="grant-body">
+      <p>Undergraduate project supervision covering <strong>IoT-enabled smart agriculture</strong> and <strong>augmented reality</strong> applications.</p>
+    </div>
+    <div class="sub-projects"><p class="sub-label">Projects supervised</p>
+      <ul class="sub-list">
+        <li>Connected Fields: An IoT-enabled smart agricultural system</li><li>Connected Cows: An IoT-enabled smart farm</li><li>Virtual Art Gallery based on Augmented Reality</li><li>Alive Learning based on Augmented Reality</li><li>Augmented reality-based snooker world</li><li>An Augmented historical view of Bahria University, Islamabad</li>
+      </ul>
+    </div>
+  </div>
+
+</div></section>
+</main>
+<footer role="contentinfo" style="background:#dce8f4;border-top:2px solid #b4c4d8;margin-top:0">
+
+  <!-- top accent line -->
+  <div style="height:3px;background:linear-gradient(90deg,#0a6b48 0%,#1254a0 40%,#8a5c00 100%);"></div>
+
+  <!-- main grid -->
+  <div style="max-width:1360px;margin:0 auto;padding:52px 28px 40px;display:grid;grid-template-columns:2fr 1fr 1fr;gap:56px;align-items:start;">
+
+    <!-- LEFT — identity + tagline + credentials -->
+    <div>
+      <!-- name -->
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;">
+        <div style="width:42px;height:42px;border-radius:10px;background:linear-gradient(135deg,#1254a0,#8a5c00);display:flex;align-items:center;justify-content:center;font-family:var(--font-m);font-size:.75rem;font-weight:700;color:#f0f6ff;flex-shrink:0;letter-spacing:.04em;">SH</div>
+        <div>
+          <div style="font-family:var(--font-d);font-size:1.1rem;font-style:italic;color:#0e1c2e;line-height:1.1;">Dr. Shagufta Henna</div>
+          <div style="font-family:var(--font-m);font-size:.5rem;color:#4a6882;text-transform:uppercase;letter-spacing:.12em;margin-top:2px;">Lecturer in AI &amp; Computing &middot; ATU Ireland</div>
+        </div>
+      </div>
+
+      <!-- tagline -->
+      <p style="font-size:.8rem;color:#284060;line-height:1.85;max-width:380px;margin:0 0 24px;text-align:justify;hyphens:auto;">An evidence-based teaching portfolio grounded in Universal Design for Learning, inclusive curriculum design, and AI-enhanced pedagogy, built for every learner, validated by research, and certified by the National Forum for the Enhancement of Teaching and Learning in Higher Education.</p>
+
+      <!-- credentials -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:20px;">
+        <a href="https://openbadgefactory.com/v1/assertion/6fab207ec664a6b9ab14145b9adb650de0d7b9be.html" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:10px;padding:12px 14px;background:#eaf0f8;border:1px solid #b8d0e8;border-radius:10px;text-decoration:none;transition:all .2s;" onmouseover="this.style.borderColor='#1254a0';this.style.boxShadow='0 2px 10px rgba(18,84,160,.12)'" onmouseout="this.style.borderColor='#b8d0e8';this.style.boxShadow=''">
+          <img src="badge.jpg" alt="UDL Badge" style="width:42px;height:42px;border-radius:7px;flex-shrink:0;object-fit:contain;" />
+          <div style="min-width:0;">
+            <div style="font-family:var(--font-m);font-size:.47rem;color:#0a6b48;text-transform:uppercase;letter-spacing:.09em;margin-bottom:2px;">Verified &#8599;</div>
+            <div style="font-size:.7rem;color:#0e1c2e;font-weight:600;line-height:1.25;">Universal Design in Teaching &amp; Learning</div>
+            <div style="font-family:var(--font-m);font-size:.48rem;color:#4a6882;margin-top:3px;">National Forum &middot; Feb 2024</div>
+          </div>
+        </a>
+        <a href="https://openbadgefactory.com/v1/assertion/edf1564bff1221907cafb9ade5d0804c25d0796d.html" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:10px;padding:12px 14px;background:#eaf0f8;border:1px solid #b8d0e8;border-radius:10px;text-decoration:none;transition:all .2s;" onmouseover="this.style.borderColor='#1254a0';this.style.boxShadow='0 2px 10px rgba(18,84,160,.12)'" onmouseout="this.style.borderColor='#b8d0e8';this.style.boxShadow=''">
+          <img src="ntutr.jpg" alt="N-TUTORR Badge" style="width:42px;height:42px;border-radius:7px;flex-shrink:0;object-fit:contain;" />
+          <div style="min-width:0;">
+            <div style="font-family:var(--font-m);font-size:.47rem;color:#1254a0;text-transform:uppercase;letter-spacing:.09em;margin-bottom:2px;">Verified &#8599;</div>
+            <div style="font-size:.7rem;color:#0e1c2e;font-weight:600;line-height:1.25;">N-TUTORR Community Member</div>
+            <div style="font-family:var(--font-m);font-size:.48rem;color:#4a6882;margin-top:3px;">ATU Galway City &middot; May 2024</div>
+          </div>
+        </a>
+      </div>
+
+      <!-- compliance pills -->
+      <div style="display:flex;flex-wrap:wrap;gap:6px;">
+        <span style="font-family:var(--font-m);font-size:.52rem;padding:3px 10px;border-radius:20px;background:#e0f0e8;border:1px solid #a8d4bc;color:#0a6b48;">WCAG 2.1 AA</span>
+        <span style="font-family:var(--font-m);font-size:.52rem;padding:3px 10px;border-radius:20px;background:#dceaf8;border:1px solid #a8c4e0;color:#1254a0;">GDPR Compliant</span>
+        <span style="font-family:var(--font-m);font-size:.52rem;padding:3px 10px;border-radius:20px;background:#f8f0e0;border:1px solid #d8c090;color:#8a5c00;">UDL Guidelines v3.0</span>
+        <span style="font-family:var(--font-m);font-size:.52rem;padding:3px 10px;border-radius:20px;background:#f0eaf8;border:1px solid #c8b0d8;color:#5040a0;">EU AI Act 2024</span>
+      </div>
+    </div>
+
+    <!-- MIDDLE — portfolio nav -->
+    <div>
+      <div style="font-family:var(--font-m);font-size:.55rem;text-transform:uppercase;letter-spacing:.14em;color:#0e1c2e;font-weight:600;margin-bottom:18px;padding-bottom:10px;border-bottom:2px solid #cdd8e8;">Portfolio</div>
+      <nav style="display:flex;flex-direction:column;gap:10px;" aria-label="Portfolio sections">
+        <a href="teaching.html"       style="font-size:.78rem;color:#284060;text-decoration:none;display:flex;align-items:center;gap:8px;transition:color .2s;" onmouseover="this.style.color='#1254a0'" onmouseout="this.style.color='#284060'"><span style="width:12px;height:1px;background:#cdd8e8;flex-shrink:0;"></span>Teaching Philosophy</a>
+              <a href="udlplan.html"         style="font-size:.78rem;color:#284060;text-decoration:none;display:flex;align-items:center;gap:8px;transition:color .2s;" onmouseover="this.style.color='#1254a0'" onmouseout="this.style.color='#284060'"><span style="width:12px;height:1px;background:#cdd8e8;flex-shrink:0;"></span>UDL Plan</a>
+        <a href="implementation.html" style="font-size:.78rem;color:#284060;text-decoration:none;display:flex;align-items:center;gap:8px;transition:color .2s;" onmouseover="this.style.color='#1254a0'" onmouseout="this.style.color='#284060'"><span style="width:12px;height:1px;background:#cdd8e8;flex-shrink:0;"></span>Implementation</a>
+                    <a href="evidence.html"       style="font-size:.78rem;color:#284060;text-decoration:none;display:flex;align-items:center;gap:8px;transition:color .2s;" onmouseover="this.style.color='#1254a0'" onmouseout="this.style.color='#284060'"><span style="width:12px;height:1px;background:#cdd8e8;flex-shrink:0;"></span>Evidence &amp; Figures</a>
+        <a href="publications.html"   style="font-size:.78rem;color:#284060;text-decoration:none;display:flex;align-items:center;gap:8px;transition:color .2s;" onmouseover="this.style.color='#1254a0'" onmouseout="this.style.color='#284060'"><span style="width:12px;height:1px;background:#cdd8e8;flex-shrink:0;"></span>Publications</a>
+        <a href="funding.html"        style="font-size:.78rem;color:#284060;text-decoration:none;display:flex;align-items:center;gap:8px;transition:color .2s;" onmouseover="this.style.color='#1254a0'" onmouseout="this.style.color='#284060'"><span style="width:12px;height:1px;background:#cdd8e8;flex-shrink:0;"></span>Research Funding</a>
+      </nav>
+    </div>
+
+    <!-- RIGHT — contact -->
+    <div>
+      <div style="font-family:var(--font-m);font-size:.55rem;text-transform:uppercase;letter-spacing:.14em;color:#0e1c2e;font-weight:600;margin-bottom:18px;padding-bottom:10px;border-bottom:2px solid #cdd8e8;">Contact &amp; Links</div>
+      <div style="display:flex;flex-direction:column;gap:12px;">
+        <a href="https://www.linkedin.com/in/shagufta-h-436887172/" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:9px;font-size:.78rem;color:#284060;text-decoration:none;transition:color .2s;" onmouseover="this.style.color='#1254a0'" onmouseout="this.style.color='#284060'">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" style="flex-shrink:0;color:#4a6882;"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          linkedin.com/in/shagufta-h
+        </a>
+        <a href="mailto:shagufta.henna@atu.ie" style="display:flex;align-items:center;gap:9px;font-size:.78rem;color:#284060;text-decoration:none;transition:color .2s;" onmouseover="this.style.color='#1254a0'" onmouseout="this.style.color='#284060'">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" style="flex-shrink:0;color:#4a6882;"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+          shagufta.henna@atu.ie
+        </a>
+        <a href="https://www.atu.ie/courses/computing" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:9px;font-size:.78rem;color:#284060;text-decoration:none;transition:color .2s;" onmouseover="this.style.color='#1254a0'" onmouseout="this.style.color='#284060'">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" style="flex-shrink:0;color:#4a6882;"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          Department of Computing
+        </a>
+        <a href="https://www.atu.ie" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:9px;font-size:.78rem;color:#284060;text-decoration:none;transition:color .2s;" onmouseover="this.style.color='#1254a0'" onmouseout="this.style.color='#284060'">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" style="flex-shrink:0;color:#4a6882;"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          Atlantic Technological University
+        </a>
+        <div style="height:1px;background:#cdd8e8;margin:2px 0;"></div>
+        <a href="https://udlguidelines.cast.org" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:9px;font-size:.78rem;color:#284060;text-decoration:none;transition:color .2s;" onmouseover="this.style.color='#0a6b48'" onmouseout="this.style.color='#284060'">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" style="flex-shrink:0;color:#4a6882;"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          CAST UDL Guidelines 3.0
+        </a>
+        <a href="https://openbadgefactory.com/v1/assertion/6fab207ec664a6b9ab14145b9adb650de0d7b9be.html" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:9px;font-size:.78rem;color:#284060;text-decoration:none;transition:color .2s;" onmouseover="this.style.color='#0a6b48'" onmouseout="this.style.color='#284060'">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" style="flex-shrink:0;color:#4a6882;"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
+          UDL Certified &middot; National Forum 2024
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- bottom bar -->
+  <div style="border-top:1px solid #cdd8e8;background:#dce8f4;">
+    <div style="max-width:1360px;margin:0 auto;padding:14px 28px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;">
+      <p style="font-size:.68rem;color:#284060;font-family:var(--font-m);">&#169; 2026 Dr. Shagufta Henna &middot; Atlantic Technological University, Ireland</p>
+      <p style="font-size:.68rem;color:#284060;font-family:var(--font-m);">Interactive AI Learning ePortfolio &middot; UDL v3.0 &middot; Academic Year 2025&ndash;26</p>
+    </div>
+  </div>
+
+</footer>
+<script>
+
+// ── NAV ──
+const nav=document.getElementById('navWrap');
+const secs=[...document.querySelectorAll('section[id]'),...['s3','s4','s5','s6','figures'].map(id=>document.getElementById(id))].filter(Boolean);
+const navLinks=document.querySelectorAll('.nav-links a');
+window.addEventListener('scroll',()=>{
+  nav.classList.toggle('solid',window.scrollY>60);
+  let cur='';
+  secs.forEach(s=>{if(window.scrollY>=s.offsetTop-120)cur=s.id});
+  navLinks.forEach(a=>{a.classList.toggle('act',a.getAttribute('href')==='#'+cur)});
+},{passive:true});
+
+// ── MOBILE NAV ──
+function togMob(){
+  const mn=document.getElementById('mobNav');
+  const hb=document.getElementById('hbg');
+  const open=mn.classList.toggle('open');
+  hb.setAttribute('aria-expanded',open);
+  document.body.style.overflow=open?'hidden':'';
+}
+function closeMob(){
+  document.getElementById('mobNav').classList.remove('open');
+  document.getElementById('hbg').setAttribute('aria-expanded','false');
+  document.body.style.overflow='';
+}
+
+// ── REFLECTION FILTER ──
+function flt(tier,btn){
+  document.querySelectorAll('.flt-btn').forEach(b=>b.classList.remove('on'));
+  btn.classList.add('on');
+  document.querySelectorAll('.rc').forEach(c=>{
+    c.style.display=(tier==='all'||c.dataset.mod===tier)?'':'none';
+    if(tier!=='all'&&c.dataset.mod===tier&&c.classList.contains('feat')){
+      c.style.gridColumn='span 1';
+    } else if(tier==='all'&&c.classList.contains('feat')){
+      c.style.gridColumn='span 2';
+    }
+  });
+}
+function flt2(tier,btn){
+  document.querySelectorAll('#s5 .flt-btn').forEach(b=>b.classList.remove('on'));
+  btn.classList.add('on');
+  document.querySelectorAll('#refGrid2 .rc').forEach(c=>{
+    c.style.display=(tier==='all'||c.dataset.mod2===tier)?'':'none';
+    if(tier!=='all'&&c.dataset.mod2===tier&&c.classList.contains('feat')){c.style.gridColumn='span 1';}
+    else if(tier==='all'&&c.classList.contains('feat')){c.style.gridColumn='span 2';}
+  });
+}
+
+// ── JOURNAL ENTRIES ──
+function setJe(el){
+  document.querySelectorAll('.je').forEach(j=>{j.classList.remove('on');j.setAttribute('aria-pressed','false')});
+  el.classList.add('on');
+  el.setAttribute('aria-pressed','true');
+}
+
+// ── HEATMAP ──
+(function buildHeatmap(){
+  const g=document.getElementById('hmGrid');
+  if(!g)return;
+  const lvls=['','l1','l2','l3','l4','l5'];
+  for(let i=0;i<28;i++){
+    const d=document.createElement('div');
+    d.className='hm-cell '+(lvls[Math.floor(Math.random()*6)]);
+    g.appendChild(d);
+  }
+})();
+
+// ── ACCESSIBILITY ──
+function togFont(){
+  const on=document.body.classList.toggle('AF');
+  const b=document.getElementById('bFont');
+  b.classList.toggle('on',on);
+  b.setAttribute('aria-pressed',on);
+  announce(on?'Large text enabled':'Large text disabled');
+}
+function togDys(){
+  const on=document.body.classList.toggle('DY');
+  const b=document.getElementById('bDys');
+  b.classList.toggle('on',on);
+  b.setAttribute('aria-pressed',on);
+  announce(on?'Dyslexia font enabled':'Dyslexia font disabled');
+}
+function togCon(){
+  const on=document.body.classList.toggle('HC');
+  const b=document.getElementById('bCon');
+  b.classList.toggle('on',on);
+  b.setAttribute('aria-pressed',on);
+  announce(on?'High contrast enabled':'High contrast disabled');
+}
+let spkOn=false,spkUtil=null;
+function togSpk(){
+  if(!('speechSynthesis' in window)){announce('Read aloud not supported in this browser');return;}
+  if(spkOn){stopSpk();return;}
+  spkOn=true;
+  document.getElementById('bSpk').classList.add('on');
+  document.getElementById('bSpk').setAttribute('aria-pressed','true');
+  document.getElementById('bStop').style.display='inline-flex';
+  const txt=document.querySelector('main').innerText.substring(0,3000);
+  spkUtil=new SpeechSynthesisUtterance(txt);
+  spkUtil.rate=0.92;
+  spkUtil.onend=()=>{spkOn=false;document.getElementById('bSpk').classList.remove('on');document.getElementById('bSpk').setAttribute('aria-pressed','false');document.getElementById('bStop').style.display='none';};
+  window.speechSynthesis.speak(spkUtil);
+  announce('Read aloud started');
+}
+function stopSpk(){
+  window.speechSynthesis.cancel();
+  spkOn=false;
+  document.getElementById('bSpk').classList.remove('on');
+  document.getElementById('bSpk').setAttribute('aria-pressed','false');
+  document.getElementById('bStop').style.display='none';
+  announce('Read aloud stopped');
+}
+function announce(msg){
+  const el=document.getElementById('announce');
+  if(el){el.textContent='';setTimeout(()=>el.textContent=msg,80);}
+}
+
+// ── PHILOSOPHY TABS ──
+const tabOrder=['pt1','pt2','pt3','pt4','pt5','pt6'];
+function showTab(id,btn){
+  document.querySelectorAll('.ptab-panel').forEach(p=>{p.classList.remove('show')});
+  document.querySelectorAll('.ptab').forEach(b=>{b.classList.remove('act');b.setAttribute('aria-selected','false')});
+  document.getElementById(id).classList.add('show');
+  btn.classList.add('act');
+  btn.setAttribute('aria-selected','true');
+  updateProgress(id);
+}
+function showTabById(id){
+  const idx=tabOrder.indexOf(id);
+  if(idx<0)return;
+  const btns=document.querySelectorAll('.ptab');
+  if(btns[idx])showTab(id,btns[idx]);
+}
+function updateProgress(activeId){
+  const idx=tabOrder.indexOf(activeId);
+  document.querySelectorAll('.pp-dot').forEach((d,i)=>{
+    d.classList.toggle('vis',i<=idx);
+    d.classList.toggle('act',i===idx);
+  });
+  const el=document.getElementById('ppCount');
+  if(el)el.textContent=(idx+1)+' / '+tabOrder.length;
+}
+// Keyboard navigation for tabs
+document.querySelectorAll('.ptab').forEach((btn,i,arr)=>{
+  btn.addEventListener('keydown',e=>{
+    if(e.key==='ArrowRight'){e.preventDefault();const n=arr[(i+1)%arr.length];n.focus();n.click();}
+    if(e.key==='ArrowLeft'){e.preventDefault();const n=arr[(i-1+arr.length)%arr.length];n.focus();n.click();}
+  });
+});
+
+// ── THEORY CARD ACCORDION ──
+function togTheory(card){
+  const isOpen=card.classList.contains('open');
+  document.querySelectorAll('.theory-card').forEach(c=>{c.classList.remove('open');c.setAttribute('aria-expanded','false')});
+  if(!isOpen){card.classList.add('open');card.setAttribute('aria-expanded','true');}
+}
+
+// ── ASSESSMENT ACCORDION ──
+function togAcc(item){
+  const isOpen=item.classList.contains('open');
+  // Allow multiple open
+  item.classList.toggle('open',!isOpen);
+}
+
+// ── REFERENCES TOGGLE ──
+function togRefs(){
+  const panel=document.getElementById('refsPanel');
+  const arrow=document.getElementById('refsArrow');
+  const btn=document.getElementById('refsToggle');
+  const open=panel.classList.toggle('open');
+  if(arrow)arrow.style.transform=open?'rotate(180deg)':'';
+  if(btn)btn.setAttribute('aria-expanded',open);
+}
+
+</script>
+</body>
+</html>
